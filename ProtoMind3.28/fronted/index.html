@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProtoMind</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="../image/title.png" alt="ProtoMind">
+    </div>
+    
+    <div class="sidebar">
+        <ul>
+            <li data-page="upload" class="active">文件上传</li>
+            <li data-page="xml-editor">XML 编辑器</li>
+            <li data-page="result">协议状态机</li>
+            <li data-page="packet-viewer">数据包查看器</li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="page-container" id="page-container">
+            <!-- 文件上传页面 -->
+            <div class="page" id="upload">
+                <div class="container">
+                    <div class="upload-box" id="rfc-dropzone">
+                        <label>协议 RFC 文档</label>
+                        <p>拖入文件或点击选择</p>
+                        <input type="file" id="rfc-file" accept=".pdf,.txt,.doc,.docx">
+                        <button id="rfc-select-btn">选择文件</button>
+                        <div class="file-name" id="rfc-file-name"></div>
+                    </div>
+                    <div class="upload-box" id="ir-dropzone">
+                        <label>协议 IR 文档</label>
+                        <p>拖入文件或点击选择</p>
+                        <input type="file" id="ir-file" accept=".pdf,.txt,.doc,.docx">
+                        <button id="ir-select-btn">选择文件</button>
+                        <div class="file-name" id="ir-file-name"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- XML 编辑器页面 -->
+            <div class="page" id="xml-editor">
+                <div class="container">
+                    <h1>XML 编辑器</h1>
+                    <textarea id="xml-content" placeholder="XML 内容将显示在这里..."></textarea>
+                    <div class="buttons">
+                        <button id="xml-confirm-btn">确定</button>
+                        <button id="xml-back-btn">返回</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 协议状态机页面 -->
+            <div class="page" id="result">
+                <div class="fsm-container">
+                    <!-- 状态机展示区域 -->
+                    <div class="fsm-display-area">
+                        <!-- 图像展示模式 -->
+                        <div class="fsm-view-mode">
+                            <div class="fsm-image-container">
+                                <img id="fsm-image" 
+                                    src="../image/fsm.png" 
+                                    alt="协议状态机" 
+                                    style="max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd;"
+                                    onerror="handleImageError(this)">
+                            </div>
+                            <div class="fsm-actions">
+                                <button id="edit-fsm-btn" class="btn-edit">
+                                    <span class="icon">✏️</span> 编辑状态机
+                                </button>
+                                <button id="confirm-fsm-btn" class="btn-confirm">
+                                    <span class="icon">✅</span> 确认设计
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 编辑模式 -->
+                        <div class="fsm-edit-mode" style="display:none;">
+                            <div class="editor-header">
+                                <h3>状态机编辑器</h3>
+                                <div class="editor-controls">
+                                    <button id="toggle-grid-btn" class="btn-grid" title="显示网格">
+                                        <span class="icon">#️⃣</span> 网格
+                                    </button>
+                                    <button id="zoom-in-btn" class="btn-zoom" title="放大">
+                                        <span class="icon">➕</span>
+                                    </button>
+                                    <button id="zoom-out-btn" class="btn-zoom" title="缩小">
+                                        <span class="icon">➖</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="editor-toolbar">
+                                <button id="add-state-btn" class="btn-tool">
+                                    <span class="icon">➕</span> 添加状态
+                                </button>
+                                <button id="add-transition-btn" class="btn-tool">
+                                    <span class="icon">🔗</span> 添加转移
+                                </button>
+                                <button id="delete-element-btn" class="btn-tool btn-danger">
+                                    <span class="icon">❌</span> 删除元素
+                                </button>
+                                <button id="reset-fsm-btn" class="btn-tool btn-warning">
+                                    <span class="icon">🔄</span> 重置
+                                </button>
+                                <button id="save-fsm-btn" class="btn-tool btn-primary">
+                                    <span class="icon">💾</span> 保存
+                                </button>
+                                <button id="exit-edit-btn" class="btn-tool">
+                                    <span class="icon">🚪</span> 退出编辑
+                                </button>
+                            </div>
+                            
+                            <div class="editor-wrapper">
+                                <div class="editor-area" id="fsm-graph"></div>
+                                <div class="editor-statusbar">
+                                    <span id="editor-status">就绪</span>
+                                    <span id="zoom-level">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 数据包查看器页面 -->
+            <div class="page" id="packet-viewer">
+                <div class="container">
+                    <!--<h1>数据包内容</h1>-->
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="搜索（源地址、目的地址、协议等）">
+                        <button id="search-btn">搜索</button>
+                    </div>
+                    <table class="packet-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Time</th>
+                                <th>Source</th>
+                                <th>Destination</th>
+                                <th>Protocol</th>
+                                <th>Length</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody id="packet-list">
+                            <!-- 测试数据行 -->
+                            <tr>
+                                <td>1</td>
+                                <td>10:30:45.123</td>
+                                <td>192.168.1.1</td>
+                                <td>10.0.0.1</td>
+                                <td>TCP</td>
+                                <td>1500</td>
+                                <td>HTTP GET /index.html</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>10:30:45.456</td>
+                                <td>192.168.1.2</td>
+                                <td>8.8.8.8</td>
+                                <td>DNS</td>
+                                <td>84</td>
+                                <td>Query example.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>10:30:46.789</td>
+                                <td>192.168.1.3</td>
+                                <td>192.168.1.255</td>
+                                <td>ARP</td>
+                                <td>60</td>
+                                <td>Who has 192.168.1.4?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="packet-details-container">
+                        <h2>数据包详情</h2>
+                        <pre id="packet-details">点击上方数据包以查看详情</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 在body底部添加终端 -->
+    <div id="terminal">
+        <div class="terminal-header">
+            <span class="terminal-title">终端</span>
+            <div class="terminal-actions">
+                <button class="terminal-action-btn" title="清除终端">🗑️</button>
+                <button class="terminal-action-btn" title="最小化终端">−</button>
+            </div>
+        </div>
+        <div id="terminal-output"></div>
+        <div class="terminal-input">
+            <span class="prompt">$</span>
+            <input type="text" id="terminal-input" placeholder="输入命令 (输入'help'获取帮助)">
+        </div>
+    </div>
+    
+    <!-- 终端切换按钮 -->
+    <button id="toggle-terminal" class="floating-btn">
+        <span class="terminal-icon">∨</span>
+    </button>
+    
+    <!-- Prompt输入区域 -->
+    <div class="prompt-container" id="prompt-container" style="display:none;">
+        <h3>终端Prompt输入</h3>
+        <textarea id="prompt-input" placeholder="输入您的prompt指令(例如：生成基于HTTP协议的IR)"></textarea>
+        <button id="apply-prompt-btn">应用Prompt</button>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

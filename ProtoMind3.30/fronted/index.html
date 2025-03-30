@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProtoMind</title>
+    <style>
+        :root {
+            --blue-gradient: #014F9C, #3C79B4, #78A3CC, #B3CDE4, #EEF7FC;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            min-height: 100vh;
+            background: #ffffff;
+            color: #333333;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            z-index: 10;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header img {
+            height: 120px;
+            width: 600px;
+            max-width: 100%;
+            object-fit: contain;
+            background-color: transparent;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 70px;
+            width: 200px;
+            height: calc(100vh - 70px);
+            background-color: #f5f5f5;
+            border-right: 3px solid;
+            border-image: linear-gradient(to bottom, var(--blue-gradient)) 1;
+            z-index: 5;
+            padding-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            padding: 15px 20px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar li:hover {
+            background-color: rgba(120, 163, 204, 0.2);
+        }
+
+        .sidebar li.active {
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+        }
+
+        .main-content {
+            margin-left: 200px;
+            margin-top: 100px;
+            height: calc(100vh - 70px - 150px);
+            width: calc(100% - 200px);
+            overflow: hidden;
+            position: relative;
+            transition: width 0.3s ease, height 0.3s ease;
+        }
+
+        .page-container {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        .page {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background-color: #ffffff;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: calc(100% - 200px);
+            background-color: #f5f5f5;
+            border-top: 3px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            padding: 10px;
+            color: #333333;
+            font-size: 14px;
+            z-index: 5;
+            transition: transform 0.3s ease, width 0.3s ease;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            resize: vertical;
+            overflow: auto;
+        }
+
+        .status-bar.hidden {
+            transform: translateY(100%);
+        }
+
+        .status-bar-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .status-bar-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-bar-resize-handle {
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: transparent;
+            cursor: ns-resize;
+        }
+
+        .status-bar-resize-handle:hover {
+            background-color: #00ccaa;
+        }
+
+        .status-bar-drag-handle {
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 10px;
+            height: 100%;
+            background-color: transparent;
+            cursor: ew-resize;
+        }
+
+        .status-bar-drag-handle:hover {
+            background-color: #00ccaa;
+        }
+
+        .status-output {
+            flex: 1;
+            padding: 5px;
+            overflow-y: auto;
+            background-color: rgba(238, 247, 252, 0.8);
+            color: #014F9C;
+            white-space: pre-wrap;
+        }
+
+        .status-input {
+            display: flex;
+            padding: 5px;
+            border-top: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        .status-input .prompt {
+            margin-right: 8px;
+            color: #014F9C;
+            font-weight: bold;
+        }
+
+        #status-input-field {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .status-line.error {
+            color: #ff4444;
+        }
+
+        .status-line.system {
+            color: #014F9C;
+            font-weight: bold;
+        }
+
+        .status-line.success {
+            color: #00aa00;
+        }
+
+        /* 文件上传页面 */
+        .upload-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 100%;
+            padding: 0;
+            position: relative;
+        }
+
+        .upload-section::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            border-left: 2px dashed #45a3c8;
+        }
+
+        .upload-area {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100%;
+            margin-top: 200px;
+        }
+
+        .upload-area label {
+            color: #014F9C;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .upload-area p {
+            margin: 10px 0;
+            color: #666666;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            color: #014F9C;
+            font-weight: bold;
+        }
+
+        .add-file-btn {
+            width: 200px;
+            height: 200px;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        .add-file-btn:hover {
+            background-color: #5490ea;
+        }
+
+        .upload-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .add-file-btn:hover .upload-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        /* 模型选择工具栏 */
+        .model-toolbar {
+            border-bottom: 1px dashed #80c4ef;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            pointer-events: auto;
+            position: relative;
+            z-index: 5;
+            flex-shrink: 0;
+        }
+
+        .model-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .model-btn {
+            padding: 5px 15px;
+            background-color: #e0f7fa;
+            color: #99c8f4;
+            border: 1px solid #6b8ead;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .model-btn:hover {
+            background-color: #345871;
+            color: #ffffff;
+        }
+
+        .model-btn.selected {
+            background-color: #94bfde;
+            color: #ffffff;
+        }
+
+        .model-btn.hidden {
+            display: none;
+        }
+
+        .expand-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .expand-btn:hover {
+            background-color: #009688;
+        }
+
+        /* 模型与提示词页面和 XML 编辑 */
+        .combined-section {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            width: 100%;
+            flex: 1;
+            padding: 20px;
+            padding-bottom: 200px;
+            box-sizing: border-box;
+            gap: 20px;
+            position: relative;
+        }
+
+        .model-prompt-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
+
+        .model-prompt-section input,
+        .model-prompt-section textarea {
+            flex: 1;
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+            resize: none;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        .model-prompt-section button {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            border: none;
+        }
+
+        .animation-container {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 50px;
+            height: 100%;
+        }
+
+        .file-icon {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            display: none;
+            z-index: 20;
+        }
+
+        .llm-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            z-index: 15;
+        }
+
+        @keyframes moveToModel {
+            0% {
+                transform: translate(-50%, calc(-50vh + 100px));
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveToXml {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, 100%);
+                opacity: 1;
+            }
+        }
+
+        .file-icon.move-to-model {
+            display: block;
+            animation: moveToModel 1s forwards;
+        }
+
+        .file-icon.move-to-xml {
+            display: block;
+            animation: moveToXml 1s forwards;
+        }
+
+        .progress-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 4px solid #f5f5f5;
+            border-top: 4px solid #00ccaa;
+            border-radius: 50%;
+            display: none;
+            animation: spin 1s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .progress-circle.active {
+            display: block;
+        }
+
+        .xml-editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
+
+        #xml-content {
+            flex: 1;
+            width: 100%;
+            resize: none;
+            font-family: 'Courier New', monospace;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .xml-btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        #xml-back-btn,
+        #xml-confirm-btn {
+            padding: 5px 15px;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #xml-back-btn:hover,
+        #xml-confirm-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* 可编辑状态机画布 */
+        #fsm-canvas-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        #fsm-canvas {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            cursor: default;
+        }
+
+        #fsm-toolbar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 100;
+        }
+
+        #fsm-toolbar button {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 1px solid #014F9C;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #fsm-toolbar button:hover {
+            background-color: #f0f8ff;
+        }
+
+        /* 状态机元素样式 */
+        .state {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #b3cde4;
+            border: 2px solid #014F9C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            user-select: none;
+            z-index: 10;
+        }
+
+        .state.selected {
+            background-color: #78a3cc;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .state-text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            text-align: center;
+            pointer-events: none;
+            max-width: 90%;
+            word-break: break-word;
+        }
+
+        .transition {
+            position: absolute;
+            pointer-events: stroke;
+            stroke-width: 10px;
+            z-index: 5;
+        }
+
+        .transition.selected path {
+            stroke: #ff4444;
+        }
+
+        .transition-arrow {
+            fill: #014F9C;
+        }
+
+        .transition.selected .transition-arrow {
+            fill: #ff4444;
+        }
+
+        .transition-text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
+        .text-element {
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            cursor: move;
+            user-select: none;
+            z-index: 10;
+        }
+
+        .text-element.selected {
+            outline: 1px dashed #014F9C;
+        }
+
+        /* 结果页面 */
+        #result .fsm-view-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            height: calc(100% - 40px);
+        }
+
+        .fsm-image-container {
+            flex: 1;
+            min-height: 400px;
+            height: 100%;
+        }
+
+        #fsm-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        .fsm-actions-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 220px;
+            padding: 20px;
+        }
+
+        .fsm-actions-container button {
+            width: 100%;
+            max-width: 200px;
+            padding: 14px 20px;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .fsm-actions-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        @media (max-width: 992px) {
+            #result .fsm-view-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .fsm-actions-container {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .fsm-actions-container button {
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fsm-actions-container {
+                flex-direction: column;
+            }
+
+            .fsm-actions-container button {
+                max-width: 100%;
+            }
+        }
+
+        /* 数据包查看器页面 */
+        #packet-viewer .container {
+            padding: 20px;
+            height: calc(100vh - 110px);
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+        }
+
+        #packet-viewer h1 {
+            color: #014F9C;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            padding-bottom: 10px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        #search-input {
+            flex: 1;
+            max-width: 500px;
+            padding: 10px;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        #search-btn {
+            padding: 10px 20px;
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #search-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .packet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            flex: 1;
+            overflow: hidden;
+            display: block;
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+        }
+
+        .packet-table thead {
+            background: linear-gradient(to right, var(--blue-gradient));
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        .packet-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .packet-table tbody {
+            display: block;
+            overflow-y: auto;
+            height: calc(100% - 45px);
+        }
+
+        .packet-table tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .packet-table td {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .packet-table tr:hover {
+            background-color: rgba(120, 163, 204, 0.1);
+        }
+
+        .packet-table tr.selected {
+            background-color: rgba(1, 79, 156, 0.15);
+        }
+
+        .packet-details-container {
+            border: 2px solid;
+            border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            margin-top: 10px;
+        }
+
+        .packet-details-container h2 {
+            color: #014F9C;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        #packet-details {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .packet-table thead {
+                display: none;
+            }
+
+            .packet-table tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 2px solid;
+                border-image: linear-gradient(to right, var(--blue-gradient)) 1;
+                border-radius: 4px;
+            }
+
+            .packet-table td {
+                display: block;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border-bottom: 1px solid #eee;
+            }
+
+            .packet-table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                width: 45%;
+                padding-right: 10px;
+                font-weight: bold;
+                text-align: left;
+                color: #014F9C;
+            }
+
+            #search-input {
+                max-width: 100%;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--blue-gradient));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3C79B4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="../image/title.png" alt="ProtoMind">
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li class="active" data-page="upload">文件上传</li>
+            <li data-page="model-prompt">大语言模型处理</li>
+            <li data-page="result">协议状态机</li>
+            <li data-page="packet-viewer">数据包查看</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-container" id="page-container">
+            <div class="page" id="upload">
+                <div class="upload-section">
+                    <div class="upload-area" id="rfc-dropzone">
+                        <label>协议 RFC 文档</label>
+                        <p>拖入文件或点击选择</p>
+                        <input type="file" id="rfc-file" accept=".pdf,.txt,.doc,.docx" style="display: none;">
+                        <button id="rfc-select-btn" class="add-file-btn">
+                            <img src="../image/upload.svg" alt="Upload Icon" class="upload-icon" />
+                        </button>
+                        <div class="file-name" id="rfc-file-name"></div>
+                    </div>
+                    <div class="upload-area" id="ir-dropzone">
+                        <label>协议 IR 文档</label>
+                        <p>拖入文件或点击选择</p>
+                        <input type="file" id="ir-file" accept=".pdf,.txt,.doc,.docx" style="display: none;">
+                        <button id="ir-select-btn" class="add-file-btn">
+                            <img src="../image/upload.svg" alt="Upload Icon" class="upload-icon" />
+                        </button>
+                        <div class="file-name" id="ir-file-name"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="model-prompt">
+                <div class="model-toolbar">
+                    <div class="model-options">
+                        <button class="model-btn selected" data-model="DeepSeek">DeepSeek</button>
+                        <button class="model-btn" data-model="GPT">GPT</button>
+                        <button class="model-btn" data-model="Grok">Grok</button>
+                        <button class="model-btn hidden" data-model="Model4">Model4</button>
+                        <button class="model-btn hidden" data-model="Model5">Model5</button>
+                    </div>
+                    <button class="expand-btn">>></button>
+                </div>
+                <div class="combined-section">
+                    <div class="model-prompt-section">
+                        <input type="text" id="prompt-input" value="Prompt">
+                        <button id="rfc-generate-btn" style="color: white; border: none;">生成 IR</button>
+                    </div>
+                    <div class="animation-container">
+                        <img src="../image/LLM.svg" alt="LLM Icon" class="llm-icon">
+                        <img src="../image/file.svg" alt="File Icon" class="file-icon">
+                        <div class="progress-circle"></div>
+                    </div>
+                    <div class="xml-editor-section">
+                        <textarea id="xml-content"></textarea>
+                        <div class="xml-btn-group">
+                            <button id="xml-back-btn">返回</button>
+                            <button id="xml-confirm-btn">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="result">
+                <div class="fsm-view-container">
+                    <div class="fsm-image-container">
+                        <div id="fsm-canvas-container">
+                            <canvas id="fsm-canvas"></canvas>
+                            <div id="fsm-toolbar">
+                                <button id="add-state-btn" title="添加状态">○</button>
+                                <button id="add-transition-btn" title="添加转移">→</button>
+                                <button id="add-text-btn" title="添加文本">T</button>
+                                <button id="delete-btn" title="删除元素">✕</button>
+                                <button id="save-fsm-btn" title="保存设计">💾</button>
+                                <button id="load-fsm-btn" title="加载设计">📂</button>
+                                <button id="import-image-btn" title="导入图片">🖼️</button>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fsm-actions-container">
+                        <button id="edit-fsm-btn"><span class="icon">✏️</span> 编辑状态机</button>
+                        <button id="confirm-fsm-btn"><span class="icon">✅</span> 确认设计</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="packet-viewer">
+                <div class="container">
+                    <h1>数据包内容</h1>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="搜索（源地址、目的地址、协议等）">
+                        <button id="search-btn">搜索</button>
+                    </div>
+                    <table class="packet-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Time</th>
+                                <th>Source</th>
+                                <th>Destination</th>
+                                <th>Protocol</th>
+                                <th>Length</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody id="packet-list"></tbody>
+                    </table>
+                    <div class="packet-details-container">
+                        <h2>数据包详情</h2>
+                        <pre id="packet-details">点击数据包以查看详情</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar" id="status-bar">
+        <div class="status-bar-resize-handle"></div>
+        <div class="status-bar-drag-handle"></div>
+        <div class="status-output" id="status-output"></div>
+        <div class="status-input">
+            <span class="prompt">$</span>
+            <input type="text" id="status-input-field" placeholder="输入命令 (输入'help'获取帮助)">
+        </div>
+    </div>
+
+    <button class="status-bar-toggle" id="toggle-status-bar">∨</button>
+
+    <script>
+        // 全局变量
+        const navItems = document.querySelectorAll(".sidebar li");
+        const pageContainer = document.getElementById("page-container");
+        const pages = document.querySelectorAll(".page");
+        let currentPage = "upload";
+        let rfcFile = null;
+        let irFile = null;
+        let selectedModel = "DeepSeek";
+        let isExpanded = false;
+        const pageOffsets = [];
+        let totalHeight = 0;
+
+        // 计算页面偏移量
+        function calculateOffsets() {
+            pageOffsets.length = 0;
+            totalHeight = 0;
+            pages.forEach((page) => {
+                pageOffsets.push(totalHeight);
+                totalHeight += page.offsetHeight;
+            });
+            console.log("Page offsets:", pageOffsets);
+        }
+
+        calculateOffsets();
+        window.addEventListener("resize", calculateOffsets);
+
+        // 页面切换
+        navItems.forEach((item) => {
+            item.addEventListener("click", () => {
+                const targetPage = item.getAttribute("data-page");
+                if (targetPage === currentPage) return;
+                switchPage(targetPage);
+            });
+        });
+
+        // 状态栏功能
+        const statusBar = document.getElementById("status-bar");
+        const toggleBtn = document.getElementById("toggle-status-bar");
+        const statusOutput = document.getElementById("status-output");
+        const statusInput = document.getElementById("status-input-field");
+        const resizeHandle = document.querySelector(".status-bar-resize-handle");
+        const dragHandle = document.querySelector(".status-bar-drag-handle");
+        const mainContent = document.querySelector(".main-content");
+
+        let isResizing = false;
+        let isDragging = false;
+        let startY = 0;
+        let startHeight = 0;
+        let startX = 0;
+        let startWidth = 0;
+
+        toggleBtn.addEventListener("click", () => {
+            statusBar.classList.toggle("hidden");
+            toggleBtn.textContent = statusBar.classList.contains("hidden") ? "∧" : "∨";
+            adjustMainContentHeight();
+        });
+
+        resizeHandle.addEventListener("mousedown", (e) => {
+            isResizing = true;
+            startY = e.clientY;
+            startHeight = statusBar.offsetHeight;
+            document.body.style.userSelect = "none";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (isResizing) {
+                const deltaY = startY - e.clientY;
+                let newHeight = startHeight + deltaY;
+                const minHeight = 40;
+                const maxHeight = window.innerHeight * 0.5;
+                newHeight = Math.max(minHeight, Math.min(newHeight, maxHeight));
+                statusBar.style.height = `${newHeight}px`;
+                adjustMainContentHeight();
+            } else if (isDragging) {
+                const deltaX = e.clientX - startX;
+                let newWidth = startWidth - deltaX;
+                const minWidth = 200;
+                const maxWidth = window.innerWidth - 200;
+                newWidth = Math.max(minWidth, Math.min(newWidth, maxWidth));
+                statusBar.style.width = `${newWidth}px`;
+                mainContent.style.width = `calc(100% - 200px - ${
+                    newWidth - (window.innerWidth - 200)
+                }px)`;
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            if (isResizing) {
+                isResizing = false;
+                document.body.style.userSelect = "";
+                calculateOffsets();
+            }
+            if (isDragging) {
+                isDragging = false;
+                document.body.style.userSelect = "";
+                calculateOffsets();
+            }
+        });
+
+        dragHandle.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startWidth = statusBar.offsetWidth;
+            document.body.style.userSelect = "none";
+        });
+
+        function adjustMainContentHeight() {
+            const statusBarHeight = statusBar.classList.contains("hidden")
+                ? 0
+                : statusBar.offsetHeight;
+            mainContent.style.height = `calc(100vh - 70px - ${statusBarHeight}px)`;
+        }
+
+        function updateStatusMessage(page) {
+            const prefix = "ProTOMind>> ";
+            let message = "";
+            switch (page) {
+                case "upload":
+                    message =
+                        "请上传 RFC 和 IR 文档，然后前往“模型与提示词”页面。\n 上传的RFC文档（.txt）将会提交给大模型处理成中间文档以便处理";
+                    break;
+                case "model-prompt":
+                    message = "请选择大模型并确认提示词，然后点击“生成 IR”以编辑 XML 内容。";
+                    break;
+                case "result":
+                    message = "请查看状态机图像并确认设计。";
+                    break;
+                case "packet-viewer":
+                    message = "查看数据包内容，可使用搜索功能过滤。";
+                    break;
+            }
+            addStatusOutput(`${prefix}${message}`, "system");
+        }
+
+        function addStatusOutput(text, type = "output") {
+            const line = document.createElement("div");
+            line.className = `status-line ${type}`;
+            const promptSpan = type === "input" ? '<span class="prompt">$</span> ' : "";
+            const prefix =
+                { error: "[错误] ", system: "[系统] ", success: "[成功] " }[type] || "";
+            line.innerHTML = `${promptSpan}${prefix}${text}`;
+            statusOutput.appendChild(line);
+            statusOutput.scrollTop = statusOutput.scrollHeight;
+        }
+
+        function processCommand(command) {
+            const args = command.split(" ");
+            const cmd = args[0].toLowerCase();
+            const restArgs = args.slice(1).join(" ");
+
+            switch (cmd) {
+                case "help":
+                    addStatusOutput("可用命令:", "system");
+                    addStatusOutput("  help               - 显示帮助信息", "system");
+                    addStatusOutput("  clear              - 清除状态栏输出", "system");
+                    addStatusOutput("  upload             - 跳转到上传页面", "system");
+                    addStatusOutput("  model-prompt       - 跳转到模型处理页面", "system");
+                    addStatusOutput("  result             - 跳转到结果页面", "system");
+                    addStatusOutput("  packets            - 跳转到数据包查看器", "system");
+                    break;
+                case "clear":
+                    statusOutput.innerHTML = "";
+                    addStatusOutput("状态栏输出已清除", "system");
+                    break;
+                case "upload":
+                    switchPage("upload");
+                    break;
+                case "model-prompt":
+                    switchPage("model-prompt");
+                    break;
+                case "result":
+                    switchPage("result");
+                    break;
+                case "packets":
+                    switchPage("packet-viewer");
+                    break;
+                default:
+                    addStatusOutput(`未知命令: ${command}。输入 'help' 获取帮助`, "error");
+            }
+        }
+
+        statusInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                const command = statusInput.value.trim();
+                if (command) {
+                    addStatusOutput(`$ ${command}`, "input");
+                    processCommand(command);
+                    statusInput.value = "";
+                }
+            }
+        });
+
+        // 文件上传逻辑
+        const rfcDropzone = document.getElementById("rfc-dropzone");
+        const rfcFileInput = document.getElementById("rfc-file");
+        const rfcSelectBtn = document.getElementById("rfc-select-btn");
+        const rfcFileName = document.getElementById("rfc-file-name");
+
+        rfcSelectBtn.addEventListener("click", () => {
+            rfcFileInput.click();
+        });
+
+        rfcFileInput.addEventListener("change", (e) => {
+            if (e.target.files.length > 0) {
+                rfcFile = e.target.files[0];
+                rfcFileName.textContent = rfcFile.name;
+                setTimeout(() => switchPage("model-prompt"), 1000);
+            }
+        });
+
+        rfcDropzone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            rfcDropzone.style.borderColor = "#ff4444";
+        });
+
+        rfcDropzone.addEventListener("dragleave", () => {
+            rfcDropzone.style.borderColor = "#00ccaa";
+        });
+
+        rfcDropzone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            rfcDropzone.style.borderColor = "#00ccaa";
+            if (e.dataTransfer.files.length > 0) {
+                rfcFile = e.dataTransfer.files[0];
+                rfcFileName.textContent = rfcFile.name;
+                setTimeout(() => switchPage("model-prompt"), 1000);
+            }
+        });
+
+        const irDropzone = document.getElementById("ir-dropzone");
+        const irFileInput = document.getElementById("ir-file");
+        const irSelectBtn = document.getElementById("ir-select-btn");
+        const irFileName = document.getElementById("ir-file-name");
+
+        irSelectBtn.addEventListener("click", () => {
+            irFileInput.click();
+        });
+
+        irFileInput.addEventListener("change", (e) => {
+            if (e.target.files.length > 0) {
+                irFile = e.target.files[0];
+                irFileName.textContent = irFile.name;
+            }
+        });
+
+        // 模型选择工具栏逻辑
+        function handleModelButtonClick(event) {
+            const modelButtons = document.querySelectorAll(".model-btn");
+            modelButtons.forEach((btn) => btn.classList.remove("selected"));
+            this.classList.add("selected");
+            selectedModel = this.getAttribute("data-model");
+        }
+
+        function handleExpandButtonClick(event) {
+            isExpanded = !isExpanded;
+            const hiddenButtons = document.querySelectorAll(".model-btn.hidden");
+            hiddenButtons.forEach((button) => {
+                button.style.display = isExpanded ? "block" : "none";
+            });
+            this.textContent = isExpanded ? "<<" : ">>";
+        }
+
+        // 页面切换函数
+        function switchPage(pageId) {
+            const targetIndex = Array.from(pages).findIndex((page) => page.id === pageId);
+            const offset = pageOffsets[targetIndex];
+            pageContainer.style.transform = `translateY(-${offset}px)`;
+            navItems.forEach((item) =>
+                item.classList.toggle("active", item.getAttribute("data-page") === pageId)
+            );
+            currentPage = pageId;
+            updateStatusMessage(pageId);
+            adjustMainContentHeight();
+
+            if (pageId === "model-prompt") {
+                const modelButtons = document.querySelectorAll(".model-btn");
+                const expandBtn = document.querySelector(".expand-btn");
+                modelButtons.forEach((button) => {
+                    button.removeEventListener("click", handleModelButtonClick);
+                    button.addEventListener("click", handleModelButtonClick);
+                });
+                if (modelButtons[0] && !modelButtons[0].classList.contains("selected")) {
+                    modelButtons[0].classList.add("selected");
+                    selectedModel = modelButtons[0].getAttribute("data-model");
+                }
+                expandBtn.removeEventListener("click", handleExpandButtonClick);
+                expandBtn.addEventListener("click", handleExpandButtonClick);
+            }
+        }
+
+        // 生成 IR 逻辑
+        const generateBtn = document.getElementById("rfc-generate-btn");
+        const fileIcon = document.querySelector(".file-icon");
+        const progressCircle = document.querySelector(".progress-circle");
+        const xmlContent = document.getElementById("xml-content");
+
+        generateBtn.addEventListener("click", async () => {
+            if (!rfcFile) {
+                addStatusOutput("错误：请先选择或拖入 RFC 文件！", "error");
+                return;
+            }
+            const prompts = document.getElementById("prompt-input").value;
+            if (!prompts) {
+                addStatusOutput("错误：请先输入提示词！", "error");
+                return;
+            }
+
+            fileIcon.classList.remove("move-to-model", "move-to-xml");
+            progressCircle.classList.remove("active");
+            xmlContent.value = "";
+
+            fileIcon.classList.add("move-to-model");
+            setTimeout(() => {
+                progressCircle.classList.add("active");
+                setTimeout(async () => {
+                    const formData = new FormData();
+                    formData.append("rfcFile", rfcFile);
+                    if (irFile) formData.append("irFile", irFile);
+                    formData.append("model", selectedModel);
+                    formData.append("command", "PIT");
+                    formData.append("prompts", prompts);
+
+                    try {
+                        const response = await fetch("http://localhost:5000/controller", {
+                            method: "POST",
+                            body: formData,
+                        });
+                        const xmlData = await response.text();
+                        progressCircle.classList.remove("active");
+                        fileIcon.classList.add("move-to-xml");
+                        setTimeout(() => {
+                            xmlContent.value = xmlData;
+                        }, 1000);
+                    } catch (error) {
+                        addStatusOutput("错误：生成 IR 文档时出错，请稍后重试。", "error");
+                    }
+                }, 2000);
+            }, 1000);
+        });
+
+        // XML 编辑器逻辑
+        document
+            .getElementById("xml-confirm-btn")
+            .addEventListener("click", async () => {
+                const editedXml = document.getElementById("xml-content").value;
+                const formData = new FormData();
+                formData.append("command", "FSM");
+                formData.append(
+                    "pitfile",
+                    new File([editedXml], "edited.xml", { type: "text/xml" })
+                );
+
+                try {
+                    const response = await fetch("http://localhost:5000/controller", {
+                        method: "POST",
+                        body: formData,
+                    });
+                    const responseData = await response.json();
+                    populateResultPage(responseData);
+                    switchPage("result");
+                } catch (error) {
+                    addStatusOutput("错误：发送 XML 数据时出错，请稍后重试。", "error");
+                }
+            });
+
+        document
+            .getElementById("xml-back-btn")
+            .addEventListener("click", () => switchPage("upload"));
+
+        // 状态机编辑器
+        const fsmCanvas = document.getElementById('fsm-canvas');
+        const ctx = fsmCanvas.getContext('2d');
+        let canvasWidth = fsmCanvas.parentElement.clientWidth;
+        let canvasHeight = fsmCanvas.parentElement.clientHeight;
+        fsmCanvas.width = canvasWidth;
+        fsmCanvas.height = canvasHeight;
+
+        // 状态机数据结构
+        let fsmData = {
+            states: [],
+            transitions: [],
+            texts: [],
+            selectedElement: null,
+            currentMode: 'select', // 'select', 'state', 'transition', 'text', 'delete'
+            transitionStartState: null,
+            isDragging: false,
+            dragOffsetX: 0,
+            dragOffsetY: 0
+        };
+
+        // 工具按钮
+        document.getElementById('add-state-btn').addEventListener('click', () => {
+            fsmData.currentMode = 'state';
+            updateToolbarSelection();
+        });
+
+        document.getElementById('add-transition-btn').addEventListener('click', () => {
+            fsmData.currentMode = 'transition';
+            fsmData.transitionStartState = null;
+            updateToolbarSelection();
+        });
+
+        document.getElementById('add-text-btn').addEventListener('click', () => {
+            fsmData.currentMode = 'text';
+            updateToolbarSelection();
+        });
+
+        document.getElementById('delete-btn').addEventListener('click', () => {
+            fsmData.currentMode = 'delete';
+            updateToolbarSelection();
+        });
+
+        document.getElementById('save-fsm-btn').addEventListener('click', saveFSM);
+        document.getElementById('load-fsm-btn').addEventListener('click', loadFSM);
+
+        function updateToolbarSelection() {
+            const buttons = document.querySelectorAll('#fsm-toolbar button');
+            buttons.forEach(btn => btn.style.backgroundColor = 'white');
+            
+            switch(fsmData.currentMode) {
+                case 'state':
+                    document.getElementById('add-state-btn').style.backgroundColor = '#b3cde4';
+                    break;
+                case 'transition':
+                    document.getElementById('add-transition-btn').style.backgroundColor = '#b3cde4';
+                    break;
+                case 'text':
+                    document.getElementById('add-text-btn').style.backgroundColor = '#b3cde4';
+                    break;
+                case 'delete':
+                    document.getElementById('delete-btn').style.backgroundColor = '#ffcccc';
+                    break;
+                default:
+                    // select mode, no button highlighted
+            }
+        }
+
+        // 画布事件处理
+        fsmCanvas.addEventListener('mousedown', handleCanvasMouseDown);
+        fsmCanvas.addEventListener('mousemove', handleCanvasMouseMove);
+        fsmCanvas.addEventListener('mouseup', handleCanvasMouseUp);
+        fsmCanvas.addEventListener('dblclick', handleCanvasDoubleClick);
+
+        function handleCanvasMouseDown(e) {
+            const rect = fsmCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // 检查是否点击了现有元素
+            const clickedElement = findElementAtPosition(x, y);
+            
+            if (fsmData.currentMode === 'delete') {
+                if (clickedElement) {
+                    deleteElement(clickedElement);
+                    renderFSM();
+                }
+                return;
+            }
+            
+            if (clickedElement) {
+                fsmData.selectedElement = clickedElement;
+                
+                if (fsmData.currentMode === 'transition' && clickedElement.type === 'state') {
+                    if (!fsmData.transitionStartState) {
+                        fsmData.transitionStartState = clickedElement;
+                    } else if (fsmData.transitionStartState !== clickedElement) {
+                        // 创建新的转移
+                        const newTransition = {
+                            id: 't' + Date.now(),
+                            type: 'transition',
+                            from: fsmData.transitionStartState.id,
+                            to: clickedElement.id,
+                            label: '',
+                            points: calculateTransitionPoints(fsmData.transitionStartState, clickedElement),
+                            selected: false
+                        };
+                        fsmData.transitions.push(newTransition);
+                        fsmData.transitionStartState = null;
+                        fsmData.currentMode = 'select';
+                        updateToolbarSelection();
+                    }
+                } else if (fsmData.currentMode === 'select') {
+                    // 开始拖动
+                    fsmData.isDragging = true;
+                    if (clickedElement.type === 'state') {
+                        fsmData.dragOffsetX = x - clickedElement.x;
+                        fsmData.dragOffsetY = y - clickedElement.y;
+                    } else if (clickedElement.type === 'text') {
+                        fsmData.dragOffsetX = x - clickedElement.x;
+                        fsmData.dragOffsetY = y - clickedElement.y;
+                    }
+                }
+            } else {
+                // 没有点击现有元素
+                if (fsmData.currentMode === 'state') {
+                    // 添加新状态
+                    const newState = {
+                        id: 's' + Date.now(),
+                        type: 'state',
+                        x: x,
+                        y: y,
+                        width: 60,
+                        height: 60,
+                        label: 'State',
+                        selected: false
+                    };
+                    fsmData.states.push(newState);
+                    fsmData.selectedElement = newState;
+                } else if (fsmData.currentMode === 'text') {
+                    // 添加新文本
+                    const newText = {
+                        id: 'txt' + Date.now(),
+                        type: 'text',
+                        x: x,
+                        y: y,
+                        content: 'Double click to edit',
+                        selected: false
+                    };
+                    fsmData.texts.push(newText);
+                    fsmData.selectedElement = newText;
+                }
+            }
+            
+            // 更新选择状态
+            fsmData.states.forEach(state => state.selected = false);
+            fsmData.transitions.forEach(trans => trans.selected = false);
+            fsmData.texts.forEach(text => text.selected = false);
+            
+            if (fsmData.selectedElement) {
+                fsmData.selectedElement.selected = true;
+            }
+            
+            renderFSM();
+        }
+
+        function handleCanvasMouseMove(e) {
+            if (!fsmData.isDragging || !fsmData.selectedElement) return;
+            
+            const rect = fsmCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (fsmData.selectedElement.type === 'state') {
+                fsmData.selectedElement.x = x - fsmData.dragOffsetX;
+                fsmData.selectedElement.y = y - fsmData.dragOffsetY;
+                
+                // 更新相关的转移
+                updateConnectedTransitions(fsmData.selectedElement.id);
+            } else if (fsmData.selectedElement.type === 'text') {
+                fsmData.selectedElement.x = x - fsmData.dragOffsetX;
+                fsmData.selectedElement.y = y - fsmData.dragOffsetY;
+            }
+            
+            renderFSM();
+        }
+
+        function handleCanvasMouseUp() {
+            fsmData.isDragging = false;
+        }
+
+        function handleCanvasDoubleClick(e) {
+            const rect = fsmCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const element = findElementAtPosition(x, y);
+            if (element) {
+                if (element.type === 'state' || element.type === 'text') {
+                    const newText = prompt('Enter new text:', element.label || element.content);
+                    if (newText !== null) {
+                        if (element.type === 'state') {
+                            element.label = newText;
+                        } else {
+                            element.content = newText;
+                        }
+                        renderFSM();
+                    }
+                } else if (element.type === 'transition') {
+                    const newText = prompt('Enter transition label:', element.label);
+                    if (newText !== null) {
+                        element.label = newText;
+                        renderFSM();
+                    }
+                }
+            }
+        }
+
+        // 辅助函数
+        function findElementAtPosition(x, y) {
+            // 检查状态
+            for (let i = fsmData.states.length - 1; i >= 0; i--) {
+                const state = fsmData.states[i];
+                const distance = Math.sqrt(Math.pow(x - state.x - state.width/2, 2) + Math.pow(y - state.y - state.height/2, 2));
+                if (distance <= state.width/2) {
+                    return state;
+                }
+            }
+            
+            // 检查文本
+            for (let i = fsmData.texts.length - 1; i >= 0; i--) {
+                const text = fsmData.texts[i];
+                ctx.font = '14px Arial';
+                const metrics = ctx.measureText(text.content);
+                const textWidth = metrics.width;
+                const textHeight = 14; // 近似值
+                
+                if (x >= text.x && x <= text.x + textWidth && 
+                    y >= text.y - textHeight && y <= text.y) {
+                    return text;
+                }
+            }
+            
+            // 检查转移 (简化版，实际应该检查路径)
+            for (let i = fsmData.transitions.length - 1; i >= 0; i--) {
+                const trans = fsmData.transitions[i];
+                const fromState = fsmData.states.find(s => s.id === trans.from);
+                const toState = fsmData.states.find(s => s.id === trans.to);
+                
+                if (!fromState || !toState) continue;
+                
+                // 简化检查：检查鼠标是否在连接线的中点附近
+                const midX = (fromState.x + fromState.width/2 + toState.x + toState.width/2) / 2;
+                const midY = (fromState.y + fromState.height/2 + toState.y + toState.height/2) / 2;
+                
+                const distance = Math.sqrt(Math.pow(x - midX, 2) + Math.pow(y - midY, 2));
+                if (distance < 20) {
+                    return trans;
+                }
+            }
+            
+            return null;
+        }
+
+        function calculateTransitionPoints(fromState, toState) {
+            const fromX = fromState.x + fromState.width/2;
+            const fromY = fromState.y + fromState.height/2;
+            const toX = toState.x + toState.width/2;
+            const toY = toState.y + toState.height/2;
+            
+            // 简单的直线连接
+            return [
+                { x: fromX, y: fromY },
+                { x: toX, y: toY }
+            ];
+        }
+
+        function updateConnectedTransitions(stateId) {
+            fsmData.transitions.forEach(trans => {
+                if (trans.from === stateId || trans.to === stateId) {
+                    const fromState = fsmData.states.find(s => s.id === trans.from);
+                    const toState = fsmData.states.find(s => s.id === trans.to);
+                    if (fromState && toState) {
+                        trans.points = calculateTransitionPoints(fromState, toState);
+                    }
+                }
+            });
+        }
+
+        function deleteElement(element) {
+            if (element.type === 'state') {
+                // 删除状态及相关的转移
+                fsmData.transitions = fsmData.transitions.filter(
+                    trans => trans.from !== element.id && trans.to !== element.id
+                );
+                fsmData.states = fsmData.states.filter(state => state.id !== element.id);
+            } else if (element.type === 'transition') {
+                fsmData.transitions = fsmData.transitions.filter(trans => trans.id !== element.id);
+            } else if (element.type === 'text') {
+                fsmData.texts = fsmData.texts.filter(text => text.id !== element.id);
+            }
+            
+            fsmData.selectedElement = null;
+        }
+
+        // 渲染状态机
+        function renderFSM() {
+            ctx.clearRect(0, 0, fsmCanvas.width, fsmCanvas.height);
+            
+            // 绘制转移
+            fsmData.transitions.forEach(trans => {
+                const fromState = fsmData.states.find(s => s.id === trans.from);
+                const toState = fsmData.states.find(s => s.id === trans.to);
+                
+                if (!fromState || !toState) return;
+                
+                ctx.beginPath();
+                ctx.moveTo(fromState.x + fromState.width/2, fromState.y + fromState.height/2);
+                ctx.lineTo(toState.x + toState.width/2, toState.y + toState.height/2);
+                ctx.strokeStyle = trans.selected ? '#ff4444' : '#014F9C';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // 绘制箭头
+                drawArrow(ctx, 
+                         fromState.x + fromState.width/2, fromState.y + fromState.height/2,
+                         toState.x + toState.width/2, toState.y + toState.height/2,
+                         trans.selected ? '#ff4444' : '#014F9C');
+                
+                // 绘制标签
+                if (trans.label) {
+                    const midX = (fromState.x + toState.x + fromState.width/2 + toState.width/2) / 2;
+                    const midY = (fromState.y + toState.y + fromState.height/2 + toState.height/2) / 2;
+                    
+                    ctx.font = '12px Arial';
+                    ctx.fillStyle = 'white';
+                    ctx.strokeStyle = '#014F9C';
+                    ctx.lineWidth = 1;
+                    const textWidth = ctx.measureText(trans.label).width;
+                    
+                    ctx.fillRect(midX - textWidth/2 - 5, midY - 15, textWidth + 10, 20);
+                    ctx.strokeRect(midX - textWidth/2 - 5, midY - 15, textWidth + 10, 20);
+                    
+                    ctx.fillStyle = '#014F9C';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(trans.label, midX, midY - 5);
+                }
+            });
+            
+            // 绘制状态
+            fsmData.states.forEach(state => {
+                ctx.beginPath();
+                ctx.arc(state.x + state.width/2, state.y + state.height/2, state.width/2, 0, Math.PI * 2);
+                ctx.fillStyle = state.selected ? '#78a3cc' : '#b3cde4';
+                ctx.fill();
+                ctx.strokeStyle = '#014F9C';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // 绘制状态标签
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#014F9C';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                // 处理换行
+                const lines = state.label.split('\n');
+                const lineHeight = 14;
+                const startY = state.y + state.height/2 - (lines.length - 1) * lineHeight / 2;
+                
+                lines.forEach((line, i) => {
+                    ctx.fillText(line, state.x + state.width/2, startY + i * lineHeight);
+                });
+            });
+            
+            // 绘制文本
+            fsmData.texts.forEach(text => {
+                if (text.selected) {
+                    ctx.setLineDash([5, 3]);
+                    ctx.strokeStyle = '#014F9C';
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(text.x - 2, text.y - 14 - 2, ctx.measureText(text.content).width + 4, 18);
+                    ctx.setLineDash([]);
+                }
+                
+                ctx.font = '14px Arial';
+                ctx.fillStyle = '#014F9C';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'top';
+                ctx.fillText(text.content, text.x, text.y - 14);
+            });
+        }
+
+        function drawArrow(ctx, fromX, fromY, toX, toY, color) {
+            const headLength = 10;
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+            
+            // 计算箭头点
+            const arrowX = toX - headLength * Math.cos(angle);
+            const arrowY = toY - headLength * Math.sin(angle);
+            
+            // 绘制箭头
+            ctx.beginPath();
+            ctx.moveTo(arrowX, arrowY);
+            ctx.lineTo(
+                arrowX - headLength * Math.cos(angle - Math.PI/6),
+                arrowY - headLength * Math.sin(angle - Math.PI/6)
+            );
+            ctx.lineTo(
+                arrowX - headLength * Math.cos(angle + Math.PI/6),
+                arrowY - headLength * Math.sin(angle + Math.PI/6)
+            );
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        // 保存和加载状态机
+        function saveFSM() {
+            const dataStr = JSON.stringify(fsmData, (key, value) => {
+                if (key === 'selected' || key === 'isDragging' || key === 'dragOffsetX' || 
+                    key === 'dragOffsetY' || key === 'currentMode' || key === 'transitionStartState') {
+                    return undefined;
+                }
+                return value;
+            });
+            
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fsm-design.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            addStatusOutput("状态机设计已保存", "success");
+        }
+
+        function loadFSM() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = event => {
+                    try {
+                        const loadedData = JSON.parse(event.target.result);
+                        
+                        // 验证数据
+                        if (!loadedData.states || !loadedData.transitions || !loadedData.texts) {
+                            throw new Error("Invalid FSM data format");
+                        }
+                        
+                        fsmData.states = loadedData.states;
+                        fsmData.transitions = loadedData.transitions;
+                        fsmData.texts = loadedData.texts;
+                        
+                        // 重置其他属性
+                        fsmData.selectedElement = null;
+                        fsmData.currentMode = 'select';
+                        fsmData.transitionStartState = null;
+                        fsmData.isDragging = false;
+                        
+                        updateToolbarSelection();
+                        renderFSM();
+                        
+                        addStatusOutput("状态机设计已加载", "success");
+                    } catch (err) {
+                        addStatusOutput(`加载失败: ${err.message}`, "error");
+                    }
+                };
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        // 从图片初始化状态机
+        function initializeFSMFromImage(imageUrl) {
+            // 这里可以添加从图片解析状态机的逻辑
+            // 目前只是清空并创建一个简单的初始状态机
+            fsmData = {
+                states: [
+                    {
+                        id: 's1',
+                        type: 'state',
+                        x: canvasWidth / 2 - 100,
+                        y: canvasHeight / 2,
+                        width: 60,
+                        height: 60,
+                        label: 'Start',
+                        selected: false
+                    },
+                    {
+                        id: 's2',
+                        type: 'state',
+                        x: canvasWidth / 2 + 100,
+                        y: canvasHeight / 2,
+                        width: 60,
+                        height: 60,
+                        label: 'End',
+                        selected: false
+                    }
+                ],
+                transitions: [
+                    {
+                        id: 't1',
+                        type: 'transition',
+                        from: 's1',
+                        to: 's2',
+                        label: 'transition',
+                        points: [
+                            { x: canvasWidth / 2 - 70, y: canvasHeight / 2 + 30 },
+                            { x: canvasWidth / 2 + 70, y: canvasHeight / 2 + 30 }
+                        ],
+                        selected: false
+                    }
+                ],
+                texts: [],
+                selectedElement: null,
+                currentMode: 'select',
+                transitionStartState: null,
+                isDragging: false,
+                dragOffsetX: 0,
+                dragOffsetY: 0
+            };
+            
+            renderFSM();
+        }
+
+        // 替换原 populateResultPage 函数
+        function populateResultPage(data) {
+            // 初始化画布大小
+            canvasWidth = fsmCanvas.parentElement.clientWidth;
+            canvasHeight = fsmCanvas.parentElement.clientHeight;
+            fsmCanvas.width = canvasWidth;
+            fsmCanvas.height = canvasHeight;
+            
+            // 如果有图片URL，可以尝试从中初始化状态机
+            if (data.image && data.image !== "../image/default-fsm.png") {
+                initializeFSMFromImage(data.image);
+            } else {
+                // 默认初始化
+                initializeFSMFromImage();
+            }
+            
+            // 更新工具栏状态
+            updateToolbarSelection();
+            
+            // 确保状态栏可见
+            statusBar.classList.remove("hidden");
+            toggleBtn.textContent = "∨";
+            adjustMainContentHeight();
+        }
+
+        // 窗口大小调整时重新渲染
+        window.addEventListener('resize', () => {
+            canvasWidth = fsmCanvas.parentElement.clientWidth;
+            canvasHeight = fsmCanvas.parentElement.clientHeight;
+            fsmCanvas.width = canvasWidth;
+            fsmCanvas.height = canvasHeight;
+            renderFSM();
+        });
+
+        // 结果页面按钮事件
+        document.getElementById('edit-fsm-btn').addEventListener('click', () => {
+            addStatusOutput("状态机编辑器已激活", "system");
+        });
+
+        document.getElementById('confirm-fsm-btn').addEventListener('click', async () => {
+            const formData = new FormData();
+            formData.append("command", "gen_pack");
+            formData.append("selections", JSON.stringify({})); // 暂时为空，后续可扩展
+
+            try {
+                const response = await fetch("http://localhost:5000/controller", {
+                    method: "POST",
+                    body: formData,
+                });
+                const result = await response.json();
+                sessionStorage.setItem("packets", JSON.stringify(result.packets));
+                renderPackets(result.packets);
+                switchPage("packet-viewer");
+            } catch (error) {
+                addStatusOutput(`错误：提交失败 - ${error.message}`, "error");
+            }
+        });
+
+        // 数据包查看器逻辑
+        const packetList = document.getElementById("packet-list");
+        const searchInput = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
+        const detailsPanel = document.getElementById("packet-details");
+        let currentPackets = [];
+
+        function renderPackets(packets) {
+            packetList.innerHTML = "";
+            currentPackets = packets;
+            packets.forEach((packet, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td data-label="No.">${packet.no || index + 1}</td>
+                    <td data-label="Time">${packet.time || "N/A"}</td>
+                    <td data-label="Source">${packet.source || "N/A"}</td>
+                    <td data-label="Destination">${packet.destination || "N/A"}</td>
+                    <td data-label="Protocol">${packet.protocol || "N/A"}</td>
+                    <td data-label="Length">${
+                        packet.length !== undefined ? packet.length : "N/A"
+                    }</td>
+                    <td data-label="Info">${packet.info || "N/A"}</td>
+                `;
+                row.addEventListener("click", () => {
+                    document
+                        .querySelectorAll(".packet-table tr")
+                        .forEach((r) => r.classList.remove("selected"));
+                    row.classList.add("selected");
+                    displayPacketDetails(packet);
+                });
+                packetList.appendChild(row);
+            });
+            calculateOffsets();
+        }
+
+        function displayPacketDetails(packet) {
+            const details = packet.details || {};
+            let detailsText = "";
+            if (Object.keys(details.Ethernet || {}).length)
+                detailsText += `以太网层:\n${Object.entries(details.Ethernet)
+                    .map(([k, v]) => `  ${k}: ${v}`)
+                    .join("\n")}\n\n`;
+            if (Object.keys(details.IP || {}).length)
+                detailsText += `IP 层:\n${Object.entries(details.IP)
+                    .map(([k, v]) => `  ${k}: ${v}`)
+                    .join("\n")}\n\n`;
+            if (Object.keys(details.IPv6 || {}).length)
+                detailsText += `IPv6 层:\n${Object.entries(details.IPv6)
+                    .map(([k, v]) => `  ${k}: ${v}`)
+                    .join("\n")}\n\n`;
+            if (Object.keys(details.Transport || {}).length)
+                detailsText += `${details.Transport.Protocol} 层:\n${Object.entries(
+                    details.Transport
+                )
+                    .map(([k, v]) => `  ${k}: ${v}`)
+                    .join("\n")}\n\n`;
+            if (details.Raw) detailsText += `原始数据:\n  ${details.Raw}\n`;
+            detailsPanel.textContent = detailsText || "无详细信息可显示";
+        }
+
+        searchBtn.addEventListener("click", () => {
+            const keyword = searchInput.value.trim().toLowerCase();
+            const filtered = keyword
+                ? currentPackets.filter(
+                    (p) =>
+                        (p.source || "").toLowerCase().includes(keyword) ||
+                        (p.destination || "").toLowerCase().includes(keyword) ||
+                        (p.protocol || "").toLowerCase().includes(keyword) ||
+                        (p.info || "").toLowerCase().includes(keyword)
+                )
+                : currentPackets;
+            renderPackets(filtered);
+            detailsPanel.textContent = "点击数据包以查看详情";
+        });
+
+        searchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") searchBtn.click();
+        });
+
+        // 初始化
+        document.addEventListener("DOMContentLoaded", () => {
+            addStatusOutput("ProtoMind 已启动", "system");
+            addStatusOutput("输入 'help' 获取命令列表", "system");
+            adjustMainContentHeight();
+        });
+    </script>
+</body>
+
+</html>

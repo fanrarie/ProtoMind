@@ -1,0 +1,98 @@
+{
+    "metadata": {
+      "version": "1.0",
+      "createdAt": "2023-11-15T10:00:00Z",
+      "editor": "ProtoMind FSM Editor"
+    },
+    "canvas": {
+      "width": 1200,
+      "height": 800,
+      "background": "#ffffff",
+      "gridSize": 20,
+      "gridVisible": false
+    },
+    "states": [
+      {
+        "id": "state_1",
+        "type": "state",
+        "label": "开始",
+        "x": 200,
+        "y": 150,
+        "width": 80,
+        "height": 80,
+        "style": {
+          "fillColor": "#b3cde4",
+          "borderColor": "#014F9C",
+          "borderWidth": 2,
+          "textColor": "#000000",
+          "fontSize": 14
+        },
+        "properties": {
+          "initial": true,
+          "final": false,
+          "description": "流程开始状态"
+        }
+      },
+      {
+        "id": "state_2",
+        "type": "state",
+        "label": "处理中",
+        "x": 450,
+        "y": 150,
+        "width": 80,
+        "height": 80,
+        "style": {
+          "fillColor": "#b3cde4",
+          "borderColor": "#014F9C",
+          "borderWidth": 2,
+          "textColor": "#000000",
+          "fontSize": 14
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "trans_1",
+        "type": "transition",
+        "from": "state_1",
+        "to": "state_2",
+        "label": "启动处理",
+        "points": [
+          {"x": 280, "y": 190},
+          {"x": 450, "y": 190}
+        ],
+        "style": {
+          "lineColor": "#014F9C",
+          "lineWidth": 2,
+          "arrowSize": 10,
+          "textColor": "#000000",
+          "fontSize": 12
+        },
+        "properties": {
+          "event": "start",
+          "guard": "inputValid == true",
+          "action": "startProcessing()"
+        }
+      }
+    ],
+    "texts": [
+      {
+        "id": "text_1",
+        "type": "text",
+        "content": "状态机示例",
+        "x": 350,
+        "y": 50,
+        "style": {
+          "color": "#333333",
+          "fontSize": 20,
+          "fontFamily": "Arial"
+        }
+      }
+    ],
+    "backgroundImage": {
+      "dataUrl": "data:image/png;base64,...",
+      "x": 0,
+      "y": 0,
+      "opacity": 0.5
+    }
+  }

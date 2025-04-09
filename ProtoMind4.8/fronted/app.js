@@ -613,12 +613,12 @@ function switchPage(pageId) {
 }
 
 // 生成 IR 逻辑
-const generateBtn = document.getElementById("rfc--btn");
+const generateBtn = document.getElementById("rfc-generate-btn");
 const fileIcon = document.querySelector(".file-icon");
 const progressCircle = document.querySelector(".progress-circle");
 const xmlContent = document.getElementById("xml-content");
 
-Btn.addEventListener("click", async () => {
+generateBtn.addEventListener("click", async () => {
   if (!uploadedFile) {
     addStatusOutput("请先选择或拖入文件！", "error");
     return;

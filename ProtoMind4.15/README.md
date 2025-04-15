@@ -1,1 +1,3 @@
-1. 核心修改：result（第三个）界面的前后端交互，主要是点击xml-confirm-btn按钮时，将IR文件生成描述状态机的json文件并保存到该文件夹的“/server/generated_json”文件夹，在第三个页面打开该文件夹的文件时有状态机的可视化。
+#4.15核心修改：
+1.除了自动展示fsm，前后端通信基本建立，但是在通信阶段有一段伪代码，因为通信的还存在一些问题，导致数据包无法保存，后续再进行修改
+![image](https://github.com/user-attachments/assets/86f39faa-642c-4aa7-a211-18f154c52596)

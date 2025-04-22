@@ -1,0 +1,1049 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-04-21T05:59:54.529054",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_aecbe9",
+      "type": "state",
+      "label": "INI",
+      "x": 57.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "INIT",
+        "description": "INIT state"
+      }
+    },
+    {
+      "id": "s_7fed99",
+      "type": "state",
+      "label": "CON",
+      "x": 137.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNECT",
+        "description": "CONNECT state"
+      }
+    },
+    {
+      "id": "s_761307",
+      "type": "state",
+      "label": "CON",
+      "x": 217.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNACK",
+        "description": "CONNACK state"
+      }
+    },
+    {
+      "id": "s_15dfe8",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBLISH",
+        "description": "PUBLISH state"
+      }
+    },
+    {
+      "id": "s_ddf5d9",
+      "type": "state",
+      "label": "PUB",
+      "x": 57.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBACK",
+        "description": "PUBACK state"
+      }
+    },
+    {
+      "id": "s_0503fb",
+      "type": "state",
+      "label": "PUB",
+      "x": 137.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREC",
+        "description": "PUBREC state"
+      }
+    },
+    {
+      "id": "s_e88c8a",
+      "type": "state",
+      "label": "PUB",
+      "x": 217.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREL",
+        "description": "PUBREL state"
+      }
+    },
+    {
+      "id": "s_cd73cd",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBCOMP",
+        "description": "PUBCOMP state"
+      }
+    },
+    {
+      "id": "s_d0939a",
+      "type": "state",
+      "label": "SUB",
+      "x": 57.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBSCRIBE",
+        "description": "SUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_9c0044",
+      "type": "state",
+      "label": "SUB",
+      "x": 137.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBACK",
+        "description": "SUBACK state"
+      }
+    },
+    {
+      "id": "s_a0ed93",
+      "type": "state",
+      "label": "UNS",
+      "x": 217.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBSCRIBE",
+        "description": "UNSUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_3fcb88",
+      "type": "state",
+      "label": "UNS",
+      "x": 297.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBACK",
+        "description": "UNSUBACK state"
+      }
+    },
+    {
+      "id": "s_eca89e",
+      "type": "state",
+      "label": "PIN",
+      "x": 57.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGREQ",
+        "description": "PINGREQ state"
+      }
+    },
+    {
+      "id": "s_94ea5f",
+      "type": "state",
+      "label": "PIN",
+      "x": 137.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGRESP",
+        "description": "PINGRESP state"
+      }
+    },
+    {
+      "id": "s_b48e7e",
+      "type": "state",
+      "label": "DIS",
+      "x": 217.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "DISCONNECT",
+        "description": "DISCONNECT state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_b0e088",
+      "type": "transition",
+      "from": "s_aecbe9",
+      "to": "s_7fed99",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "init to connect"
+      }
+    },
+    {
+      "id": "t_e85638",
+      "type": "transition",
+      "from": "s_7fed99",
+      "to": "s_761307",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "connect sent, waiting for connack"
+      }
+    },
+    {
+      "id": "t_a9d8db",
+      "type": "transition",
+      "from": "s_761307",
+      "to": "s_15dfe8",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "connected, can publish"
+      }
+    },
+    {
+      "id": "t_04dd53",
+      "type": "transition",
+      "from": "s_761307",
+      "to": "s_d0939a",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "connected, can subscribe"
+      }
+    },
+    {
+      "id": "t_c47d5f",
+      "type": "transition",
+      "from": "s_761307",
+      "to": "s_a0ed93",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "connected, can unsubscribe"
+      }
+    },
+    {
+      "id": "t_cb458f",
+      "type": "transition",
+      "from": "s_761307",
+      "to": "s_eca89e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "keep - alive, send pingreq"
+      }
+    },
+    {
+      "id": "t_ff7f43",
+      "type": "transition",
+      "from": "s_761307",
+      "to": "s_b48e7e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "disconnect request"
+      }
+    },
+    {
+      "id": "t_a48e63",
+      "type": "transition",
+      "from": "s_15dfe8",
+      "to": "s_ddf5d9",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "qos 1, wait for puback"
+      }
+    },
+    {
+      "id": "t_964de1",
+      "type": "transition",
+      "from": "s_15dfe8",
+      "to": "s_0503fb",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "qos 2, wait for pubrec"
+      }
+    },
+    {
+      "id": "t_11338c",
+      "type": "transition",
+      "from": "s_ddf5d9",
+      "to": "s_15dfe8",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "puback received, can publish again"
+      }
+    },
+    {
+      "id": "t_df9c58",
+      "type": "transition",
+      "from": "s_0503fb",
+      "to": "s_e88c8a",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pubrec received, send pubrel"
+      }
+    },
+    {
+      "id": "t_fd71b4",
+      "type": "transition",
+      "from": "s_e88c8a",
+      "to": "s_cd73cd",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "pubrel sent, wait for pubcomp"
+      }
+    },
+    {
+      "id": "t_f11779",
+      "type": "transition",
+      "from": "s_cd73cd",
+      "to": "s_15dfe8",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pubcomp received, can publish again"
+      }
+    },
+    {
+      "id": "t_c5ea34",
+      "type": "transition",
+      "from": "s_d0939a",
+      "to": "s_9c0044",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "subscribe sent, wait for suback"
+      }
+    },
+    {
+      "id": "t_6726b8",
+      "type": "transition",
+      "from": "s_9c0044",
+      "to": "s_15dfe8",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "suback received, can publish"
+      }
+    },
+    {
+      "id": "t_fcffc8",
+      "type": "transition",
+      "from": "s_a0ed93",
+      "to": "s_3fcb88",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "unsubscribe sent, wait for unsuback"
+      }
+    },
+    {
+      "id": "t_cd626f",
+      "type": "transition",
+      "from": "s_3fcb88",
+      "to": "s_15dfe8",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "unsuback received, can publish"
+      }
+    },
+    {
+      "id": "t_9f692a",
+      "type": "transition",
+      "from": "s_eca89e",
+      "to": "s_94ea5f",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "pingreq sent, wait for pingresp"
+      }
+    },
+    {
+      "id": "t_22021e",
+      "type": "transition",
+      "from": "s_94ea5f",
+      "to": "s_15dfe8",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pingresp received, can publish"
+      }
+    },
+    {
+      "id": "t_447570",
+      "type": "transition",
+      "from": "s_b48e7e",
+      "to": "s_aecbe9",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "disconnected, back to init"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_aecbe9",
+      "type": "stateDescription",
+      "stateId": "s_aecbe9",
+      "title": "INIT",
+      "content": "INIT state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_7fed99",
+      "type": "stateDescription",
+      "stateId": "s_7fed99",
+      "title": "CONNECT",
+      "content": "CONNECT state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_761307",
+      "type": "stateDescription",
+      "stateId": "s_761307",
+      "title": "CONNACK",
+      "content": "CONNACK state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_15dfe8",
+      "type": "stateDescription",
+      "stateId": "s_15dfe8",
+      "title": "PUBLISH",
+      "content": "PUBLISH state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_ddf5d9",
+      "type": "stateDescription",
+      "stateId": "s_ddf5d9",
+      "title": "PUBACK",
+      "content": "PUBACK state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_0503fb",
+      "type": "stateDescription",
+      "stateId": "s_0503fb",
+      "title": "PUBREC",
+      "content": "PUBREC state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_e88c8a",
+      "type": "stateDescription",
+      "stateId": "s_e88c8a",
+      "title": "PUBREL",
+      "content": "PUBREL state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_cd73cd",
+      "type": "stateDescription",
+      "stateId": "s_cd73cd",
+      "title": "PUBCOMP",
+      "content": "PUBCOMP state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_d0939a",
+      "type": "stateDescription",
+      "stateId": "s_d0939a",
+      "title": "SUBSCRIBE",
+      "content": "SUBSCRIBE state description",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_9c0044",
+      "type": "stateDescription",
+      "stateId": "s_9c0044",
+      "title": "SUBACK",
+      "content": "SUBACK state description",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a0ed93",
+      "type": "stateDescription",
+      "stateId": "s_a0ed93",
+      "title": "UNSUBSCRIBE",
+      "content": "UNSUBSCRIBE state description",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_3fcb88",
+      "type": "stateDescription",
+      "stateId": "s_3fcb88",
+      "title": "UNSUBACK",
+      "content": "UNSUBACK state description",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_eca89e",
+      "type": "stateDescription",
+      "stateId": "s_eca89e",
+      "title": "PINGREQ",
+      "content": "PINGREQ state description",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_94ea5f",
+      "type": "stateDescription",
+      "stateId": "s_94ea5f",
+      "title": "PINGRESP",
+      "content": "PINGRESP state description",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_b48e7e",
+      "type": "stateDescription",
+      "stateId": "s_b48e7e",
+      "title": "DISCONNECT",
+      "content": "DISCONNECT state description",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_b0e088",
+      "type": "transitionDescription",
+      "transitionId": "t_b0e088",
+      "title": "Transition",
+      "content": "From: INIT\nTo: CONNECT\nCondition: init to connect",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e85638",
+      "type": "transitionDescription",
+      "transitionId": "t_e85638",
+      "title": "Wait",
+      "content": "From: CONNECT\nTo: CONNACK\nCondition: connect sent, waiting for connack",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_a9d8db",
+      "type": "transitionDescription",
+      "transitionId": "t_a9d8db",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PUBLISH\nCondition: connected, can publish",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_04dd53",
+      "type": "transitionDescription",
+      "transitionId": "t_04dd53",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: SUBSCRIBE\nCondition: connected, can subscribe",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c47d5f",
+      "type": "transitionDescription",
+      "transitionId": "t_c47d5f",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: UNSUBSCRIBE\nCondition: connected, can unsubscribe",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cb458f",
+      "type": "transitionDescription",
+      "transitionId": "t_cb458f",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PINGREQ\nCondition: keep - alive, send pingreq",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ff7f43",
+      "type": "transitionDescription",
+      "transitionId": "t_ff7f43",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: DISCONNECT\nCondition: disconnect request",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_a48e63",
+      "type": "transitionDescription",
+      "transitionId": "t_a48e63",
+      "title": "Wait",
+      "content": "From: PUBLISH\nTo: PUBACK\nCondition: qos 1, wait for puback",
+      "position": {
+        "row": 22,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_964de1",
+      "type": "transitionDescription",
+      "transitionId": "t_964de1",
+      "title": "Wait",
+      "content": "From: PUBLISH\nTo: PUBREC\nCondition: qos 2, wait for pubrec",
+      "position": {
+        "row": 23,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_11338c",
+      "type": "transitionDescription",
+      "transitionId": "t_11338c",
+      "title": "Receive",
+      "content": "From: PUBACK\nTo: PUBLISH\nCondition: puback received, can publish again",
+      "position": {
+        "row": 24,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_df9c58",
+      "type": "transitionDescription",
+      "transitionId": "t_df9c58",
+      "title": "Receive",
+      "content": "From: PUBREC\nTo: PUBREL\nCondition: pubrec received, send pubrel",
+      "position": {
+        "row": 25,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_fd71b4",
+      "type": "transitionDescription",
+      "transitionId": "t_fd71b4",
+      "title": "Wait",
+      "content": "From: PUBREL\nTo: PUBCOMP\nCondition: pubrel sent, wait for pubcomp",
+      "position": {
+        "row": 26,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_f11779",
+      "type": "transitionDescription",
+      "transitionId": "t_f11779",
+      "title": "Receive",
+      "content": "From: PUBCOMP\nTo: PUBLISH\nCondition: pubcomp received, can publish again",
+      "position": {
+        "row": 27,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c5ea34",
+      "type": "transitionDescription",
+      "transitionId": "t_c5ea34",
+      "title": "Wait",
+      "content": "From: SUBSCRIBE\nTo: SUBACK\nCondition: subscribe sent, wait for suback",
+      "position": {
+        "row": 28,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_6726b8",
+      "type": "transitionDescription",
+      "transitionId": "t_6726b8",
+      "title": "Receive",
+      "content": "From: SUBACK\nTo: PUBLISH\nCondition: suback received, can publish",
+      "position": {
+        "row": 29,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_fcffc8",
+      "type": "transitionDescription",
+      "transitionId": "t_fcffc8",
+      "title": "Wait",
+      "content": "From: UNSUBSCRIBE\nTo: UNSUBACK\nCondition: unsubscribe sent, wait for unsuback",
+      "position": {
+        "row": 30,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cd626f",
+      "type": "transitionDescription",
+      "transitionId": "t_cd626f",
+      "title": "Receive",
+      "content": "From: UNSUBACK\nTo: PUBLISH\nCondition: unsuback received, can publish",
+      "position": {
+        "row": 31,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_9f692a",
+      "type": "transitionDescription",
+      "transitionId": "t_9f692a",
+      "title": "Wait",
+      "content": "From: PINGREQ\nTo: PINGRESP\nCondition: pingreq sent, wait for pingresp",
+      "position": {
+        "row": 32,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_22021e",
+      "type": "transitionDescription",
+      "transitionId": "t_22021e",
+      "title": "Receive",
+      "content": "From: PINGRESP\nTo: PUBLISH\nCondition: pingresp received, can publish",
+      "position": {
+        "row": 33,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_447570",
+      "type": "transitionDescription",
+      "transitionId": "t_447570",
+      "title": "Transition",
+      "content": "From: DISCONNECT\nTo: INIT\nCondition: disconnected, back to init",
+      "position": {
+        "row": 34,
+        "col": 0
+      }
+    }
+  ]
+}

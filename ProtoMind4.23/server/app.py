@@ -3,7 +3,6 @@ from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
 import xml.etree.ElementTree as ET
-from xml.dom import minidom
 from io import BytesIO
 import base64
 import json
@@ -66,170 +65,6 @@ os.makedirs(PROTOIR_TXT_FOLDER, exist_ok=True)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def json_ir_to_xml_ir(json_ir):
-    """将JSON格式的IR转换为XML格式的IR"""
-    try:
-        # 解析JSON输入
-        ir_data = json.loads(json_ir) if isinstance(json_ir, str) else json_ir
-        
-        # 创建XML根元素
-        root = ET.Element("IR")
-        
-        # 添加消息定义
-        messages = ir_data.get("messages", [])
-        for msg in messages:
-            message_elem = ET.SubElement(root, "message", name=msg["name"])
-            if "description" in msg:
-                message_elem.set("description", msg["description"])
-            
-            for field in msg.get("fields", []):
-                # 根据字段类型创建不同的XML元素
-                if field.get("value") is not None:
-                    field_elem = ET.SubElement(
-                        message_elem, 
-                        "constant",
-                        type=_get_field_type(field["type"]),
-                        length=_get_field_length(field["type"])
-                    )
-                    field_elem.set("value", str(field["value"]))
-                else:
-                    field_elem = ET.SubElement(
-                        message_elem,
-                        "variable",
-                        type=_get_field_type(field["type"]),
-                        length=_get_field_length(field["type"])
-                    )
-                    if "value" in field:
-                        field_elem.set("value", str(field["value"]))
-                
-                if "description" in field:
-                    field_elem.set("description", field["description"])
-                if field.get("optional", False):
-                    field_elem.set("optional", "true")
-
-        # 添加状态机定义
-        statemachine = ET.SubElement(root, "statemachine")
-        
-        # 添加MQTT协议状态机
-        _add_mqtt_states(statemachine)
-
-        # 生成格式化的XML字符串
-        rough_xml = ET.tostring(root, 'utf-8')
-        parsed = minidom.parseString(rough_xml)
-        return parsed.toprettyxml(indent="    ")
-    
-    except Exception as e:
-        raise ValueError(f"IR转换失败: {str(e)}")
-
-def _get_field_type(json_type):
-    """将JSON字段类型映射为XML字段类型"""
-    type_map = {
-        "byte": "B",
-        "variable_byte_integer": "B",
-        "two_byte_integer": "H",
-        "utf8_string": "S",
-        "binary_data": "B"
-    }
-    return type_map.get(json_type, "B")
-
-def _get_field_length(json_type):
-    """根据字段类型获取长度描述"""
-    length_map = {
-        "byte": "1",
-        "variable_byte_integer": "1:4",
-        "two_byte_integer": "2",
-        "utf8_string": "0:65535",
-        "binary_data": "0:65535"
-    }
-    return length_map.get(json_type, "1")
-
-def _add_mqtt_states(statemachine):
-    """添加MQTT协议状态机"""
-    # 初始状态
-    init_state = ET.SubElement(statemachine, "INIT")
-    connect_trans = ET.SubElement(init_state, "CONNECT")
-    connect_trans.set("condition", "INIT to CONNECT")
-
-    # 连接状态
-    connect_state = ET.SubElement(statemachine, "CONNECT")
-    connack_trans = ET.SubElement(connect_state, "CONNACK")
-    connack_trans.set("condition", "CONNECT sent, waiting for CONNACK")
-
-    # 连接确认状态
-    connack_state = ET.SubElement(statemachine, "CONNACK")
-    publish_trans = ET.SubElement(connack_state, "PUBLISH")
-    publish_trans.set("condition", "Connected, can PUBLISH")
-    subscribe_trans = ET.SubElement(connack_state, "SUBSCRIBE")
-    subscribe_trans.set("condition", "Connected, can SUBSCRIBE")
-    unsubscribe_trans = ET.SubElement(connack_state, "UNSUBSCRIBE")
-    unsubscribe_trans.set("condition", "Connected, can UNSUBSCRIBE")
-    pingreq_trans = ET.SubElement(connack_state, "PINGREQ")
-    pingreq_trans.set("condition", "Keep-alive, send PINGREQ")
-    disconnect_trans = ET.SubElement(connack_state, "DISCONNECT")
-    disconnect_trans.set("condition", "Disconnect request")
-
-    # 发布状态
-    publish_state = ET.SubElement(statemachine, "PUBLISH")
-    puback_trans = ET.SubElement(publish_state, "PUBACK")
-    puback_trans.set("condition", "QoS 1, wait for PUBACK")
-    pubrec_trans = ET.SubElement(publish_state, "PUBREC")
-    pubrec_trans.set("condition", "QoS 2, wait for PUBREC")
-
-    # 发布确认状态
-    puback_state = ET.SubElement(statemachine, "PUBACK")
-    publish_again_trans = ET.SubElement(puback_state, "PUBLISH")
-    publish_again_trans.set("condition", "PUBACK received, can PUBLISH again")
-
-    # 发布收到状态
-    pubrec_state = ET.SubElement(statemachine, "PUBREC")
-    pubrel_trans = ET.SubElement(pubrec_state, "PUBREL")
-    pubrel_trans.set("condition", "PUBREC received, send PUBREL")
-
-    # 发布释放状态
-    pubrel_state = ET.SubElement(statemachine, "PUBREL")
-    pubcomp_trans = ET.SubElement(pubrel_state, "PUBCOMP")
-    pubcomp_trans.set("condition", "PUBREL sent, wait for PUBCOMP")
-
-    # 发布完成状态
-    pubcomp_state = ET.SubElement(statemachine, "PUBCOMP")
-    publish_again2_trans = ET.SubElement(pubcomp_state, "PUBLISH")
-    publish_again2_trans.set("condition", "PUBCOMP received, can PUBLISH again")
-
-    # 订阅状态
-    subscribe_state = ET.SubElement(statemachine, "SUBSCRIBE")
-    suback_trans = ET.SubElement(subscribe_state, "SUBACK")
-    suback_trans.set("condition", "SUBSCRIBE sent, wait for SUBACK")
-
-    # 订阅确认状态
-    suback_state = ET.SubElement(statemachine, "SUBACK")
-    publish_sub_trans = ET.SubElement(suback_state, "PUBLISH")
-    publish_sub_trans.set("condition", "SUBACK received, can PUBLISH")
-
-    # 取消订阅状态
-    unsubscribe_state = ET.SubElement(statemachine, "UNSUBSCRIBE")
-    unsuback_trans = ET.SubElement(unsubscribe_state, "UNSUBACK")
-    unsuback_trans.set("condition", "UNSUBSCRIBE sent, wait for UNSUBACK")
-
-    # 取消订阅确认状态
-    unsuback_state = ET.SubElement(statemachine, "UNSUBACK")
-    publish_unsub_trans = ET.SubElement(unsuback_state, "PUBLISH")
-    publish_unsub_trans.set("condition", "UNSUBACK received, can PUBLISH")
-
-    # 心跳请求状态
-    pingreq_state = ET.SubElement(statemachine, "PINGREQ")
-    pingresp_trans = ET.SubElement(pingreq_state, "PINGRESP")
-    pingresp_trans.set("condition", "PINGREQ sent, wait for PINGRESP")
-
-    # 心跳响应状态
-    pingresp_state = ET.SubElement(statemachine, "PINGRESP")
-    publish_ping_trans = ET.SubElement(pingresp_state, "PUBLISH")
-    publish_ping_trans.set("condition", "PINGRESP received, can PUBLISH")
-
-    # 断开连接状态
-    disconnect_state = ET.SubElement(statemachine, "DISCONNECT")
-    init_trans = ET.SubElement(disconnect_state, "INIT")
-    init_trans.set("condition", "Disconnected, back to INIT")
 
 def call_ark_train_api(proto_ir_content):
     """调用火山引擎训练API"""
@@ -491,40 +326,6 @@ def ret_pcap_info(pcap_file):
 
     return packet_list
 
-@app.route('/convert_ir', methods=['POST'])
-def convert_ir():
-    """将JSON格式IR转换为XML格式IR"""
-    try:
-        if not request.is_json:
-            return jsonify({"error": "请求必须是JSON格式"}), 400
-        
-        json_data = request.get_json()
-        if 'ir_json' not in json_data:
-            return jsonify({"error": "缺少ir_json字段"}), 400
-        
-        xml_ir = json_ir_to_xml_ir(json_data['ir_json'])
-        
-        # 保存XML文件
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"ir_{timestamp}.xml"
-        filepath = os.path.join(UPLOAD_FOLDER, filename)
-        
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(xml_ir)
-            
-        return jsonify({
-            "success": True,
-            "xml_ir": xml_ir,
-            "filename": filename
-        })
-        
-    except Exception as e:
-        logger.error(f"IR转换失败: {str(e)}")
-        return jsonify({
-            "success": False,
-            "error": str(e)
-        }), 500
-
 @app.route('/controller', methods=['POST'])
 def controller():
     logger.debug("接收到POST请求")
@@ -615,14 +416,6 @@ def controller():
                 if isinstance(gen_result, Response):
                     return gen_result
                 elif gen_result.get("success"):
-                    # 如果是JSON格式IR，转换为XML格式
-                    if gen_result["output"].strip().startswith("{"):
-                        try:
-                            xml_ir = json_ir_to_xml_ir(gen_result["output"])
-                            gen_result["output"] = xml_ir
-                        except Exception as e:
-                            logger.warning(f"IR格式转换失败: {str(e)}")
-                    
                     return jsonify({
                         "status": "success",
                         "data": gen_result

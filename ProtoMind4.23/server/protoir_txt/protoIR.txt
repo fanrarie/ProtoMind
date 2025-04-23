@@ -1,0 +1,98 @@
+基本定义
+protoIR是一个利用XML定义的标记语言，它可以用于描述协议的语法规范。
+在结构上protoIR以IR作为顶层元素。IR内有两种类型的子元素：
+1.用于描述报文语法结构的message元素。因为报文的类型有很多，所以可以同时存在多个不同的message节点。
+2.用于描述协议状态变换的statemachine元素。因为描绘协议状态空间的状态机只有一个，所以只能有一个statemachine节点。
+protolR的基本结构如下：
+<IR>
+	<message></message>
+	<message></message>
+	...
+	<statemachine></statemachine>
+</IR>
+message元素
+用途：描述协议报文的语法结构
+message的属性有：
+•name：指明当前message元素的名称，也就是该元素对应的报文的类型。
+message的子元素有：
+•constant：常量元素，用于表示报文文本中固定不变的文本。
+•variable：变量元素，用于表示报文文本中不固定的值
+constant元素
+用途：表示当前报文文本中固定不变的文本
+constant的属性有：
+•type：可以设为B或是b，分别表示常量值的基本单位是字节或是比特。
+•length：表示以相对应基本单位计数时常量值的长度。
+•value：写明常量值的真实数值，可以用字符串或十六进制数的形式表示字节常量值，用二进制数的形式表示比特常量值
+<!-- 表示一个值为404，长度3的字节常量-->
+<constant type="B" length="3" value="404"/>
+
+<!-- 表示一个值为0b101，长度4的比特常量-->
+<constant type="b" length="3" value="0x134F"/>
+
+<!-- 表示一个值为0b101，长度3的比特常量-->
+<constant type="b" length="3" value="0b101"/>
+variable元素
+用途：表示报文文本中可以改变的变量值
+variable的属性有：
+•type：：可以设为B或是b，分别表示变量值的基本单位是字节或是比特。
+•length：表示以相对应基本单位计数时常量值的长度，variable元素的length字段可以用范围值表示。
+•scope：表示变量值的可选范围，可以用十六进制数的形式表示字节变量取值，用二进制数的形式表示比特变量取值。
+•value：只对字节类型的变量值有用（因为比特只能取0或1），表示单个字节的取值范围，通常和表示范围的length属性一起使用。
+<!-- 表示一个取值范围为0x1000至0xFFFF，长度2的字节变量-->
+
+<variable type="B" length="2" value="0x10-0xFF"/>
+
+
+
+<!-- 表示一个取值为0b001至0b111，长度3的比特变量-->
+
+<variable type="b" length="3" scope="0x001-0b111"/>
+
+
+
+<!-- 表示一个长度为4到8，每个字节取值为0x00至0xFF的字节变量-->
+
+<variable type="B" length="4:8" value="0x00-0xFF"/>
+statemachine元素
+用途：表示不同报文中可能的转移关系
+statemachine中的不同元素对应一个message元素，state标签的值就是对应message元素name属性的值。state元素的子元素表示当前状态所有可能的下一个状态。整个statemachine可以用于描绘协议状态空间中的状态转移关系。
+state元素的子元素的属性有：
+•condition：指明转移到下一个状态的前提条件。在不指明condition属性的情况下会则随机选取一个状态转移。
+例如一个简化的RTSP协议的statemachine可以写成如下格式：
+<statemachine>
+
+    
+
+    <READY>
+
+        <READY condition="SETUP request"/>
+
+        <PLAY condition="PLAY request"/>
+
+        <INIT condition="Other requests"/>
+
+    <READY/>
+
+        
+
+    <PLAY>
+
+        <PLAY condition="PLAY request"/>
+
+        <INIT condition="TEARDOWN"/>
+
+    <PLAY/>
+
+        
+
+    <INIT>
+
+        <READY condition="SETUP request"/>
+
+    	<INIT condition="Other requests"/>
+
+    <INIT/>
+
+        
+
+</statemachine>

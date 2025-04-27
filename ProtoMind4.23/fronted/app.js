@@ -611,34 +611,27 @@ function switchPage(pageId) {
 document.getElementById("train-prompt-btn").addEventListener("click", async () => {
   try {
     showLoading();
-    addStatusOutput("正在训练模型，请稍候...", "system");
+    addStatusOutput("正在让豆包学习 protoIR.txt 文件，请稍候...", "system");
 
-    const formData = new FormData();
-    formData.append("command", "PIT");
-    formData.append("action", "1");
-    formData.append("protoIRTxtFilename", "protoIR.txt");
-
-    const response = await fetch("http://localhost:5000/controller", {
-      method: "POST",
-      body: formData
+    const response = await fetch("http://localhost:5000/train", {
+      method: "POST"
     });
 
     const result = await response.json();
-    
+
     if (!response.ok) {
-      throw new Error(result.error || "训练请求失败");
+      throw new Error(result.error || "学习请求失败");
     }
 
     if (result.status === "success") {
-      addStatusOutput(`✅ 训练任务已提交！任务ID: ${result.job_id}`, "success");
-      addStatusOutput(`监控地址: ${result.status_url}`, "system");
+      addStatusOutput(`✅ 豆包已学习 protoIR.txt 文件！`, "success");
     } else {
-      throw new Error(result.message || "训练失败");
+      throw new Error(result.message || "学习失败");
     }
   } catch (error) {
-    addStatusOutput(`❌ 训练错误: ${error.message}`, "error");
-    console.error("训练错误详情:", error);
-    
+    addStatusOutput(`❌ 学习错误: ${error.message}`, "error");
+    console.error("学习错误详情:", error);
+
     // 如果是SSL错误，提示可能的解决方案
     if (error.message.includes("SSL")) {
       addStatusOutput("提示: 请检查后端服务器SSL配置或网络环境", "system");
@@ -686,7 +679,7 @@ generateBtn.addEventListener("click", async () => {
   try {
     const promptInput = document.getElementById("prompt-input");
     const prompts = promptInput.value.trim();
-    
+
     if (!prompts) {
       addStatusOutput("请先输入提示词！", "error");
       promptInput.focus();
@@ -703,7 +696,7 @@ generateBtn.addEventListener("click", async () => {
     xmlContent.value = "";
 
     fileIcon.classList.add("move-to-model");
-    addStatusOutput("开始生成IR文档...", "system");
+    addStatusOutput("开始根据提示词生成IR文档...", "system");
 
     setTimeout(() => {
       progressCircle.classList.add("active");
@@ -711,12 +704,9 @@ generateBtn.addEventListener("click", async () => {
       setTimeout(async () => {
         try {
           const formData = new FormData();
-          formData.append("model", selectedModel);
-          formData.append("command", "PIT");
           formData.append("prompt", prompts);
-          formData.append("action", "2"); // 2表示生成模式
 
-          const response = await fetch("http://localhost:5000/controller", {
+          const response = await fetch("http://localhost:5000/generate", {
             method: "POST",
             body: formData
           });
@@ -807,6 +797,7 @@ modelButtons.forEach((btn) => {
 // 初始化展开按钮事件
 const expandButton = document.querySelector(".expand-btn");
 expandButton.addEventListener("click", handleExpandButtonClick);
+    
 
 // 动态生成 result 页面表单
 function populateResultPageForm(data) {

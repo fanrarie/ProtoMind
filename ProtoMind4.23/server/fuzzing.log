@@ -13965,3 +13965,135 @@
 2025-04-23 19:34:56,358 - INFO - 127.0.0.1 - - [23/Apr/2025 19:34:56] "POST /controller HTTP/1.1" 200 -
 2025-04-23 19:35:02,503 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ1ÐÐ): not well-formed (invalid token): line 1, column 0
 2025-04-23 19:35:02,503 - INFO - 127.0.0.1 - - [23/Apr/2025 19:35:02] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:01:04,931 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.203.151.136:5000
+2025-04-23 21:01:04,931 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-23 21:01:04,931 - INFO -  * Restarting with stat
+2025-04-23 21:01:11,680 - WARNING -  * Debugger is active!
+2025-04-23 21:01:11,722 - INFO -  * Debugger PIN: 387-916-479
+2025-04-23 21:01:17,000 - INFO - 127.0.0.1 - - [23/Apr/2025 21:01:17] "POST /controller HTTP/1.1" 200 -
+2025-04-23 21:01:47,249 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:01:47,295 - INFO - 127.0.0.1 - - [23/Apr/2025 21:01:47] "POST /train HTTP/1.1" 200 -
+2025-04-23 21:02:46,928 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:02:46,938 - INFO - 127.0.0.1 - - [23/Apr/2025 21:02:46] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:03:01,120 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ1ÐÐ): syntax error: line 1, column 0
+2025-04-23 21:03:01,123 - INFO - 127.0.0.1 - - [23/Apr/2025 21:03:01] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:04:27,408 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:04:27,409 - INFO - 127.0.0.1 - - [23/Apr/2025 21:04:27] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:04:56,739 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ1ÐÐ): not well-formed (invalid token): line 1, column 0
+2025-04-23 21:04:56,748 - INFO - 127.0.0.1 - - [23/Apr/2025 21:04:56] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:05:04,395 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ208ÐÐ): unclosed token: line 208, column 20
+2025-04-23 21:05:04,398 - INFO - 127.0.0.1 - - [23/Apr/2025 21:05:04] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:05:05,434 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ208ÐÐ): unclosed token: line 208, column 20
+2025-04-23 21:05:05,435 - INFO - 127.0.0.1 - - [23/Apr/2025 21:05:05] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:05:26,535 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ207ÐÐ): unclosed token: line 207, column 20
+2025-04-23 21:05:26,537 - INFO - 127.0.0.1 - - [23/Apr/2025 21:05:26] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:05:30,568 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ207ÐÐ): unclosed token: line 207, column 20
+2025-04-23 21:05:30,572 - INFO - 127.0.0.1 - - [23/Apr/2025 21:05:30] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:07:15,012 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:07:15,021 - INFO - 127.0.0.1 - - [23/Apr/2025 21:07:15] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:07:33,380 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ186ÐÐ): unclosed token: line 186, column 16
+2025-04-23 21:07:33,386 - INFO - 127.0.0.1 - - [23/Apr/2025 21:07:33] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:08:29,136 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:08:29,136 - INFO - 127.0.0.1 - - [23/Apr/2025 21:08:29] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:08:52,643 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML±ØÐë°üº¬<statemachine>¸ù±êÇ©
+2025-04-23 21:08:52,643 - INFO - 127.0.0.1 - - [23/Apr/2025 21:08:52] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:09:25,686 - INFO - Parsing XML file: uploads\generated_20250423_210925.xml
+2025-04-23 21:09:25,710 - INFO - Inferred client messages: {'PINGRESP', 'PUBREC', 'PUBREL', 'UNSUBSCRIBE', 'CONNACK', 'PUBLISH', 'PUBCOMP', 'PINGREQ', 'SUBACK', 'CONNECT', 'UNSUBACK', 'SUBSCRIBE', 'DISCONNECT', 'INIT', 'PUBACK'}
+2025-04-23 21:09:25,710 - INFO - Inferred server messages: set()
+2025-04-23 21:09:25,725 - INFO - 127.0.0.1 - - [23/Apr/2025 21:09:25] "POST /controller HTTP/1.1" 200 -
+2025-04-23 21:09:40,715 - INFO - Parsing XML file: uploads\generated_20250423_210940.xml
+2025-04-23 21:09:40,739 - INFO - Inferred client messages: {'PINGRESP', 'PUBREC', 'PUBREL', 'UNSUBSCRIBE', 'CONNACK', 'PUBLISH', 'PUBCOMP', 'PINGREQ', 'SUBACK', 'CONNECT', 'UNSUBACK', 'SUBSCRIBE', 'DISCONNECT', 'INIT', 'PUBACK'}
+2025-04-23 21:09:40,740 - INFO - Inferred server messages: set()
+2025-04-23 21:09:40,743 - INFO - 127.0.0.1 - - [23/Apr/2025 21:09:40] "POST /controller HTTP/1.1" 200 -
+2025-04-23 21:10:49,172 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:10:49,172 - INFO - 127.0.0.1 - - [23/Apr/2025 21:10:49] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:10:58,619 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ219ÐÐ): no element found: line 219, column 120
+2025-04-23 21:10:58,625 - INFO - 127.0.0.1 - - [23/Apr/2025 21:10:58] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:13:14,360 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:13:14,371 - INFO - 127.0.0.1 - - [23/Apr/2025 21:13:14] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:14:37,820 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:14:37,820 - INFO - 127.0.0.1 - - [23/Apr/2025 21:14:37] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:19:38,697 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:19:38,700 - INFO - 127.0.0.1 - - [23/Apr/2025 21:19:38] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:20:14,134 - INFO -  * Detected change in 'D:\\2025ÐÅ°²Èü\\ProtoMind-main\\ProtoMind4.23\\server\\app.py', reloading
+2025-04-23 21:20:14,807 - INFO -  * Restarting with stat
+2025-04-23 21:20:20,330 - WARNING -  * Debugger is active!
+2025-04-23 21:20:20,333 - INFO -  * Debugger PIN: 387-916-479
+2025-04-23 21:20:24,756 - INFO - 127.0.0.1 - - [23/Apr/2025 21:20:24] "POST /controller HTTP/1.1" 200 -
+2025-04-23 21:20:51,776 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:20:51,800 - INFO - 127.0.0.1 - - [23/Apr/2025 21:20:51] "POST /train HTTP/1.1" 200 -
+2025-04-23 21:21:47,256 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:21:47,263 - INFO - 127.0.0.1 - - [23/Apr/2025 21:21:47] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:23:52,255 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:23:52,264 - INFO - 127.0.0.1 - - [23/Apr/2025 21:23:52] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:24:00,229 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ1ÐÐ): not well-formed (invalid token): line 1, column 0
+2025-04-23 21:24:00,229 - INFO - 127.0.0.1 - - [23/Apr/2025 21:24:00] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:24:09,587 - ERROR - ´¦ÀíXMLÊ§°Ü: ×ª»»´íÎó: XML½âÎö´íÎó(µÚ144ÐÐ): unclosed token: line 144, column 8
+2025-04-23 21:24:09,587 - INFO - 127.0.0.1 - - [23/Apr/2025 21:24:09] "[35m[1mPOST /controller HTTP/1.1[0m" 500 -
+2025-04-23 21:25:47,187 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:25:47,195 - INFO - 127.0.0.1 - - [23/Apr/2025 21:25:47] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:27:38,901 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:27:38,907 - INFO - 127.0.0.1 - - [23/Apr/2025 21:27:38] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:28:54,571 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:28:54,581 - INFO - 127.0.0.1 - - [23/Apr/2025 21:28:54] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:30:02,153 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:30:02,156 - INFO - 127.0.0.1 - - [23/Apr/2025 21:30:02] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:31:16,646 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 21:31:16,655 - INFO - 127.0.0.1 - - [23/Apr/2025 21:31:16] "POST /generate HTTP/1.1" 200 -
+2025-04-23 21:33:29,105 - INFO - Parsing XML file: uploads\generated_20250423_213329.xml
+2025-04-23 21:33:29,130 - INFO - Inferred client messages: {'CONNECT', 'PINGRESP', 'PUBLISH', 'PUBREL', 'PUBACK', 'SUBACK', 'UNSUBSCRIBE', 'CONNACK', 'SUBSCRIBE', 'PUBCOMP', 'PUBREC', 'PINGREQ', 'DISCONNECT', 'UNSUBACK'}
+2025-04-23 21:33:29,131 - INFO - Inferred server messages: set()
+2025-04-23 21:33:29,139 - INFO - 127.0.0.1 - - [23/Apr/2025 21:33:29] "POST /controller HTTP/1.1" 200 -
+2025-04-23 21:34:53,360 - INFO - Detected local IP: 10.203.151.136
+2025-04-23 21:34:53,360 - INFO - Initialized Fuzzer for 1234:2345, protocol: tcp
+2025-04-23 21:34:53,360 - INFO - Attempting initial connection
+2025-04-23 21:35:00,650 - ERROR - Connection failed to 1234:2345: [Errno 11001] getaddrinfo failed
+2025-04-23 21:35:00,652 - ERROR - Initial connection failed
+2025-04-23 21:35:00,652 - WARNING - No packets to write to PCAP
+2025-04-23 21:35:00,653 - ERROR - ÕÒ²»µ½PCAPÎÄ¼þ: PCAPÎÄ¼þ²»´æÔÚ: outpcap/output_1745415293.pcap
+2025-04-23 21:35:00,655 - INFO - 127.0.0.1 - - [23/Apr/2025 21:35:00] "[31m[1mPOST /controller HTTP/1.1[0m" 400 -
+2025-04-23 21:35:13,085 - INFO - Detected local IP: 10.203.151.136
+2025-04-23 21:35:13,086 - INFO - Initialized Fuzzer for 1234:2345, protocol: tcp
+2025-04-23 21:35:13,087 - INFO - Attempting initial connection
+2025-04-23 21:35:20,367 - ERROR - Connection failed to 1234:2345: [Errno 11001] getaddrinfo failed
+2025-04-23 21:35:20,368 - ERROR - Initial connection failed
+2025-04-23 21:35:20,368 - WARNING - No packets to write to PCAP
+2025-04-23 21:35:20,368 - ERROR - ÕÒ²»µ½PCAPÎÄ¼þ: PCAPÎÄ¼þ²»´æÔÚ: outpcap/output_1745415313.pcap
+2025-04-23 21:35:20,369 - INFO - 127.0.0.1 - - [23/Apr/2025 21:35:20] "[31m[1mPOST /controller HTTP/1.1[0m" 400 -
+2025-04-23 22:19:43,834 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:19:43,839 - INFO - 127.0.0.1 - - [23/Apr/2025 22:19:43] "POST /train HTTP/1.1" 200 -
+2025-04-23 22:20:27,755 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:20:27,758 - INFO - 127.0.0.1 - - [23/Apr/2025 22:20:27] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:23:01,816 - INFO -  * Detected change in 'D:\\2025ÐÅ°²Èü\\ProtoMind-main\\ProtoMind4.23\\server\\app.py', reloading
+2025-04-23 22:23:02,287 - INFO -  * Restarting with stat
+2025-04-23 22:23:07,132 - WARNING -  * Debugger is active!
+2025-04-23 22:23:07,136 - INFO -  * Debugger PIN: 387-916-479
+2025-04-23 22:23:56,120 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:23:56,153 - INFO - 127.0.0.1 - - [23/Apr/2025 22:23:56] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:28:21,405 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:28:21,414 - INFO - 127.0.0.1 - - [23/Apr/2025 22:28:21] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:29:26,139 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:29:26,147 - INFO - 127.0.0.1 - - [23/Apr/2025 22:29:26] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:31:42,275 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:31:42,283 - INFO - 127.0.0.1 - - [23/Apr/2025 22:31:42] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:35:47,901 - INFO -  * Detected change in 'D:\\2025ÐÅ°²Èü\\ProtoMind-main\\ProtoMind4.23\\server\\app.py', reloading
+2025-04-23 22:35:48,432 - INFO -  * Restarting with stat
+2025-04-23 22:35:54,060 - WARNING -  * Debugger is active!
+2025-04-23 22:35:54,065 - INFO -  * Debugger PIN: 387-916-479
+2025-04-23 22:35:58,199 - INFO - 127.0.0.1 - - [23/Apr/2025 22:35:58] "POST /controller HTTP/1.1" 200 -
+2025-04-23 22:36:31,845 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:36:31,868 - INFO - 127.0.0.1 - - [23/Apr/2025 22:36:31] "POST /train HTTP/1.1" 200 -
+2025-04-23 22:37:49,874 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:37:49,885 - INFO - 127.0.0.1 - - [23/Apr/2025 22:37:49] "POST /generate HTTP/1.1" 200 -
+2025-04-23 22:38:36,367 - INFO -  * Detected change in 'D:\\2025ÐÅ°²Èü\\ProtoMind-main\\ProtoMind4.23\\server\\app.py', reloading
+2025-04-23 22:38:37,017 - INFO -  * Restarting with stat
+2025-04-23 22:38:41,641 - WARNING -  * Debugger is active!
+2025-04-23 22:38:41,641 - INFO -  * Debugger PIN: 387-916-479
+2025-04-23 22:38:47,084 - INFO - 127.0.0.1 - - [23/Apr/2025 22:38:47] "POST /controller HTTP/1.1" 200 -
+2025-04-23 22:39:20,681 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:39:20,706 - INFO - 127.0.0.1 - - [23/Apr/2025 22:39:20] "POST /train HTTP/1.1" 200 -
+2025-04-23 22:40:15,417 - INFO - HTTP Request: POST https://ark.cn-beijing.volces.com/api/v3/chat/completions "HTTP/1.1 200 OK"
+2025-04-23 22:40:15,426 - INFO - 127.0.0.1 - - [23/Apr/2025 22:40:15] "POST /generate HTTP/1.1" 200 -

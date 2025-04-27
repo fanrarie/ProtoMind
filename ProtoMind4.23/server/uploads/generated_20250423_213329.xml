@@ -1,0 +1,237 @@
+<IR>
+    <!-- 定义MQTT CONNECT报文 -->
+    <message name="CONNECT">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x10 -->
+        <constant type="B" length="1" value="0x10"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 协议名长度，固定值0x0004 -->
+        <constant type="B" length="2" value="0x0004"/>
+        <!-- 协议名，固定值MQTT -->
+        <constant type="B" length="4" value="MQTT"/>
+        <!-- 协议级别，固定值0x05 -->
+        <constant type="B" length="1" value="0x05"/>
+        <!-- 连接标志 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+        <!-- 保持活动时间 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 客户端标识符长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 客户端标识符 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+        <!-- 其他可选字段 -->
+    </message>
+
+    <!-- 定义MQTT CONNACK报文 -->
+    <message name="CONNACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x20 -->
+        <constant type="B" length="1" value="0x20"/>
+        <!-- 剩余长度，固定值0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 连接确认标志 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+        <!-- 连接返回码 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+    </message>
+
+    <!-- 定义MQTT PUBLISH报文 -->
+    <message name="PUBLISH">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位 -->
+        <variable type="B" length="1" scope="0x30-0x3F"/>
+        <!-- 剩余长度 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 主题名长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题名 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+        <!-- 报文标识符（可选） -->
+        <variable type="B" length="0:2" value="0x0000-0xFFFF"/>
+        <!-- 消息体 -->
+        <variable type="B" length="0:268435455" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 定义MQTT PUBACK报文 -->
+    <message name="PUBACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x40 -->
+        <constant type="B" length="1" value="0x40"/>
+        <!-- 剩余长度，固定值0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义MQTT PUBREC报文 -->
+    <message name="PUBREC">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x50 -->
+        <constant type="B" length="1" value="0x50"/>
+        <!-- 剩余长度，固定值0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义MQTT PUBREL报文 -->
+    <message name="PUBREL">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x62 -->
+        <constant type="B" length="1" value="0x62"/>
+        <!-- 剩余长度，固定值0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义MQTT PUBCOMP报文 -->
+    <message name="PUBCOMP">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x70 -->
+        <constant type="B" length="1" value="0x70"/>
+        <!-- 剩余长度，固定值0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义MQTT SUBSCRIBE报文 -->
+    <message name="SUBSCRIBE">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x82 -->
+        <constant type="B" length="1" value="0x82"/>
+        <!-- 剩余长度 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题过滤器和服务质量等级 -->
+        <variable type="B" length="0:268435455" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 定义MQTT SUBACK报文 -->
+    <message name="SUBACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0x90 -->
+        <constant type="B" length="1" value="0x90"/>
+        <!-- 剩余长度 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 订阅确认返回码 -->
+        <variable type="B" length="0:268435455" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 定义MQTT UNSUBSCRIBE报文 -->
+    <message name="UNSUBSCRIBE">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定值0xA2 -->
+        <constant type="B" length="1" value="0xA2"/>
+        <!-- 剩余长度 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题过滤器 -->
+        <variable type="B" length="0:268435455" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 取消订阅请求消息 -->
+    <message name="UNSUBSCRIBE">
+        <constant type="B" length="1" value="0xA2"/> <!-- 固定报头：取消订阅请求类型 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/> <!-- 剩余长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 报文标识符 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/> <!-- 主题过滤器 -->
+    </message>
+
+    <!-- 取消订阅确认消息 -->
+    <message name="UNSUBACK">
+        <constant type="B" length="1" value="0xB0"/> <!-- 固定报头：取消订阅确认类型 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/> <!-- 剩余长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 报文标识符 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/> <!-- 属性 -->
+    </message>
+
+    <!-- 心跳请求消息 -->
+    <message name="PINGREQ">
+        <constant type="B" length="1" value="0xC0"/> <!-- 固定报头：心跳请求类型 -->
+        <constant type="B" length="1" value="0x00"/> <!-- 剩余长度 -->
+    </message>
+
+    <!-- 心跳响应消息 -->
+    <message name="PINGRESP">
+        <constant type="B" length="1" value="0xD0"/> <!-- 固定报头：心跳响应类型 -->
+        <constant type="B" length="1" value="0x00"/> <!-- 剩余长度 -->
+    </message>
+
+    <!-- 断开连接消息 -->
+    <message name="DISCONNECT">
+        <constant type="B" length="1" value="0xE0"/> <!-- 固定报头：断开连接类型 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/> <!-- 剩余长度 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/> <!-- 属性 -->
+    </message>
+
+    <!-- 状态机定义 -->
+    <statemachine>
+        <INIT>
+            <CONNECT condition="INIT to CONNECT"/>
+        </INIT>
+        <CONNECT>
+            <CONNACK condition="CONNECT sent, waiting for CONNACK"/>
+        </CONNECT>
+        <CONNACK>
+            <PUBLISH condition="Connected, can PUBLISH"/>
+            <SUBSCRIBE condition="Connected, can SUBSCRIBE"/>
+            <UNSUBSCRIBE condition="Connected, can UNSUBSCRIBE"/>
+            <PINGREQ condition="Keep - alive, send PINGREQ"/>
+            <DISCONNECT condition="Disconnect request"/>
+        </CONNACK>
+        <PUBLISH>
+            <PUBACK condition="QoS 1, wait for PUBACK"/>
+            <PUBREC condition="QoS 2, wait for PUBREC"/>
+        </PUBLISH>
+        <PUBACK>
+            <PUBLISH condition="PUBACK received, can PUBLISH again"/>
+        </PUBACK>
+        <PUBREC>
+            <PUBREL condition="PUBREC received, send PUBREL"/>
+        </PUBREC>
+        <PUBREL>
+            <PUBCOMP condition="PUBREL sent, wait for PUBCOMP"/>
+        </PUBREL>
+        <PUBCOMP>
+            <PUBLISH condition="PUBCOMP received, can PUBLISH again"/>
+        </PUBCOMP>
+        <SUBSCRIBE>
+            <SUBACK condition="SUBSCRIBE sent, wait for SUBACK"/>
+        </SUBSCRIBE>
+        <SUBACK>
+            <PUBLISH condition="SUBACK received, can PUBLISH"/>
+        </SUBACK>
+        <UNSUBSCRIBE>
+            <UNSUBACK condition="UNSUBSCRIBE sent, wait for UNSUBACK"/>
+        </UNSUBSCRIBE>
+        <UNSUBACK>
+            <PUBLISH condition="UNSUBACK received, can PUBLISH"/>
+        </UNSUBACK>
+        <PINGREQ>
+            <PINGRESP condition="PINGREQ sent, wait for PINGRESP"/>
+        </PINGREQ>
+        <PINGRESP>
+            <PUBLISH condition="PINGRESP received, can PUBLISH"/>
+        </PINGRESP>
+        <DISCONNECT>
+            <INIT condition="Disconnected, back to INIT"/>
+        </DISCONNECT>
+    </statemachine>
+</IR>

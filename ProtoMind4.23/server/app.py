@@ -63,8 +63,10 @@ os.makedirs(RFC_FOLDER, exist_ok=True)
 os.makedirs(PROTOIR_UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(PROTOIR_TXT_FOLDER, exist_ok=True)
 
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 def call_ark_train_api(proto_ir_content):
     """调用火山引擎训练API"""
@@ -75,10 +77,10 @@ def call_ark_train_api(proto_ir_content):
                 {"role": "system", "content": "你是一个协议状态机训练器"},
                 {"role": "user", "content": f"训练以下协议IR:\n{proto_ir_content}"}
             ],
-            temperature=0.7,
-            max_tokens=2000
+            temperature=0.3,
+            max_tokens=5000
         )
-        
+
         return {
             "success": True,
             "job_id": f"train_{uuid.uuid4().hex[:8]}",
@@ -93,6 +95,7 @@ def call_ark_train_api(proto_ir_content):
             "fallback": True
         }
 
+
 def call_ark_generate_api(prompt, context=None):
     """调用火山引擎生成API"""
     try:
@@ -100,12 +103,12 @@ def call_ark_generate_api(prompt, context=None):
             {"role": "system", "content": "你是一个协议状态机生成器"},
             {"role": "user", "content": prompt}
         ]
-        
+
         if context:
             messages.insert(1, {"role": "assistant", "content": context})
 
         stream = request.args.get('stream', 'false').lower() == 'true'
-        
+
         if stream:
             def generate():
                 stream_response = ark_client.chat.completions.create(
@@ -116,7 +119,7 @@ def call_ark_generate_api(prompt, context=None):
                 for chunk in stream_response:
                     if chunk.choices[0].delta.content:
                         yield chunk.choices[0].delta.content
-            
+
             return Response(generate(), mimetype='text/event-stream')
         else:
             completion = ark_client.chat.completions.create(
@@ -125,7 +128,7 @@ def call_ark_generate_api(prompt, context=None):
                 temperature=0.7,
                 max_tokens=2000
             )
-            
+
             return {
                 "success": True,
                 "output": completion.choices[0].message.content,
@@ -141,6 +144,7 @@ def call_ark_generate_api(prompt, context=None):
             "error": str(e),
             "fallback": True
         }
+
 
 def protoIR_to_visual_json(xml_content):
     """XML转可视化JSON"""
@@ -278,16 +282,20 @@ def protoIR_to_visual_json(xml_content):
     except Exception as e:
         raise ValueError(f"转换错误: {str(e)}")
 
+
 def get_xml_to_memory(rfcfile_path):
     """从RFC文件生成XML"""
+    # 这里 model_functions 未定义，若实际使用需补充
     IR_path = model_functions.LLM_PIT(rfcfile_path)
     with open(IR_path, 'r', encoding='utf-8') as f:
         IR_content = f.read()
     return BytesIO(IR_content.encode('utf-8'))
 
+
 def gen_fsm_wt_info(pit_path):
     """生成FSM信息及图片"""
     return fsm_explan.GEN_FSM(pit_path)
+
 
 def gen_PACK_path(dict_data):
     """生成PCAP文件路径"""
@@ -295,6 +303,7 @@ def gen_PACK_path(dict_data):
     if not os.path.exists(pcap_path):
         raise FileNotFoundError(f"PCAP文件不存在: {pcap_path}")
     return pcap_path
+
 
 def ret_pcap_info(pcap_file):
     """解析PCAP文件信息"""
@@ -326,10 +335,83 @@ def ret_pcap_info(pcap_file):
 
     return packet_list
 
+
+@app.route('/train', methods=['POST'])
+def train():
+    try:
+        txt_filepath = os.path.join(PROTOIR_TXT_FOLDER, 'protoIR.txt')
+        if not os.path.exists(txt_filepath):
+            return jsonify({"status": "error", "message": "protoIR.txt 文件不存在"}), 400
+
+        with open(txt_filepath, 'r', encoding='utf-8') as f:
+            proto_ir_content = f.read()
+
+        train_result = call_ark_train_api(proto_ir_content)
+
+        if train_result.get("success"):
+            return jsonify({
+                "status": "success",
+                "message": "训练任务已提交",
+                "data": train_result
+            })
+        else:
+            return jsonify({
+                "status": "error",
+                "message": "训练任务提交失败",
+                "error": train_result.get("error")
+            }), 500
+
+    except Exception as e:
+        logger.error(f"训练过程中出错: {e}")
+        return jsonify({
+            "status": "error",
+            "message": "训练过程中出错",
+            "error": str(e)
+        }), 500
+
+
+@app.route('/generate', methods=['POST'])
+def generate():
+    try:
+        prompt = request.form.get('prompt')
+        if not prompt:
+            return jsonify({"status": "error", "message": "提示词不能为空"}), 400
+
+        # 读取 protoIR.txt 文件内容
+        txt_filepath = os.path.join(PROTOIR_TXT_FOLDER, 'protoIR.txt')
+        if not os.path.exists(txt_filepath):
+            return jsonify({"status": "error", "message": "protoIR.txt 文件不存在"}), 400
+
+        with open(txt_filepath, 'r', encoding='utf-8') as f:
+            proto_ir_content = f.read()
+
+        # 将 protoIR 内容作为上下文传入生成 API
+        gen_result = call_ark_generate_api(prompt, context=proto_ir_content)
+
+        if isinstance(gen_result, Response):
+            return gen_result
+        elif gen_result.get("success"):
+            return gen_result["output"]
+        else:
+            return jsonify({
+                "status": "error",
+                "message": "生成失败",
+                "error": gen_result.get("error")
+            }), 500
+
+    except Exception as e:
+        logger.error(f"生成过程中出错: {e}")
+        return jsonify({
+            "status": "error",
+            "message": "生成过程中出错",
+            "error": str(e)
+        }), 500
+
+
 @app.route('/controller', methods=['POST'])
 def controller():
     logger.debug("接收到POST请求")
-    
+
     if request.is_json:
         data = request.get_json()
         command = data.get("command")
@@ -412,7 +494,7 @@ def controller():
                     return jsonify({"status": "error", "message": "Prompt不能为空"}), 400
 
                 gen_result = call_ark_generate_api(prompt, context)
-                
+
                 if isinstance(gen_result, Response):
                     return gen_result
                 elif gen_result.get("success"):
@@ -512,8 +594,10 @@ def controller():
         logger.warning("无效输入")
         return Response("无效输入", status=400)
 
+
 if __name__ == '__main__':
     if not ARK_API_KEY:
         logger.warning("警告: 未配置火山引擎API密钥！部分功能可能受限")
-    
+
     app.run(host='0.0.0.0', port=5000, debug=True)
+    

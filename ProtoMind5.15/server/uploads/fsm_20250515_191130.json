@@ -1,0 +1,257 @@
+<IR>
+    <!-- 连接请求报文 -->
+    <message name="CONNECT">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x10 -->
+        <constant type="B" length="1" value="0x10"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 协议名长度，固定为 0x0004 -->
+        <constant type="B" length="2" value="0x0004"/>
+        <!-- 协议名，固定为 "MQTT" -->
+        <constant type="B" length="4" value="MQTT"/>
+        <!-- 协议级别，固定为 0x05 -->
+        <constant type="B" length="1" value="0x05"/>
+        <!-- 连接标志 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+        <!-- 保持活动时间 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 客户端标识符长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 客户端标识符 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+        <!-- 可选的用户名和密码等 -->
+    </message>
+
+    <!-- 连接确认报文 -->
+    <message name="CONNACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x20 -->
+        <constant type="B" length="1" value="0x20"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 连接确认标志 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+        <!-- 连接返回码 -->
+        <variable type="B" length="1" scope="0x00-0xFF"/>
+    </message>
+
+    <!-- 发布报文 -->
+    <message name="PUBLISH">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位 -->
+        <variable type="B" length="1" scope="0x30-0x3F"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 主题名长度 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题名 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+        <!-- 报文标识符（可选） -->
+        <variable type="B" length="0:2" value="0x0000-0xFFFF"/>
+        <!-- 消息体 -->
+        <variable type="B" length="0:268435455" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 发布确认报文 -->
+    <message name="PUBACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x40 -->
+        <constant type="B" length="1" value="0x40"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 发布收到报文 -->
+    <message name="PUBREC">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x50 -->
+        <constant type="B" length="1" value="0x50"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 发布释放报文 -->
+    <message name="PUBREL">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x62 -->
+        <constant type="B" length="1" value="0x62"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 发布完成报文 -->
+    <message name="PUBCOMP">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x70 -->
+        <constant type="B" length="1" value="0x70"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 订阅请求报文 -->
+    <message name="SUBSCRIBE">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x82 -->
+        <constant type="B" length="1" value="0x82"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题过滤器和服务质量等级 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 订阅确认报文 -->
+    <message name="SUBACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0x90 -->
+        <constant type="B" length="1" value="0x90"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 订阅返回码 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 取消订阅请求报文 -->
+    <message name="UNSUBSCRIBE">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0xA2 -->
+        <constant type="B" length="1" value="0xA2"/>
+        <!-- 剩余长度，可变字节整数 -->
+        <variable type="B" length="1:4" value="0x00-0xFF"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 主题过滤器 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF"/>
+    </message>
+
+    <!-- 取消订阅确认报文 -->
+    <message name="UNSUBACK">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0xB0 -->
+        <constant type="B" length="1" value="0xB0"/>
+        <!-- 剩余长度，固定为 0x02 -->
+        <constant type="B" length="1" value="0x02"/>
+        <!-- 可变报头 -->
+        <!-- 报文标识符 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 心跳请求报文 -->
+    <message name="PINGREQ">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0xC0 -->
+        <constant type="B" length="1" value="0xC0"/>
+        <!-- 剩余长度，固定为 0x00 -->
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+
+    <!-- 心跳响应报文 -->
+    <message name="PINGRESP">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0xD0 -->
+        <constant type="B" length="1" value="0xD0"/>
+        <!-- 剩余长度，固定为 0x00 -->
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+
+    <!-- 断开连接报文 -->
+    <message name="DISCONNECT">
+        <!-- 固定报头 -->
+        <!-- 报文类型和标志位，固定为 0xE0 -->
+        <constant type="B" length="1" value="0xE0"/>
+        <!-- 剩余长度，固定为 0x00 -->
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+
+    <!-- 状态机，描述不同报文之间的转移关系 -->
+    <statemachine>
+        <!-- 初始状态 -->
+        <INIT>
+            <!-- 发送连接请求后进入等待连接确认状态 -->
+            <WAIT_CONNACK condition="CONNECT request"/>
+        </INIT>
+        <!-- 等待连接确认状态 -->
+        <WAIT_CONNACK>
+            <!-- 收到连接确认后进入已连接状态 -->
+            <CONNECTED condition="CONNACK received"/>
+            <!-- 连接失败回到初始状态 -->
+            <INIT condition="CONNACK with error received"/>
+        </WAIT_CONNACK>
+        <!-- 已连接状态 -->
+        <CONNECTED>
+            <!-- 发送发布报文后根据服务质量进入不同状态 -->
+            <WAIT_PUBACK condition="PUBLISH QoS 1 sent"/>
+            <WAIT_PUBREC condition="PUBLISH QoS 2 sent"/>
+            <!-- 发送订阅请求后进入等待订阅确认状态 -->
+            <WAIT_SUBACK condition="SUBSCRIBE sent"/>
+            <!-- 发送取消订阅请求后进入等待取消订阅确认状态 -->
+            <WAIT_UNSUBACK condition="UNSUBSCRIBE sent"/>
+            <!-- 发送心跳请求后进入等待心跳响应状态 -->
+            <WAIT_PINGRESP condition="PINGREQ sent"/>
+            <!-- 发送断开连接报文后进入断开状态 -->
+            <DISCONNECTED condition="DISCONNECT sent"/>
+        </CONNECTED>
+        <!-- 等待发布确认状态 -->
+        <WAIT_PUBACK>
+            <!-- 收到发布确认后回到已连接状态 -->
+            <CONNECTED condition="PUBACK received"/>
+        </WAIT_PUBACK>
+        <!-- 等待发布收到状态 -->
+        <WAIT_PUBREC>
+            <!-- 收到发布收到后进入等待发布释放状态 -->
+            <WAIT_PUBREL condition="PUBREC received"/>
+        </WAIT_PUBREC>
+        <!-- 等待发布释放状态 -->
+        <WAIT_PUBREL>
+            <!-- 发送发布释放后进入等待发布完成状态 -->
+            <WAIT_PUBCOMP condition="PUBREL sent"/>
+        </WAIT_PUBREL>
+        <!-- 等待发布完成状态 -->
+        <WAIT_PUBCOMP>
+            <!-- 收到发布完成后回到已连接状态 -->
+            <CONNECTED condition="PUBCOMP received"/>
+        </WAIT_PUBCOMP>
+        <!-- 等待订阅确认状态 -->
+        <WAIT_SUBACK>
+            <!-- 收到订阅确认后回到已连接状态 -->
+            <CONNECTED condition="SUBACK received"/>
+        </WAIT_SUBACK>
+        <!-- 等待取消订阅确认状态 -->
+        <WAIT_UNSUBACK>
+            <!-- 收到取消订阅确认后回到已连接状态 -->
+            <CONNECTED condition="UNSUBACK received"/>
+        </WAIT_UNSUBACK>
+        <!-- 等待心跳响应状态 -->
+        <WAIT_PINGRESP>
+            <!-- 收到心跳响应后回到已连接状态 -->
+            <CONNECTED condition="PINGRESP received"/>
+        </WAIT_PINGRESP>
+        <!-- 断开状态 -->
+        <DISCONNECTED>
+            <!-- 重新发送连接请求后进入等待连接确认状态 -->
+            <WAIT_CONNACK condition="CONNECT request"/>
+        </DISCONNECTED>
+    </statemachine>
+</IR>

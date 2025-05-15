@@ -1,0 +1,670 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-05-15T08:23:23.285473",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_22993d",
+      "type": "state",
+      "label": "CLO",
+      "x": 57.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "CLOSED",
+        "description": "CLOSED state"
+      }
+    },
+    {
+      "id": "s_92c426",
+      "type": "state",
+      "label": "SYN",
+      "x": 137.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SYN_SENT",
+        "description": "SYN_SENT state"
+      }
+    },
+    {
+      "id": "s_852743",
+      "type": "state",
+      "label": "SYN",
+      "x": 217.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SYN_RCVD",
+        "description": "SYN_RCVD state"
+      }
+    },
+    {
+      "id": "s_c31a3a",
+      "type": "state",
+      "label": "EST",
+      "x": 297.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "ESTABLISHED",
+        "description": "ESTABLISHED state"
+      }
+    },
+    {
+      "id": "s_c2c11d",
+      "type": "state",
+      "label": "FIN",
+      "x": 57.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "FIN_WAIT_1",
+        "description": "FIN_WAIT_1 state"
+      }
+    },
+    {
+      "id": "s_a31337",
+      "type": "state",
+      "label": "FIN",
+      "x": 137.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "FIN_WAIT_2",
+        "description": "FIN_WAIT_2 state"
+      }
+    },
+    {
+      "id": "s_0b3761",
+      "type": "state",
+      "label": "CLO",
+      "x": 217.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CLOSE_WAIT",
+        "description": "CLOSE_WAIT state"
+      }
+    },
+    {
+      "id": "s_bddee4",
+      "type": "state",
+      "label": "LAS",
+      "x": 297.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "LAST_ACK",
+        "description": "LAST_ACK state"
+      }
+    },
+    {
+      "id": "s_29e2eb",
+      "type": "state",
+      "label": "TIM",
+      "x": 57.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "TIME_WAIT",
+        "description": "TIME_WAIT state"
+      }
+    },
+    {
+      "id": "s_a4b042",
+      "type": "state",
+      "label": "CLO",
+      "x": 137.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CLOSING",
+        "description": "CLOSING state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_3d5dc1",
+      "type": "transition",
+      "from": "s_22993d",
+      "to": "s_92c426",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "initiate connection"
+      }
+    },
+    {
+      "id": "t_e7fefd",
+      "type": "transition",
+      "from": "s_92c426",
+      "to": "s_852743",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive syn-ack"
+      }
+    },
+    {
+      "id": "t_38928c",
+      "type": "transition",
+      "from": "s_852743",
+      "to": "s_c31a3a",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive ack"
+      }
+    },
+    {
+      "id": "t_7edbf0",
+      "type": "transition",
+      "from": "s_c31a3a",
+      "to": "s_c2c11d",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "send fin"
+      }
+    },
+    {
+      "id": "t_03ea92",
+      "type": "transition",
+      "from": "s_c31a3a",
+      "to": "s_0b3761",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive fin"
+      }
+    },
+    {
+      "id": "t_5c7673",
+      "type": "transition",
+      "from": "s_c2c11d",
+      "to": "s_a31337",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive ack"
+      }
+    },
+    {
+      "id": "t_cef87f",
+      "type": "transition",
+      "from": "s_c2c11d",
+      "to": "s_a4b042",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive fin"
+      }
+    },
+    {
+      "id": "t_8b263f",
+      "type": "transition",
+      "from": "s_a31337",
+      "to": "s_29e2eb",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive fin"
+      }
+    },
+    {
+      "id": "t_0f3daf",
+      "type": "transition",
+      "from": "s_0b3761",
+      "to": "s_bddee4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "send fin"
+      }
+    },
+    {
+      "id": "t_710040",
+      "type": "transition",
+      "from": "s_bddee4",
+      "to": "s_22993d",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive ack"
+      }
+    },
+    {
+      "id": "t_8e2356",
+      "type": "transition",
+      "from": "s_29e2eb",
+      "to": "s_22993d",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "time wait expires"
+      }
+    },
+    {
+      "id": "t_aa77af",
+      "type": "transition",
+      "from": "s_a4b042",
+      "to": "s_29e2eb",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "receive ack"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_22993d",
+      "type": "stateDescription",
+      "stateId": "s_22993d",
+      "title": "CLOSED",
+      "content": "CLOSED state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_92c426",
+      "type": "stateDescription",
+      "stateId": "s_92c426",
+      "title": "SYN_SENT",
+      "content": "SYN_SENT state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_852743",
+      "type": "stateDescription",
+      "stateId": "s_852743",
+      "title": "SYN_RCVD",
+      "content": "SYN_RCVD state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_c31a3a",
+      "type": "stateDescription",
+      "stateId": "s_c31a3a",
+      "title": "ESTABLISHED",
+      "content": "ESTABLISHED state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_c2c11d",
+      "type": "stateDescription",
+      "stateId": "s_c2c11d",
+      "title": "FIN_WAIT_1",
+      "content": "FIN_WAIT_1 state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a31337",
+      "type": "stateDescription",
+      "stateId": "s_a31337",
+      "title": "FIN_WAIT_2",
+      "content": "FIN_WAIT_2 state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_0b3761",
+      "type": "stateDescription",
+      "stateId": "s_0b3761",
+      "title": "CLOSE_WAIT",
+      "content": "CLOSE_WAIT state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_bddee4",
+      "type": "stateDescription",
+      "stateId": "s_bddee4",
+      "title": "LAST_ACK",
+      "content": "LAST_ACK state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_29e2eb",
+      "type": "stateDescription",
+      "stateId": "s_29e2eb",
+      "title": "TIME_WAIT",
+      "content": "TIME_WAIT state description",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a4b042",
+      "type": "stateDescription",
+      "stateId": "s_a4b042",
+      "title": "CLOSING",
+      "content": "CLOSING state description",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_3d5dc1",
+      "type": "transitionDescription",
+      "transitionId": "t_3d5dc1",
+      "title": "Transition",
+      "content": "From: CLOSED\nTo: SYN_SENT\nCondition: initiate connection",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e7fefd",
+      "type": "transitionDescription",
+      "transitionId": "t_e7fefd",
+      "title": "Receive",
+      "content": "From: SYN_SENT\nTo: SYN_RCVD\nCondition: receive syn-ack",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_38928c",
+      "type": "transitionDescription",
+      "transitionId": "t_38928c",
+      "title": "Receive",
+      "content": "From: SYN_RCVD\nTo: ESTABLISHED\nCondition: receive ack",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7edbf0",
+      "type": "transitionDescription",
+      "transitionId": "t_7edbf0",
+      "title": "Transition",
+      "content": "From: ESTABLISHED\nTo: FIN_WAIT_1\nCondition: send fin",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_03ea92",
+      "type": "transitionDescription",
+      "transitionId": "t_03ea92",
+      "title": "Receive",
+      "content": "From: ESTABLISHED\nTo: CLOSE_WAIT\nCondition: receive fin",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_5c7673",
+      "type": "transitionDescription",
+      "transitionId": "t_5c7673",
+      "title": "Receive",
+      "content": "From: FIN_WAIT_1\nTo: FIN_WAIT_2\nCondition: receive ack",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cef87f",
+      "type": "transitionDescription",
+      "transitionId": "t_cef87f",
+      "title": "Receive",
+      "content": "From: FIN_WAIT_1\nTo: CLOSING\nCondition: receive fin",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8b263f",
+      "type": "transitionDescription",
+      "transitionId": "t_8b263f",
+      "title": "Receive",
+      "content": "From: FIN_WAIT_2\nTo: TIME_WAIT\nCondition: receive fin",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_0f3daf",
+      "type": "transitionDescription",
+      "transitionId": "t_0f3daf",
+      "title": "Transition",
+      "content": "From: CLOSE_WAIT\nTo: LAST_ACK\nCondition: send fin",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_710040",
+      "type": "transitionDescription",
+      "transitionId": "t_710040",
+      "title": "Receive",
+      "content": "From: LAST_ACK\nTo: CLOSED\nCondition: receive ack",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8e2356",
+      "type": "transitionDescription",
+      "transitionId": "t_8e2356",
+      "title": "Wait",
+      "content": "From: TIME_WAIT\nTo: CLOSED\nCondition: time wait expires",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_aa77af",
+      "type": "transitionDescription",
+      "transitionId": "t_aa77af",
+      "title": "Receive",
+      "content": "From: CLOSING\nTo: TIME_WAIT\nCondition: receive ack",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    }
+  ]
+}

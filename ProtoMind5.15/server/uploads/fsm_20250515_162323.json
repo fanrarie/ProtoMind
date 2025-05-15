@@ -1,0 +1,162 @@
+<IR>
+    <!-- 定义TCP SYN报文 -->
+    <message name="SYN">
+        <!-- 固定的TCP首部字段 -->
+        <!-- 源端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 目的端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 序列号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 确认号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 数据偏移、保留位、控制位等，2字节 -->
+        <!-- 这里简化表示，实际控制位中SYN位需置1 -->
+        <variable type="B" length="2" value="0x0002"/> 
+        <!-- 窗口大小，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 校验和，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 紧急指针，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义TCP SYN-ACK报文 -->
+    <message name="SYN-ACK">
+        <!-- 源端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 目的端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 序列号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 确认号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 数据偏移、保留位、控制位等，2字节 -->
+        <!-- 这里简化表示，实际控制位中SYN和ACK位需置1 -->
+        <variable type="B" length="2" value="0x0012"/> 
+        <!-- 窗口大小，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 校验和，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 紧急指针，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义TCP ACK报文 -->
+    <message name="ACK">
+        <!-- 源端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 目的端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 序列号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 确认号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 数据偏移、保留位、控制位等，2字节 -->
+        <!-- 这里简化表示，实际控制位中ACK位需置1 -->
+        <variable type="B" length="2" value="0x0010"/> 
+        <!-- 窗口大小，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 校验和，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 紧急指针，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义TCP FIN报文 -->
+    <message name="FIN">
+        <!-- 源端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 目的端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 序列号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 确认号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 数据偏移、保留位、控制位等，2字节 -->
+        <!-- 这里简化表示，实际控制位中FIN位需置1 -->
+        <variable type="B" length="2" value="0x0001"/> 
+        <!-- 窗口大小，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 校验和，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 紧急指针，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义TCP FIN-ACK报文 -->
+    <message name="FIN-ACK">
+        <!-- 源端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 目的端口，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 序列号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 确认号，4字节 -->
+        <variable type="B" length="4" value="0x00000000-0xFFFFFFFF"/>
+        <!-- 数据偏移、保留位、控制位等，2字节 -->
+        <!-- 这里简化表示，实际控制位中FIN和ACK位需置1 -->
+        <variable type="B" length="2" value="0x0011"/> 
+        <!-- 窗口大小，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 校验和，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+        <!-- 紧急指针，2字节 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/>
+    </message>
+
+    <!-- 定义TCP状态机 -->
+    <statemachine>
+        <!-- 初始状态 -->
+        <CLOSED>
+            <SYN_SENT condition="Initiate connection"/>
+        </CLOSED>
+
+        <!-- 发送SYN后的状态 -->
+        <SYN_SENT>
+            <SYN_RCVD condition="Receive SYN-ACK"/>
+        </SYN_SENT>
+
+        <!-- 收到SYN后的状态 -->
+        <SYN_RCVD>
+            <ESTABLISHED condition="Receive ACK"/>
+        </SYN_RCVD>
+
+        <!-- 连接建立状态 -->
+        <ESTABLISHED>
+            <FIN_WAIT_1 condition="Send FIN"/>
+            <CLOSE_WAIT condition="Receive FIN"/>
+        </ESTABLISHED>
+
+        <!-- 发送FIN后的状态 -->
+        <FIN_WAIT_1>
+            <FIN_WAIT_2 condition="Receive ACK"/>
+            <CLOSING condition="Receive FIN"/>
+        </FIN_WAIT_1>
+
+        <!-- 收到FIN ACK后的状态 -->
+        <FIN_WAIT_2>
+            <TIME_WAIT condition="Receive FIN"/>
+        </FIN_WAIT_2>
+
+        <!-- 收到FIN并发送ACK后的状态 -->
+        <CLOSE_WAIT>
+            <LAST_ACK condition="Send FIN"/>
+        </CLOSE_WAIT>
+
+        <!-- 发送FIN后的状态 -->
+        <LAST_ACK>
+            <CLOSED condition="Receive ACK"/>
+        </LAST_ACK>
+
+        <!-- 等待超时关闭状态 -->
+        <TIME_WAIT>
+            <CLOSED condition="Time wait expires"/>
+        </TIME_WAIT>
+
+        <!-- 双方同时发送FIN后的状态 -->
+        <CLOSING>
+            <TIME_WAIT condition="Receive ACK"/>
+        </CLOSING>
+    </statemachine>
+</IR>

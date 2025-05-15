@@ -1,0 +1,1609 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-05-15T03:59:48.967983",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_adcb81",
+      "type": "state",
+      "label": "INI",
+      "x": 57.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "INIT",
+        "description": "INIT state"
+      }
+    },
+    {
+      "id": "s_152c74",
+      "type": "state",
+      "label": "CON",
+      "x": 137.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNECT",
+        "description": "CONNECT state"
+      }
+    },
+    {
+      "id": "s_6d9de7",
+      "type": "state",
+      "label": "CON",
+      "x": 217.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNACK",
+        "description": "CONNACK state"
+      }
+    },
+    {
+      "id": "s_814131",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBLISH",
+        "description": "PUBLISH state"
+      }
+    },
+    {
+      "id": "s_948710",
+      "type": "state",
+      "label": "PUB",
+      "x": 57.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBACK",
+        "description": "PUBACK state"
+      }
+    },
+    {
+      "id": "s_b0fbc8",
+      "type": "state",
+      "label": "PUB",
+      "x": 137.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREC",
+        "description": "PUBREC state"
+      }
+    },
+    {
+      "id": "s_4ccdfd",
+      "type": "state",
+      "label": "PUB",
+      "x": 217.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREL",
+        "description": "PUBREL state"
+      }
+    },
+    {
+      "id": "s_91e10b",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBCOMP",
+        "description": "PUBCOMP state"
+      }
+    },
+    {
+      "id": "s_6d5626",
+      "type": "state",
+      "label": "SUB",
+      "x": 57.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBSCRIBE",
+        "description": "SUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_e5b258",
+      "type": "state",
+      "label": "SUB",
+      "x": 137.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBACK",
+        "description": "SUBACK state"
+      }
+    },
+    {
+      "id": "s_1837b4",
+      "type": "state",
+      "label": "UNS",
+      "x": 217.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBSCRIBE",
+        "description": "UNSUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_a78ff4",
+      "type": "state",
+      "label": "UNS",
+      "x": 297.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBACK",
+        "description": "UNSUBACK state"
+      }
+    },
+    {
+      "id": "s_22fd20",
+      "type": "state",
+      "label": "PIN",
+      "x": 57.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGREQ",
+        "description": "PINGREQ state"
+      }
+    },
+    {
+      "id": "s_e35158",
+      "type": "state",
+      "label": "PIN",
+      "x": 137.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGRESP",
+        "description": "PINGRESP state"
+      }
+    },
+    {
+      "id": "s_fcea29",
+      "type": "state",
+      "label": "DIS",
+      "x": 217.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "DISCONNECT",
+        "description": "DISCONNECT state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_0b48e4",
+      "type": "transition",
+      "from": "s_adcb81",
+      "to": "s_152c74",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends connect packet"
+      }
+    },
+    {
+      "id": "t_5edaa2",
+      "type": "transition",
+      "from": "s_152c74",
+      "to": "s_6d9de7",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server sends connack packet"
+      }
+    },
+    {
+      "id": "t_dea8ab",
+      "type": "transition",
+      "from": "s_6d9de7",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends publish packet"
+      }
+    },
+    {
+      "id": "t_4e26e5",
+      "type": "transition",
+      "from": "s_6d9de7",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends subscribe packet"
+      }
+    },
+    {
+      "id": "t_e24efa",
+      "type": "transition",
+      "from": "s_6d9de7",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_850b45",
+      "type": "transition",
+      "from": "s_6d9de7",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pingreq packet"
+      }
+    },
+    {
+      "id": "t_34a994",
+      "type": "transition",
+      "from": "s_6d9de7",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_c95899",
+      "type": "transition",
+      "from": "s_814131",
+      "to": "s_948710",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "qos 1, server sends puback packet"
+      }
+    },
+    {
+      "id": "t_538ac8",
+      "type": "transition",
+      "from": "s_814131",
+      "to": "s_b0fbc8",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "qos 2, server sends pubrec packet"
+      }
+    },
+    {
+      "id": "t_13b1bb",
+      "type": "transition",
+      "from": "s_948710",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends another publish packet"
+      }
+    },
+    {
+      "id": "t_338980",
+      "type": "transition",
+      "from": "s_948710",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends subscribe packet"
+      }
+    },
+    {
+      "id": "t_2763d3",
+      "type": "transition",
+      "from": "s_948710",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_49302a",
+      "type": "transition",
+      "from": "s_948710",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pingreq packet"
+      }
+    },
+    {
+      "id": "t_2ac334",
+      "type": "transition",
+      "from": "s_948710",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_1e101e",
+      "type": "transition",
+      "from": "s_b0fbc8",
+      "to": "s_4ccdfd",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pubrel packet"
+      }
+    },
+    {
+      "id": "t_73d285",
+      "type": "transition",
+      "from": "s_4ccdfd",
+      "to": "s_91e10b",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server sends pubcomp packet"
+      }
+    },
+    {
+      "id": "t_ee2464",
+      "type": "transition",
+      "from": "s_91e10b",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends another publish packet"
+      }
+    },
+    {
+      "id": "t_51d65c",
+      "type": "transition",
+      "from": "s_91e10b",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends subscribe packet"
+      }
+    },
+    {
+      "id": "t_6d0e7c",
+      "type": "transition",
+      "from": "s_91e10b",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_cf9132",
+      "type": "transition",
+      "from": "s_91e10b",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pingreq packet"
+      }
+    },
+    {
+      "id": "t_3d2198",
+      "type": "transition",
+      "from": "s_91e10b",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_8febb5",
+      "type": "transition",
+      "from": "s_6d5626",
+      "to": "s_e5b258",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server sends suback packet"
+      }
+    },
+    {
+      "id": "t_08c9f2",
+      "type": "transition",
+      "from": "s_e5b258",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends publish packet"
+      }
+    },
+    {
+      "id": "t_2e1a6a",
+      "type": "transition",
+      "from": "s_e5b258",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends another subscribe packet"
+      }
+    },
+    {
+      "id": "t_006f73",
+      "type": "transition",
+      "from": "s_e5b258",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_49d251",
+      "type": "transition",
+      "from": "s_e5b258",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pingreq packet"
+      }
+    },
+    {
+      "id": "t_979c8d",
+      "type": "transition",
+      "from": "s_e5b258",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_f06f58",
+      "type": "transition",
+      "from": "s_1837b4",
+      "to": "s_a78ff4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server sends unsuback packet"
+      }
+    },
+    {
+      "id": "t_8af64f",
+      "type": "transition",
+      "from": "s_a78ff4",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends publish packet"
+      }
+    },
+    {
+      "id": "t_9e0de7",
+      "type": "transition",
+      "from": "s_a78ff4",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends subscribe packet"
+      }
+    },
+    {
+      "id": "t_a5ffa7",
+      "type": "transition",
+      "from": "s_a78ff4",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends another unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_7b21a8",
+      "type": "transition",
+      "from": "s_a78ff4",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends pingreq packet"
+      }
+    },
+    {
+      "id": "t_c6fef7",
+      "type": "transition",
+      "from": "s_a78ff4",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_ecb29f",
+      "type": "transition",
+      "from": "s_22fd20",
+      "to": "s_e35158",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server sends pingresp packet"
+      }
+    },
+    {
+      "id": "t_43b3c6",
+      "type": "transition",
+      "from": "s_e35158",
+      "to": "s_814131",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends publish packet"
+      }
+    },
+    {
+      "id": "t_00d4fa",
+      "type": "transition",
+      "from": "s_e35158",
+      "to": "s_6d5626",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends subscribe packet"
+      }
+    },
+    {
+      "id": "t_5860be",
+      "type": "transition",
+      "from": "s_e35158",
+      "to": "s_1837b4",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends unsubscribe packet"
+      }
+    },
+    {
+      "id": "t_8416b8",
+      "type": "transition",
+      "from": "s_e35158",
+      "to": "s_22fd20",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client sends another pingreq packet"
+      }
+    },
+    {
+      "id": "t_68331e",
+      "type": "transition",
+      "from": "s_e35158",
+      "to": "s_fcea29",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server sends disconnect packet"
+      }
+    },
+    {
+      "id": "t_c94001",
+      "type": "transition",
+      "from": "s_fcea29",
+      "to": "s_adcb81",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "new connection attempt"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_adcb81",
+      "type": "stateDescription",
+      "stateId": "s_adcb81",
+      "title": "INIT",
+      "content": "INIT state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_152c74",
+      "type": "stateDescription",
+      "stateId": "s_152c74",
+      "title": "CONNECT",
+      "content": "CONNECT state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_6d9de7",
+      "type": "stateDescription",
+      "stateId": "s_6d9de7",
+      "title": "CONNACK",
+      "content": "CONNACK state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_814131",
+      "type": "stateDescription",
+      "stateId": "s_814131",
+      "title": "PUBLISH",
+      "content": "PUBLISH state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_948710",
+      "type": "stateDescription",
+      "stateId": "s_948710",
+      "title": "PUBACK",
+      "content": "PUBACK state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_b0fbc8",
+      "type": "stateDescription",
+      "stateId": "s_b0fbc8",
+      "title": "PUBREC",
+      "content": "PUBREC state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_4ccdfd",
+      "type": "stateDescription",
+      "stateId": "s_4ccdfd",
+      "title": "PUBREL",
+      "content": "PUBREL state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_91e10b",
+      "type": "stateDescription",
+      "stateId": "s_91e10b",
+      "title": "PUBCOMP",
+      "content": "PUBCOMP state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_6d5626",
+      "type": "stateDescription",
+      "stateId": "s_6d5626",
+      "title": "SUBSCRIBE",
+      "content": "SUBSCRIBE state description",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_e5b258",
+      "type": "stateDescription",
+      "stateId": "s_e5b258",
+      "title": "SUBACK",
+      "content": "SUBACK state description",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_1837b4",
+      "type": "stateDescription",
+      "stateId": "s_1837b4",
+      "title": "UNSUBSCRIBE",
+      "content": "UNSUBSCRIBE state description",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a78ff4",
+      "type": "stateDescription",
+      "stateId": "s_a78ff4",
+      "title": "UNSUBACK",
+      "content": "UNSUBACK state description",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_22fd20",
+      "type": "stateDescription",
+      "stateId": "s_22fd20",
+      "title": "PINGREQ",
+      "content": "PINGREQ state description",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_e35158",
+      "type": "stateDescription",
+      "stateId": "s_e35158",
+      "title": "PINGRESP",
+      "content": "PINGRESP state description",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_fcea29",
+      "type": "stateDescription",
+      "stateId": "s_fcea29",
+      "title": "DISCONNECT",
+      "content": "DISCONNECT state description",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_0b48e4",
+      "type": "transitionDescription",
+      "transitionId": "t_0b48e4",
+      "title": "Transition",
+      "content": "From: INIT\nTo: CONNECT\nCondition: client sends connect packet",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_5edaa2",
+      "type": "transitionDescription",
+      "transitionId": "t_5edaa2",
+      "title": "Transition",
+      "content": "From: CONNECT\nTo: CONNACK\nCondition: server sends connack packet",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_dea8ab",
+      "type": "transitionDescription",
+      "transitionId": "t_dea8ab",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PUBLISH\nCondition: client or server sends publish packet",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_4e26e5",
+      "type": "transitionDescription",
+      "transitionId": "t_4e26e5",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: SUBSCRIBE\nCondition: client sends subscribe packet",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e24efa",
+      "type": "transitionDescription",
+      "transitionId": "t_e24efa",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: UNSUBSCRIBE\nCondition: client sends unsubscribe packet",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_850b45",
+      "type": "transitionDescription",
+      "transitionId": "t_850b45",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PINGREQ\nCondition: client sends pingreq packet",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_34a994",
+      "type": "transitionDescription",
+      "transitionId": "t_34a994",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c95899",
+      "type": "transitionDescription",
+      "transitionId": "t_c95899",
+      "title": "Transition",
+      "content": "From: PUBLISH\nTo: PUBACK\nCondition: qos 1, server sends puback packet",
+      "position": {
+        "row": 22,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_538ac8",
+      "type": "transitionDescription",
+      "transitionId": "t_538ac8",
+      "title": "Transition",
+      "content": "From: PUBLISH\nTo: PUBREC\nCondition: qos 2, server sends pubrec packet",
+      "position": {
+        "row": 23,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_13b1bb",
+      "type": "transitionDescription",
+      "transitionId": "t_13b1bb",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: PUBLISH\nCondition: client or server sends another publish packet",
+      "position": {
+        "row": 24,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_338980",
+      "type": "transitionDescription",
+      "transitionId": "t_338980",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: SUBSCRIBE\nCondition: client sends subscribe packet",
+      "position": {
+        "row": 25,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2763d3",
+      "type": "transitionDescription",
+      "transitionId": "t_2763d3",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: UNSUBSCRIBE\nCondition: client sends unsubscribe packet",
+      "position": {
+        "row": 26,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_49302a",
+      "type": "transitionDescription",
+      "transitionId": "t_49302a",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: PINGREQ\nCondition: client sends pingreq packet",
+      "position": {
+        "row": 27,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2ac334",
+      "type": "transitionDescription",
+      "transitionId": "t_2ac334",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 28,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_1e101e",
+      "type": "transitionDescription",
+      "transitionId": "t_1e101e",
+      "title": "Transition",
+      "content": "From: PUBREC\nTo: PUBREL\nCondition: client sends pubrel packet",
+      "position": {
+        "row": 29,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_73d285",
+      "type": "transitionDescription",
+      "transitionId": "t_73d285",
+      "title": "Transition",
+      "content": "From: PUBREL\nTo: PUBCOMP\nCondition: server sends pubcomp packet",
+      "position": {
+        "row": 30,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ee2464",
+      "type": "transitionDescription",
+      "transitionId": "t_ee2464",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: PUBLISH\nCondition: client or server sends another publish packet",
+      "position": {
+        "row": 31,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_51d65c",
+      "type": "transitionDescription",
+      "transitionId": "t_51d65c",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: SUBSCRIBE\nCondition: client sends subscribe packet",
+      "position": {
+        "row": 32,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_6d0e7c",
+      "type": "transitionDescription",
+      "transitionId": "t_6d0e7c",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: UNSUBSCRIBE\nCondition: client sends unsubscribe packet",
+      "position": {
+        "row": 33,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cf9132",
+      "type": "transitionDescription",
+      "transitionId": "t_cf9132",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: PINGREQ\nCondition: client sends pingreq packet",
+      "position": {
+        "row": 34,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_3d2198",
+      "type": "transitionDescription",
+      "transitionId": "t_3d2198",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 35,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8febb5",
+      "type": "transitionDescription",
+      "transitionId": "t_8febb5",
+      "title": "Transition",
+      "content": "From: SUBSCRIBE\nTo: SUBACK\nCondition: server sends suback packet",
+      "position": {
+        "row": 36,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_08c9f2",
+      "type": "transitionDescription",
+      "transitionId": "t_08c9f2",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: PUBLISH\nCondition: client or server sends publish packet",
+      "position": {
+        "row": 37,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2e1a6a",
+      "type": "transitionDescription",
+      "transitionId": "t_2e1a6a",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: SUBSCRIBE\nCondition: client sends another subscribe packet",
+      "position": {
+        "row": 38,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_006f73",
+      "type": "transitionDescription",
+      "transitionId": "t_006f73",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: UNSUBSCRIBE\nCondition: client sends unsubscribe packet",
+      "position": {
+        "row": 39,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_49d251",
+      "type": "transitionDescription",
+      "transitionId": "t_49d251",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: PINGREQ\nCondition: client sends pingreq packet",
+      "position": {
+        "row": 40,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_979c8d",
+      "type": "transitionDescription",
+      "transitionId": "t_979c8d",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 41,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_f06f58",
+      "type": "transitionDescription",
+      "transitionId": "t_f06f58",
+      "title": "Transition",
+      "content": "From: UNSUBSCRIBE\nTo: UNSUBACK\nCondition: server sends unsuback packet",
+      "position": {
+        "row": 42,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8af64f",
+      "type": "transitionDescription",
+      "transitionId": "t_8af64f",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: PUBLISH\nCondition: client or server sends publish packet",
+      "position": {
+        "row": 43,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_9e0de7",
+      "type": "transitionDescription",
+      "transitionId": "t_9e0de7",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: SUBSCRIBE\nCondition: client sends subscribe packet",
+      "position": {
+        "row": 44,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_a5ffa7",
+      "type": "transitionDescription",
+      "transitionId": "t_a5ffa7",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: UNSUBSCRIBE\nCondition: client sends another unsubscribe packet",
+      "position": {
+        "row": 45,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7b21a8",
+      "type": "transitionDescription",
+      "transitionId": "t_7b21a8",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: PINGREQ\nCondition: client sends pingreq packet",
+      "position": {
+        "row": 46,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c6fef7",
+      "type": "transitionDescription",
+      "transitionId": "t_c6fef7",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 47,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ecb29f",
+      "type": "transitionDescription",
+      "transitionId": "t_ecb29f",
+      "title": "Transition",
+      "content": "From: PINGREQ\nTo: PINGRESP\nCondition: server sends pingresp packet",
+      "position": {
+        "row": 48,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_43b3c6",
+      "type": "transitionDescription",
+      "transitionId": "t_43b3c6",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: PUBLISH\nCondition: client or server sends publish packet",
+      "position": {
+        "row": 49,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_00d4fa",
+      "type": "transitionDescription",
+      "transitionId": "t_00d4fa",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: SUBSCRIBE\nCondition: client sends subscribe packet",
+      "position": {
+        "row": 50,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_5860be",
+      "type": "transitionDescription",
+      "transitionId": "t_5860be",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: UNSUBSCRIBE\nCondition: client sends unsubscribe packet",
+      "position": {
+        "row": 51,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8416b8",
+      "type": "transitionDescription",
+      "transitionId": "t_8416b8",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: PINGREQ\nCondition: client sends another pingreq packet",
+      "position": {
+        "row": 52,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_68331e",
+      "type": "transitionDescription",
+      "transitionId": "t_68331e",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: DISCONNECT\nCondition: client or server sends disconnect packet",
+      "position": {
+        "row": 53,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c94001",
+      "type": "transitionDescription",
+      "transitionId": "t_c94001",
+      "title": "Transition",
+      "content": "From: DISCONNECT\nTo: INIT\nCondition: new connection attempt",
+      "position": {
+        "row": 54,
+        "col": 0
+      }
+    }
+  ]
+}

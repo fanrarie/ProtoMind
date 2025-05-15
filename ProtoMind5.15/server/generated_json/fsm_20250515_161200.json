@@ -1,0 +1,1864 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-05-15T08:12:00.497206",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_238998",
+      "type": "state",
+      "label": "INI",
+      "x": 57.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "INIT",
+        "description": "INIT state"
+      }
+    },
+    {
+      "id": "s_1b17bb",
+      "type": "state",
+      "label": "CON",
+      "x": 137.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNECT",
+        "description": "CONNECT state"
+      }
+    },
+    {
+      "id": "s_5da544",
+      "type": "state",
+      "label": "CON",
+      "x": 217.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNACK",
+        "description": "CONNACK state"
+      }
+    },
+    {
+      "id": "s_8172ba",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBLISH",
+        "description": "PUBLISH state"
+      }
+    },
+    {
+      "id": "s_1623ec",
+      "type": "state",
+      "label": "PUB",
+      "x": 57.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBACK",
+        "description": "PUBACK state"
+      }
+    },
+    {
+      "id": "s_3a94c5",
+      "type": "state",
+      "label": "PUB",
+      "x": 137.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREC",
+        "description": "PUBREC state"
+      }
+    },
+    {
+      "id": "s_ed6bed",
+      "type": "state",
+      "label": "PUB",
+      "x": 217.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBREL",
+        "description": "PUBREL state"
+      }
+    },
+    {
+      "id": "s_efeb14",
+      "type": "state",
+      "label": "PUB",
+      "x": 297.5,
+      "y": 142.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PUBCOMP",
+        "description": "PUBCOMP state"
+      }
+    },
+    {
+      "id": "s_46f5dc",
+      "type": "state",
+      "label": "SUB",
+      "x": 57.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBSCRIBE",
+        "description": "SUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_b7e4b9",
+      "type": "state",
+      "label": "SUB",
+      "x": 137.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "SUBACK",
+        "description": "SUBACK state"
+      }
+    },
+    {
+      "id": "s_67b1f5",
+      "type": "state",
+      "label": "UNS",
+      "x": 217.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBSCRIBE",
+        "description": "UNSUBSCRIBE state"
+      }
+    },
+    {
+      "id": "s_4eccce",
+      "type": "state",
+      "label": "UNS",
+      "x": 297.5,
+      "y": 242.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "UNSUBACK",
+        "description": "UNSUBACK state"
+      }
+    },
+    {
+      "id": "s_b7140f",
+      "type": "state",
+      "label": "PIN",
+      "x": 57.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGREQ",
+        "description": "PINGREQ state"
+      }
+    },
+    {
+      "id": "s_dc63be",
+      "type": "state",
+      "label": "PIN",
+      "x": 137.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "PINGRESP",
+        "description": "PINGRESP state"
+      }
+    },
+    {
+      "id": "s_3ce0da",
+      "type": "state",
+      "label": "DIS",
+      "x": 217.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "DISCONNECT",
+        "description": "DISCONNECT state"
+      }
+    },
+    {
+      "id": "s_02ef87",
+      "type": "state",
+      "label": "AUT",
+      "x": 297.5,
+      "y": 342.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "AUTH",
+        "description": "AUTH state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_8c7b68",
+      "type": "transition",
+      "from": "s_238998",
+      "to": "s_1b17bb",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to connect"
+      }
+    },
+    {
+      "id": "t_2d7db1",
+      "type": "transition",
+      "from": "s_1b17bb",
+      "to": "s_5da544",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server responds to connect request"
+      }
+    },
+    {
+      "id": "t_d12cfe",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to publish a message"
+      }
+    },
+    {
+      "id": "t_e76237",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to a topic"
+      }
+    },
+    {
+      "id": "t_17542f",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from a topic"
+      }
+    },
+    {
+      "id": "t_8f6f4b",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection"
+      }
+    },
+    {
+      "id": "t_b09808",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_290603",
+      "type": "transition",
+      "from": "s_5da544",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_2aa3c5",
+      "type": "transition",
+      "from": "s_8172ba",
+      "to": "s_1623ec",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "qos 1 publish, waiting for ack"
+      }
+    },
+    {
+      "id": "t_3de04b",
+      "type": "transition",
+      "from": "s_8172ba",
+      "to": "s_3a94c5",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "qos 2 publish, waiting for receipt"
+      }
+    },
+    {
+      "id": "t_5ed68b",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "another publish operation"
+      }
+    },
+    {
+      "id": "t_ae9f91",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to a topic"
+      }
+    },
+    {
+      "id": "t_80ff88",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from a topic"
+      }
+    },
+    {
+      "id": "t_fa9ac8",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection"
+      }
+    },
+    {
+      "id": "t_cb7222",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_149731",
+      "type": "transition",
+      "from": "s_1623ec",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_a87db8",
+      "type": "transition",
+      "from": "s_3a94c5",
+      "to": "s_ed6bed",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "qos 2 publish, sending release"
+      }
+    },
+    {
+      "id": "t_00eada",
+      "type": "transition",
+      "from": "s_ed6bed",
+      "to": "s_efeb14",
+      "label": "Wt",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Wait",
+        "condition": "qos 2 publish, waiting for completion"
+      }
+    },
+    {
+      "id": "t_8a436d",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "another publish operation"
+      }
+    },
+    {
+      "id": "t_063271",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to a topic"
+      }
+    },
+    {
+      "id": "t_140bd7",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from a topic"
+      }
+    },
+    {
+      "id": "t_4452e0",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection"
+      }
+    },
+    {
+      "id": "t_f04d22",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_9669fb",
+      "type": "transition",
+      "from": "s_efeb14",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_4b8c01",
+      "type": "transition",
+      "from": "s_46f5dc",
+      "to": "s_b7e4b9",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server responds to subscribe request"
+      }
+    },
+    {
+      "id": "t_dc9304",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to publish a message"
+      }
+    },
+    {
+      "id": "t_7436fc",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to another topic"
+      }
+    },
+    {
+      "id": "t_7c5fbe",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from a topic"
+      }
+    },
+    {
+      "id": "t_554718",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection"
+      }
+    },
+    {
+      "id": "t_ad308c",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_6b0a7d",
+      "type": "transition",
+      "from": "s_b7e4b9",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_640c2d",
+      "type": "transition",
+      "from": "s_67b1f5",
+      "to": "s_4eccce",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server responds to unsubscribe request"
+      }
+    },
+    {
+      "id": "t_71df3e",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to publish a message"
+      }
+    },
+    {
+      "id": "t_991b78",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to a topic"
+      }
+    },
+    {
+      "id": "t_53c0f7",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from another topic"
+      }
+    },
+    {
+      "id": "t_599c82",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection"
+      }
+    },
+    {
+      "id": "t_5f9cd1",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_e667b4",
+      "type": "transition",
+      "from": "s_4eccce",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_c81f5f",
+      "type": "transition",
+      "from": "s_b7140f",
+      "to": "s_dc63be",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "server responds to ping request"
+      }
+    },
+    {
+      "id": "t_8884ce",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_8172ba",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to publish a message"
+      }
+    },
+    {
+      "id": "t_e99c06",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_46f5dc",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to subscribe to a topic"
+      }
+    },
+    {
+      "id": "t_57816d",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_67b1f5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to unsubscribe from a topic"
+      }
+    },
+    {
+      "id": "t_816b72",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_b7140f",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to check connection again"
+      }
+    },
+    {
+      "id": "t_d46eaa",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_3ce0da",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client or server wants to disconnect"
+      }
+    },
+    {
+      "id": "t_b028e4",
+      "type": "transition",
+      "from": "s_dc63be",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication required"
+      }
+    },
+    {
+      "id": "t_494ad8",
+      "type": "transition",
+      "from": "s_3ce0da",
+      "to": "s_238998",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "client wants to reconnect"
+      }
+    },
+    {
+      "id": "t_51c8b0",
+      "type": "transition",
+      "from": "s_02ef87",
+      "to": "s_5da544",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication successful, connection established"
+      }
+    },
+    {
+      "id": "t_df628c",
+      "type": "transition",
+      "from": "s_02ef87",
+      "to": "s_02ef87",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "authentication needs to continue"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_238998",
+      "type": "stateDescription",
+      "stateId": "s_238998",
+      "title": "INIT",
+      "content": "INIT state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_1b17bb",
+      "type": "stateDescription",
+      "stateId": "s_1b17bb",
+      "title": "CONNECT",
+      "content": "CONNECT state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_5da544",
+      "type": "stateDescription",
+      "stateId": "s_5da544",
+      "title": "CONNACK",
+      "content": "CONNACK state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_8172ba",
+      "type": "stateDescription",
+      "stateId": "s_8172ba",
+      "title": "PUBLISH",
+      "content": "PUBLISH state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_1623ec",
+      "type": "stateDescription",
+      "stateId": "s_1623ec",
+      "title": "PUBACK",
+      "content": "PUBACK state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_3a94c5",
+      "type": "stateDescription",
+      "stateId": "s_3a94c5",
+      "title": "PUBREC",
+      "content": "PUBREC state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_ed6bed",
+      "type": "stateDescription",
+      "stateId": "s_ed6bed",
+      "title": "PUBREL",
+      "content": "PUBREL state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_efeb14",
+      "type": "stateDescription",
+      "stateId": "s_efeb14",
+      "title": "PUBCOMP",
+      "content": "PUBCOMP state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_46f5dc",
+      "type": "stateDescription",
+      "stateId": "s_46f5dc",
+      "title": "SUBSCRIBE",
+      "content": "SUBSCRIBE state description",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_b7e4b9",
+      "type": "stateDescription",
+      "stateId": "s_b7e4b9",
+      "title": "SUBACK",
+      "content": "SUBACK state description",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_67b1f5",
+      "type": "stateDescription",
+      "stateId": "s_67b1f5",
+      "title": "UNSUBSCRIBE",
+      "content": "UNSUBSCRIBE state description",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_4eccce",
+      "type": "stateDescription",
+      "stateId": "s_4eccce",
+      "title": "UNSUBACK",
+      "content": "UNSUBACK state description",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_b7140f",
+      "type": "stateDescription",
+      "stateId": "s_b7140f",
+      "title": "PINGREQ",
+      "content": "PINGREQ state description",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_dc63be",
+      "type": "stateDescription",
+      "stateId": "s_dc63be",
+      "title": "PINGRESP",
+      "content": "PINGRESP state description",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_3ce0da",
+      "type": "stateDescription",
+      "stateId": "s_3ce0da",
+      "title": "DISCONNECT",
+      "content": "DISCONNECT state description",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_02ef87",
+      "type": "stateDescription",
+      "stateId": "s_02ef87",
+      "title": "AUTH",
+      "content": "AUTH state description",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8c7b68",
+      "type": "transitionDescription",
+      "transitionId": "t_8c7b68",
+      "title": "Transition",
+      "content": "From: INIT\nTo: CONNECT\nCondition: client wants to connect",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2d7db1",
+      "type": "transitionDescription",
+      "transitionId": "t_2d7db1",
+      "title": "Transition",
+      "content": "From: CONNECT\nTo: CONNACK\nCondition: server responds to connect request",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_d12cfe",
+      "type": "transitionDescription",
+      "transitionId": "t_d12cfe",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PUBLISH\nCondition: client or server wants to publish a message",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e76237",
+      "type": "transitionDescription",
+      "transitionId": "t_e76237",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: SUBSCRIBE\nCondition: client wants to subscribe to a topic",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_17542f",
+      "type": "transitionDescription",
+      "transitionId": "t_17542f",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from a topic",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8f6f4b",
+      "type": "transitionDescription",
+      "transitionId": "t_8f6f4b",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: PINGREQ\nCondition: client wants to check connection",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_b09808",
+      "type": "transitionDescription",
+      "transitionId": "t_b09808",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 22,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_290603",
+      "type": "transitionDescription",
+      "transitionId": "t_290603",
+      "title": "Transition",
+      "content": "From: CONNACK\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 23,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2aa3c5",
+      "type": "transitionDescription",
+      "transitionId": "t_2aa3c5",
+      "title": "Wait",
+      "content": "From: PUBLISH\nTo: PUBACK\nCondition: qos 1 publish, waiting for ack",
+      "position": {
+        "row": 24,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_3de04b",
+      "type": "transitionDescription",
+      "transitionId": "t_3de04b",
+      "title": "Wait",
+      "content": "From: PUBLISH\nTo: PUBREC\nCondition: qos 2 publish, waiting for receipt",
+      "position": {
+        "row": 25,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_5ed68b",
+      "type": "transitionDescription",
+      "transitionId": "t_5ed68b",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: PUBLISH\nCondition: another publish operation",
+      "position": {
+        "row": 26,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ae9f91",
+      "type": "transitionDescription",
+      "transitionId": "t_ae9f91",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: SUBSCRIBE\nCondition: client wants to subscribe to a topic",
+      "position": {
+        "row": 27,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_80ff88",
+      "type": "transitionDescription",
+      "transitionId": "t_80ff88",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from a topic",
+      "position": {
+        "row": 28,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_fa9ac8",
+      "type": "transitionDescription",
+      "transitionId": "t_fa9ac8",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: PINGREQ\nCondition: client wants to check connection",
+      "position": {
+        "row": 29,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cb7222",
+      "type": "transitionDescription",
+      "transitionId": "t_cb7222",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 30,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_149731",
+      "type": "transitionDescription",
+      "transitionId": "t_149731",
+      "title": "Transition",
+      "content": "From: PUBACK\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 31,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_a87db8",
+      "type": "transitionDescription",
+      "transitionId": "t_a87db8",
+      "title": "Transition",
+      "content": "From: PUBREC\nTo: PUBREL\nCondition: qos 2 publish, sending release",
+      "position": {
+        "row": 32,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_00eada",
+      "type": "transitionDescription",
+      "transitionId": "t_00eada",
+      "title": "Wait",
+      "content": "From: PUBREL\nTo: PUBCOMP\nCondition: qos 2 publish, waiting for completion",
+      "position": {
+        "row": 33,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8a436d",
+      "type": "transitionDescription",
+      "transitionId": "t_8a436d",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: PUBLISH\nCondition: another publish operation",
+      "position": {
+        "row": 34,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_063271",
+      "type": "transitionDescription",
+      "transitionId": "t_063271",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: SUBSCRIBE\nCondition: client wants to subscribe to a topic",
+      "position": {
+        "row": 35,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_140bd7",
+      "type": "transitionDescription",
+      "transitionId": "t_140bd7",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from a topic",
+      "position": {
+        "row": 36,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_4452e0",
+      "type": "transitionDescription",
+      "transitionId": "t_4452e0",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: PINGREQ\nCondition: client wants to check connection",
+      "position": {
+        "row": 37,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_f04d22",
+      "type": "transitionDescription",
+      "transitionId": "t_f04d22",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 38,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_9669fb",
+      "type": "transitionDescription",
+      "transitionId": "t_9669fb",
+      "title": "Transition",
+      "content": "From: PUBCOMP\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 39,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_4b8c01",
+      "type": "transitionDescription",
+      "transitionId": "t_4b8c01",
+      "title": "Transition",
+      "content": "From: SUBSCRIBE\nTo: SUBACK\nCondition: server responds to subscribe request",
+      "position": {
+        "row": 40,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_dc9304",
+      "type": "transitionDescription",
+      "transitionId": "t_dc9304",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: PUBLISH\nCondition: client or server wants to publish a message",
+      "position": {
+        "row": 41,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7436fc",
+      "type": "transitionDescription",
+      "transitionId": "t_7436fc",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: SUBSCRIBE\nCondition: client wants to subscribe to another topic",
+      "position": {
+        "row": 42,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7c5fbe",
+      "type": "transitionDescription",
+      "transitionId": "t_7c5fbe",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from a topic",
+      "position": {
+        "row": 43,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_554718",
+      "type": "transitionDescription",
+      "transitionId": "t_554718",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: PINGREQ\nCondition: client wants to check connection",
+      "position": {
+        "row": 44,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ad308c",
+      "type": "transitionDescription",
+      "transitionId": "t_ad308c",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 45,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_6b0a7d",
+      "type": "transitionDescription",
+      "transitionId": "t_6b0a7d",
+      "title": "Transition",
+      "content": "From: SUBACK\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 46,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_640c2d",
+      "type": "transitionDescription",
+      "transitionId": "t_640c2d",
+      "title": "Transition",
+      "content": "From: UNSUBSCRIBE\nTo: UNSUBACK\nCondition: server responds to unsubscribe request",
+      "position": {
+        "row": 47,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_71df3e",
+      "type": "transitionDescription",
+      "transitionId": "t_71df3e",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: PUBLISH\nCondition: client or server wants to publish a message",
+      "position": {
+        "row": 48,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_991b78",
+      "type": "transitionDescription",
+      "transitionId": "t_991b78",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: SUBSCRIBE\nCondition: client wants to subscribe to a topic",
+      "position": {
+        "row": 49,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_53c0f7",
+      "type": "transitionDescription",
+      "transitionId": "t_53c0f7",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from another topic",
+      "position": {
+        "row": 50,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_599c82",
+      "type": "transitionDescription",
+      "transitionId": "t_599c82",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: PINGREQ\nCondition: client wants to check connection",
+      "position": {
+        "row": 51,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_5f9cd1",
+      "type": "transitionDescription",
+      "transitionId": "t_5f9cd1",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 52,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e667b4",
+      "type": "transitionDescription",
+      "transitionId": "t_e667b4",
+      "title": "Transition",
+      "content": "From: UNSUBACK\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 53,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c81f5f",
+      "type": "transitionDescription",
+      "transitionId": "t_c81f5f",
+      "title": "Transition",
+      "content": "From: PINGREQ\nTo: PINGRESP\nCondition: server responds to ping request",
+      "position": {
+        "row": 54,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_8884ce",
+      "type": "transitionDescription",
+      "transitionId": "t_8884ce",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: PUBLISH\nCondition: client or server wants to publish a message",
+      "position": {
+        "row": 55,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e99c06",
+      "type": "transitionDescription",
+      "transitionId": "t_e99c06",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: SUBSCRIBE\nCondition: client wants to subscribe to a topic",
+      "position": {
+        "row": 56,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_57816d",
+      "type": "transitionDescription",
+      "transitionId": "t_57816d",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: UNSUBSCRIBE\nCondition: client wants to unsubscribe from a topic",
+      "position": {
+        "row": 57,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_816b72",
+      "type": "transitionDescription",
+      "transitionId": "t_816b72",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: PINGREQ\nCondition: client wants to check connection again",
+      "position": {
+        "row": 58,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_d46eaa",
+      "type": "transitionDescription",
+      "transitionId": "t_d46eaa",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: DISCONNECT\nCondition: client or server wants to disconnect",
+      "position": {
+        "row": 59,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_b028e4",
+      "type": "transitionDescription",
+      "transitionId": "t_b028e4",
+      "title": "Transition",
+      "content": "From: PINGRESP\nTo: AUTH\nCondition: authentication required",
+      "position": {
+        "row": 60,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_494ad8",
+      "type": "transitionDescription",
+      "transitionId": "t_494ad8",
+      "title": "Transition",
+      "content": "From: DISCONNECT\nTo: INIT\nCondition: client wants to reconnect",
+      "position": {
+        "row": 61,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_51c8b0",
+      "type": "transitionDescription",
+      "transitionId": "t_51c8b0",
+      "title": "Transition",
+      "content": "From: AUTH\nTo: CONNACK\nCondition: authentication successful, connection established",
+      "position": {
+        "row": 62,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_df628c",
+      "type": "transitionDescription",
+      "transitionId": "t_df628c",
+      "title": "Transition",
+      "content": "From: AUTH\nTo: AUTH\nCondition: authentication needs to continue",
+      "position": {
+        "row": 63,
+        "col": 0
+      }
+    }
+  ]
+}

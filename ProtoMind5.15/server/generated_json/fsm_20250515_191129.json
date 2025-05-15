@@ -1,0 +1,841 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-05-15T11:11:29.989134",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_eccbb5",
+      "type": "state",
+      "label": "INI",
+      "x": 57.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "INIT",
+        "description": "INIT state"
+      }
+    },
+    {
+      "id": "s_35832b",
+      "type": "state",
+      "label": "WAI",
+      "x": 137.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_CONNACK",
+        "description": "WAIT_CONNACK state"
+      }
+    },
+    {
+      "id": "s_078377",
+      "type": "state",
+      "label": "CON",
+      "x": 217.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "CONNECTED",
+        "description": "CONNECTED state"
+      }
+    },
+    {
+      "id": "s_7515b8",
+      "type": "state",
+      "label": "WAI",
+      "x": 297.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_PUBACK",
+        "description": "WAIT_PUBACK state"
+      }
+    },
+    {
+      "id": "s_1e704e",
+      "type": "state",
+      "label": "WAI",
+      "x": 57.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_PUBREC",
+        "description": "WAIT_PUBREC state"
+      }
+    },
+    {
+      "id": "s_8d8870",
+      "type": "state",
+      "label": "WAI",
+      "x": 137.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_PUBREL",
+        "description": "WAIT_PUBREL state"
+      }
+    },
+    {
+      "id": "s_319575",
+      "type": "state",
+      "label": "WAI",
+      "x": 217.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_PUBCOMP",
+        "description": "WAIT_PUBCOMP state"
+      }
+    },
+    {
+      "id": "s_be89e5",
+      "type": "state",
+      "label": "WAI",
+      "x": 297.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_SUBACK",
+        "description": "WAIT_SUBACK state"
+      }
+    },
+    {
+      "id": "s_c4f645",
+      "type": "state",
+      "label": "WAI",
+      "x": 57.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_UNSUBACK",
+        "description": "WAIT_UNSUBACK state"
+      }
+    },
+    {
+      "id": "s_a67a23",
+      "type": "state",
+      "label": "WAI",
+      "x": 137.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WAIT_PINGRESP",
+        "description": "WAIT_PINGRESP state"
+      }
+    },
+    {
+      "id": "s_38233c",
+      "type": "state",
+      "label": "DIS",
+      "x": 217.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "DISCONNECTED",
+        "description": "DISCONNECTED state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_054432",
+      "type": "transition",
+      "from": "s_eccbb5",
+      "to": "s_35832b",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "connect request"
+      }
+    },
+    {
+      "id": "t_28b30f",
+      "type": "transition",
+      "from": "s_35832b",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "connack received"
+      }
+    },
+    {
+      "id": "t_c45c77",
+      "type": "transition",
+      "from": "s_35832b",
+      "to": "s_eccbb5",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "connack with error received"
+      }
+    },
+    {
+      "id": "t_2c5742",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_7515b8",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "publish qos 1 sent"
+      }
+    },
+    {
+      "id": "t_cf3598",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_1e704e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "publish qos 2 sent"
+      }
+    },
+    {
+      "id": "t_238b2f",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_be89e5",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "subscribe sent"
+      }
+    },
+    {
+      "id": "t_bb4397",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_c4f645",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "unsubscribe sent"
+      }
+    },
+    {
+      "id": "t_7eee94",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_a67a23",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "pingreq sent"
+      }
+    },
+    {
+      "id": "t_ef2645",
+      "type": "transition",
+      "from": "s_078377",
+      "to": "s_38233c",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "disconnect sent"
+      }
+    },
+    {
+      "id": "t_f134a2",
+      "type": "transition",
+      "from": "s_7515b8",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "puback received"
+      }
+    },
+    {
+      "id": "t_f73a80",
+      "type": "transition",
+      "from": "s_1e704e",
+      "to": "s_8d8870",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pubrec received"
+      }
+    },
+    {
+      "id": "t_16361f",
+      "type": "transition",
+      "from": "s_8d8870",
+      "to": "s_319575",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "pubrel sent"
+      }
+    },
+    {
+      "id": "t_cc0bfb",
+      "type": "transition",
+      "from": "s_319575",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pubcomp received"
+      }
+    },
+    {
+      "id": "t_6a3dad",
+      "type": "transition",
+      "from": "s_be89e5",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "suback received"
+      }
+    },
+    {
+      "id": "t_ad3e94",
+      "type": "transition",
+      "from": "s_c4f645",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "unsuback received"
+      }
+    },
+    {
+      "id": "t_4d6172",
+      "type": "transition",
+      "from": "s_a67a23",
+      "to": "s_078377",
+      "label": "Rcv",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Receive",
+        "condition": "pingresp received"
+      }
+    },
+    {
+      "id": "t_d1a961",
+      "type": "transition",
+      "from": "s_38233c",
+      "to": "s_35832b",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "connect request"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_eccbb5",
+      "type": "stateDescription",
+      "stateId": "s_eccbb5",
+      "title": "INIT",
+      "content": "INIT state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_35832b",
+      "type": "stateDescription",
+      "stateId": "s_35832b",
+      "title": "WAIT_CONNACK",
+      "content": "WAIT_CONNACK state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_078377",
+      "type": "stateDescription",
+      "stateId": "s_078377",
+      "title": "CONNECTED",
+      "content": "CONNECTED state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_7515b8",
+      "type": "stateDescription",
+      "stateId": "s_7515b8",
+      "title": "WAIT_PUBACK",
+      "content": "WAIT_PUBACK state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_1e704e",
+      "type": "stateDescription",
+      "stateId": "s_1e704e",
+      "title": "WAIT_PUBREC",
+      "content": "WAIT_PUBREC state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_8d8870",
+      "type": "stateDescription",
+      "stateId": "s_8d8870",
+      "title": "WAIT_PUBREL",
+      "content": "WAIT_PUBREL state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_319575",
+      "type": "stateDescription",
+      "stateId": "s_319575",
+      "title": "WAIT_PUBCOMP",
+      "content": "WAIT_PUBCOMP state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_be89e5",
+      "type": "stateDescription",
+      "stateId": "s_be89e5",
+      "title": "WAIT_SUBACK",
+      "content": "WAIT_SUBACK state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_c4f645",
+      "type": "stateDescription",
+      "stateId": "s_c4f645",
+      "title": "WAIT_UNSUBACK",
+      "content": "WAIT_UNSUBACK state description",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a67a23",
+      "type": "stateDescription",
+      "stateId": "s_a67a23",
+      "title": "WAIT_PINGRESP",
+      "content": "WAIT_PINGRESP state description",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_38233c",
+      "type": "stateDescription",
+      "stateId": "s_38233c",
+      "title": "DISCONNECTED",
+      "content": "DISCONNECTED state description",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_054432",
+      "type": "transitionDescription",
+      "transitionId": "t_054432",
+      "title": "Transition",
+      "content": "From: INIT\nTo: WAIT_CONNACK\nCondition: connect request",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_28b30f",
+      "type": "transitionDescription",
+      "transitionId": "t_28b30f",
+      "title": "Receive",
+      "content": "From: WAIT_CONNACK\nTo: CONNECTED\nCondition: connack received",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_c45c77",
+      "type": "transitionDescription",
+      "transitionId": "t_c45c77",
+      "title": "Receive",
+      "content": "From: WAIT_CONNACK\nTo: INIT\nCondition: connack with error received",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_2c5742",
+      "type": "transitionDescription",
+      "transitionId": "t_2c5742",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: WAIT_PUBACK\nCondition: publish qos 1 sent",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cf3598",
+      "type": "transitionDescription",
+      "transitionId": "t_cf3598",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: WAIT_PUBREC\nCondition: publish qos 2 sent",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_238b2f",
+      "type": "transitionDescription",
+      "transitionId": "t_238b2f",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: WAIT_SUBACK\nCondition: subscribe sent",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_bb4397",
+      "type": "transitionDescription",
+      "transitionId": "t_bb4397",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: WAIT_UNSUBACK\nCondition: unsubscribe sent",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7eee94",
+      "type": "transitionDescription",
+      "transitionId": "t_7eee94",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: WAIT_PINGRESP\nCondition: pingreq sent",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ef2645",
+      "type": "transitionDescription",
+      "transitionId": "t_ef2645",
+      "title": "Transition",
+      "content": "From: CONNECTED\nTo: DISCONNECTED\nCondition: disconnect sent",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_f134a2",
+      "type": "transitionDescription",
+      "transitionId": "t_f134a2",
+      "title": "Receive",
+      "content": "From: WAIT_PUBACK\nTo: CONNECTED\nCondition: puback received",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_f73a80",
+      "type": "transitionDescription",
+      "transitionId": "t_f73a80",
+      "title": "Receive",
+      "content": "From: WAIT_PUBREC\nTo: WAIT_PUBREL\nCondition: pubrec received",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_16361f",
+      "type": "transitionDescription",
+      "transitionId": "t_16361f",
+      "title": "Transition",
+      "content": "From: WAIT_PUBREL\nTo: WAIT_PUBCOMP\nCondition: pubrel sent",
+      "position": {
+        "row": 22,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cc0bfb",
+      "type": "transitionDescription",
+      "transitionId": "t_cc0bfb",
+      "title": "Receive",
+      "content": "From: WAIT_PUBCOMP\nTo: CONNECTED\nCondition: pubcomp received",
+      "position": {
+        "row": 23,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_6a3dad",
+      "type": "transitionDescription",
+      "transitionId": "t_6a3dad",
+      "title": "Receive",
+      "content": "From: WAIT_SUBACK\nTo: CONNECTED\nCondition: suback received",
+      "position": {
+        "row": 24,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_ad3e94",
+      "type": "transitionDescription",
+      "transitionId": "t_ad3e94",
+      "title": "Receive",
+      "content": "From: WAIT_UNSUBACK\nTo: CONNECTED\nCondition: unsuback received",
+      "position": {
+        "row": 25,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_4d6172",
+      "type": "transitionDescription",
+      "transitionId": "t_4d6172",
+      "title": "Receive",
+      "content": "From: WAIT_PINGRESP\nTo: CONNECTED\nCondition: pingresp received",
+      "position": {
+        "row": 26,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_d1a961",
+      "type": "transitionDescription",
+      "transitionId": "t_d1a961",
+      "title": "Transition",
+      "content": "From: DISCONNECTED\nTo: WAIT_CONNACK\nCondition: connect request",
+      "position": {
+        "row": 27,
+        "col": 0
+      }
+    }
+  ]
+}

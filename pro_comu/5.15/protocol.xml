@@ -3,7 +3,7 @@
     <message name="CONNECT" role="client">
         <constant type="B" length="1" value="0x10"/>
         <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
-        <constant type="B" length="4" value="0x00044D515454"/>
+        <constant type="B" length="6" value="0x00044D515454"/>
         <constant type="B" length="1" value="0x04"/>
         <variable type="B" length="1" field_role="connect_flags" value="0x02"/>
         <variable type="B" length="2" field_role="keep_alive" value="0x0000-0x003C"/>
@@ -17,11 +17,11 @@
         <variable type="B" length="1" field_role="return_code" value="0x00-0x05"/>
     </message>
     <message name="PUBLISH" role="client">
-        <constant type="B" length="1" value="0x30"/>
+        <constant type="B" length="1" value="0x32"/> <!-- QoS=1 -->
         <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
         <variable type="B" length="2" field_role="topic_length" value="0x000a"/>
         <variable type="B" length="10" field_role="topic_name" encoding="ascii" value="test/topic"/>
-        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF" encoding="optional" condition="qos>0"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF" encoding="hex" condition="qos>0"/>
         <variable type="B" length="1" field_role="payload" value="0x00-0xFF"/>
     </message>
     <message name="PUBACK" role="server">

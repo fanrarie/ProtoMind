@@ -1,0 +1,156 @@
+<IR>
+    <!-- Message Definitions -->
+    <message name="CONNECT" role="client">
+        <constant type="B" length="1" value="0x10"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <constant type="B" length="6" value="0x00044D515454"/>
+        <constant type="B" length="1" value="0x04"/>
+        <variable type="B" length="1" field_role="connect_flags" value="0x02"/>
+        <variable type="B" length="2" field_role="keep_alive" value="0x0000-0x003C"/>
+        <variable type="B" length="2" field_role="client_id_length" value="0x000e"/>
+        <variable type="B" length="14" field_role="client_id" encoding="ascii" value="test-client-id"/>
+    </message>
+    <message name="CONNACK" role="server">
+        <constant type="B" length="1" value="0x20"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="1" field_role="session_present" value="0x00-0x01"/>
+        <variable type="B" length="1" field_role="return_code" value="0x00-0x05"/>
+    </message>
+    <message name="PUBLISH" role="client">
+        <constant type="B" length="1" value="0x32"/> <!-- QoS=1 -->
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="topic_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_name" encoding="ascii" value="test/topic"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF" encoding="hex" condition="qos>0"/>
+        <variable type="B" length="1" field_role="payload" value="0x00-0xFF"/>
+    </message>
+    <message name="PUBACK" role="server">
+        <constant type="B" length="1" value="0x40"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBREC" role="server">
+        <constant type="B" length="1" value="0x50"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBREL" role="client">
+        <constant type="B" length="1" value="0x62"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBCOMP" role="server">
+        <constant type="B" length="1" value="0x70"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="SUBSCRIBE" role="client">
+        <constant type="B" length="1" value="0x82"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="2" field_role="topic_filter_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_filter" encoding="ascii" value="test/topic"/>
+        <variable type="B" length="1" field_role="qos" value="0x00-0x02"/>
+    </message>
+    <message name="SUBACK" role="server">
+        <constant type="B" length="1" value="0x90"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="1" field_role="return_code" value="0x00-0x02"/>
+    </message>
+    <message name="UNSUBSCRIBE" role="client">
+        <constant type="B" length="1" value="0xA2"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="2" field_role="topic_filter_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_filter" encoding="ascii" value="test/topic"/>
+    </message>
+    <message name="UNSUBACK" role="server">
+        <constant type="B" length="1" value="0xB0"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PINGREQ" role="client">
+        <constant type="B" length="1" value="0xC0"/>
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+    <message name="PINGRESP" role="server">
+        <constant type="B" length="1" value="0xD0"/>
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+    <message name="DISCONNECT" role="client">
+        <constant type="B" length="1" value="0xE0"/>
+        <constant type="B" length="1" field_role="remaining_length" value="0x00"/>
+    </message>
+
+    <!-- State Machine -->
+    <statemachine>
+        <INIT role="client">
+            <CONNECT role="client"/>
+        </INIT>
+        <CONNECT role="client">
+            <CONNACK role="server"/>
+        </CONNECT>
+        <CONNACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </CONNACK>
+        <SUBSCRIBE role="client">
+            <SUBACK role="server"/>
+        </SUBSCRIBE>
+        <SUBACK role="server">
+            <PUBLISH role="client"/>
+            <UNSUBSCRIBE role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+        </SUBACK>
+        <PUBLISH role="client">
+            <PUBACK role="server"/>
+            <PUBREC role="server"/>
+        </PUBLISH>
+        <PUBACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PUBACK>
+        <PUBREC role="server">
+            <PUBREL role="client"/>
+        </PUBREC>
+        <PUBREL role="client">
+            <PUBCOMP role="server"/>
+        </PUBREL>
+        <PUBCOMP role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PUBCOMP>
+        <PINGREQ role="client">
+            <PINGRESP role="server"/>
+        </PINGREQ>
+        <PINGRESP role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PINGRESP>
+        <UNSUBSCRIBE role="client">
+            <UNSUBACK role="server"/>
+        </UNSUBSCRIBE>
+        <UNSUBACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </UNSUBACK>
+        <DISCONNECT role="client"/>
+    </statemachine>
+</IR>

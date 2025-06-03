@@ -1,0 +1,48 @@
+<IR>
+    <!-- 客户端初始状态的虚拟报文 -->
+    <message name="INIT_STATE" role="client">
+        <constant type="B" length="1" value="0x00"/> <!-- 占位报文 -->
+    </message>
+    
+    <!-- 客户端发送的DNS查询报文 -->
+    <message name="DNS_QUERY" role="client">
+        <variable type="B" length="2" value="0x00-0xFFFF" field_role="id"/>
+        <constant type="B" length="2" value="0x0100"/> <!-- 标志位：递归查询 -->
+        <constant type="B" length="2" value="0x0001"/> <!-- 问题数：固定为1 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 回答资源记录数：0 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 授权资源记录数：0 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 附加资源记录数：0 -->
+        <field field_role="query">
+            <variable type="B" length="0:255" encoding="dns-name" field_role="domain" value="localhost"/>
+            <constant type="B" length="2" value="0x0001"/> <!-- QTYPE：A记录 -->
+            <constant type="B" length="2" value="0x0001"/> <!-- QCLASS：IN -->
+        </field>
+    </message>
+    
+    <!-- 服务器返回的DNS响应报文 -->
+    <message name="DNS_RESPONSE" role="server">
+        <variable type="B" length="2" value="0x00-0xFFFF" field_role="id"/> <!-- 标识符 -->
+        <variable type="B" length="2" scope="0x8000-0x8FFF" value="0x8180" field_role="flags"/> <!-- 标志位 -->
+        <variable type="B" length="2" value="0x0001"/> <!-- 问题数：固定为1 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 回答资源记录数 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 授权资源记录数 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 附加资源记录数 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="query"/> <!-- 查询问题部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="answer"/> <!-- 回答资源记录部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="authority"/> <!-- 授权资源记录部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="additional"/> <!-- 附加资源记录部分 -->
+    </message>
+    
+    <!-- 状态机 -->
+    <statemachine>
+        <INIT_STATE role="client">
+            <DNS_QUERY role="client" condition="客户端发起DNS查询请求"/>
+        </INIT_STATE>
+        <DNS_QUERY role="client">
+            <DNS_RESPONSE role="server" condition="服务器返回DNS响应"/>
+        </DNS_QUERY>
+        <DNS_RESPONSE role="server">
+            <DNS_QUERY role="client" condition="客户端继续发起新的DNS查询请求"/>
+        </DNS_RESPONSE>
+    </statemachine>
+</IR>

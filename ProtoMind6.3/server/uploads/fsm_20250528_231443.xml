@@ -1,0 +1,121 @@
+<IR>
+    <!-- 初始状态的虚拟报文 -->
+    <message name="INIT_STATE" role="client">
+        <constant type="B" length="1" value="0x00"/> <!-- 占位报文 -->
+    </message>
+
+    <!-- 主设备：读线圈请求 (功能码 01) -->
+    <message name="READ_COILS_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x01" field_role="function_code"/> <!-- 功能码 01 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 起始线圈地址 -->
+        <variable type="B" length="2" field_role="quantity" value="0x0001-0x07D0"/> <!-- 线圈数量 1-2000 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：读线圈响应 (功能码 01) -->
+    <message name="READ_COILS_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x01" field_role="function_code"/> <!-- 功能码 01 -->
+        <variable type="B" length="1" field_role="byte_count" value="0x01-0xFF"/> <!-- 数据字节数 -->
+        <variable type="B" length="1:250" field_role="coil_status" value="0x00-0xFF"/> <!-- 线圈状态数据 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 主设备：读保持寄存器请求 (功能码 03) -->
+    <message name="READ_HOLDING_REGISTERS_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x03" field_role="function_code"/> <!-- 功能码 03 -->
+        <variable type="B" length="2" field_role="register_address" value="0x0000-0xFFFF"/> <!-- 起始寄存器地址 -->
+        <variable type="B" length="2" field_role="quantity" value="0x0001-0x007D"/> <!-- 寄存器数量 1-125 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：读保持寄存器响应 (功能码 03) -->
+    <message name="READ_HOLDING_REGISTERS_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x03" field_role="function_code"/> <!-- 功能码 03 -->
+        <variable type="B" length="1" field_role="byte_count" value="0x02-0xFA"/> <!-- 数据字节数 (2*寄存器数) -->
+        <variable type="B" length="2:250" field_role="register_values" value="0x00-0xFF"/> <!-- 寄存器值 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 主设备：写单个线圈请求 (功能码 05) -->
+    <message name="WRITE_SINGLE_COIL_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x05" field_role="function_code"/> <!-- 功能码 05 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 线圈地址 -->
+        <variable type="B" length="2" field_role="coil_value" value="0x0000-0xFF00"/> <!-- 线圈值 0x0000 (OFF) 或 0xFF00 (ON) -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：写单个线圈响应 (功能码 05) -->
+    <message name="WRITE_SINGLE_COIL_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x05" field_role="function_code"/> <!-- 功能码 05 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 线圈地址 -->
+        <variable type="B" length="2" field_role="coil_value" value="0x0000-0xFF00"/> <!-- 线圈值 0x0000 (OFF) 或 0xFF00 (ON) -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：异常响应 -->
+    <message name="EXCEPTION_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <variable type="B" length="1" field_role="function_code" value="0x81-0xFF"/> <!-- 异常功能码 (高位设为1) -->
+        <variable type="B" length="1" field_role="exception_code" value="0x01-0xFF"/> <!-- 异常码 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 状态机 -->
+    <statemachine>
+        <!-- 初始状态 -->
+        <INIT_STATE role="client">
+            <READ_COILS_REQUEST role="client" condition="主设备发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备发起写单个线圈请求"/>
+        </INIT_STATE>
+
+        <!-- 读线圈请求 -->
+        <READ_COILS_REQUEST role="client">
+            <READ_COILS_RESPONSE role="server" condition="从设备返回读线圈响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </READ_COILS_REQUEST>
+
+        <!-- 读保持寄存器请求 -->
+        <READ_HOLDING_REGISTERS_REQUEST role="client">
+            <READ_HOLDING_REGISTERS_RESPONSE role="server" condition="从设备返回读保持寄存器响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </READ_HOLDING_REGISTERS_REQUEST>
+
+        <!-- 写单个线圈请求 -->
+        <WRITE_SINGLE_COIL_REQUEST role="client">
+            <WRITE_SINGLE_COIL_RESPONSE role="server" condition="从设备返回写单个线圈响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </WRITE_SINGLE_COIL_REQUEST>
+
+        <!-- 响应状态返回初始状态 -->
+        <READ_COILS_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </READ_COILS_RESPONSE>
+
+        <READ_HOLDING_REGISTERS_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </READ_HOLDING_REGISTERS_RESPONSE>
+
+        <WRITE_SINGLE_COIL_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </WRITE_SINGLE_COIL_RESPONSE>
+
+        <EXCEPTION_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </EXCEPTION_RESPONSE>
+    </statemachine>
+</IR>

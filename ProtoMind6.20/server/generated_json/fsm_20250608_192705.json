@@ -1,0 +1,860 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "createdAt": "2025-06-08T11:27:05.497983",
+    "editor": "FSM Visualizer"
+  },
+  "layout": {
+    "mainCanvas": {
+      "width": 400,
+      "height": 500
+    },
+    "panelCanvas": {
+      "x": 400,
+      "width": 200,
+      "height": 500
+    }
+  },
+  "states": [
+    {
+      "id": "s_6d4b85",
+      "type": "state",
+      "label": "INI",
+      "x": 77.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#a7d7a7",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "circle"
+      },
+      "properties": {
+        "fullName": "INIT_STATE",
+        "description": "INIT_STATE state"
+      }
+    },
+    {
+      "id": "s_c1a7c1",
+      "type": "state",
+      "label": "REA",
+      "x": 177.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "READ_COILS_REQUEST",
+        "description": "READ_COILS_REQUEST state"
+      }
+    },
+    {
+      "id": "s_d5548e",
+      "type": "state",
+      "label": "REA",
+      "x": 277.5,
+      "y": 42.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "READ_HOLDING_REGISTERS_REQUEST",
+        "description": "READ_HOLDING_REGISTERS_REQUEST state"
+      }
+    },
+    {
+      "id": "s_af1795",
+      "type": "state",
+      "label": "WRI",
+      "x": 77.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WRITE_SINGLE_COIL_REQUEST",
+        "description": "WRITE_SINGLE_COIL_REQUEST state"
+      }
+    },
+    {
+      "id": "s_074260",
+      "type": "state",
+      "label": "REA",
+      "x": 177.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "READ_COILS_RESPONSE",
+        "description": "READ_COILS_RESPONSE state"
+      }
+    },
+    {
+      "id": "s_2b20f2",
+      "type": "state",
+      "label": "REA",
+      "x": 277.5,
+      "y": 167.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "READ_HOLDING_REGISTERS_RESPONSE",
+        "description": "READ_HOLDING_REGISTERS_RESPONSE state"
+      }
+    },
+    {
+      "id": "s_f77caa",
+      "type": "state",
+      "label": "WRI",
+      "x": 77.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "WRITE_SINGLE_COIL_RESPONSE",
+        "description": "WRITE_SINGLE_COIL_RESPONSE state"
+      }
+    },
+    {
+      "id": "s_a72f8e",
+      "type": "state",
+      "label": "EXC",
+      "x": 177.5,
+      "y": 292.5,
+      "width": 45,
+      "height": 35,
+      "style": {
+        "fillColor": "#d4e6f1",
+        "borderColor": "#3a7ca5",
+        "textColor": "#2f2f2f",
+        "fontSize": 8,
+        "shape": "roundrect"
+      },
+      "properties": {
+        "fullName": "EXCEPTION_RESPONSE",
+        "description": "EXCEPTION_RESPONSE state"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t_3e0980",
+      "type": "transition",
+      "from": "s_6d4b85",
+      "to": "s_c1a7c1",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备发起读线圈请求"
+      }
+    },
+    {
+      "id": "t_e0f4fa",
+      "type": "transition",
+      "from": "s_6d4b85",
+      "to": "s_d5548e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备发起读保持寄存器请求"
+      }
+    },
+    {
+      "id": "t_edff0f",
+      "type": "transition",
+      "from": "s_6d4b85",
+      "to": "s_af1795",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备发起写单个线圈请求"
+      }
+    },
+    {
+      "id": "t_fd6246",
+      "type": "transition",
+      "from": "s_c1a7c1",
+      "to": "s_074260",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回读线圈响应"
+      }
+    },
+    {
+      "id": "t_a79b2b",
+      "type": "transition",
+      "from": "s_c1a7c1",
+      "to": "s_a72f8e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回异常响应"
+      }
+    },
+    {
+      "id": "t_7f8132",
+      "type": "transition",
+      "from": "s_d5548e",
+      "to": "s_2b20f2",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回读保持寄存器响应"
+      }
+    },
+    {
+      "id": "t_99ef62",
+      "type": "transition",
+      "from": "s_d5548e",
+      "to": "s_a72f8e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回异常响应"
+      }
+    },
+    {
+      "id": "t_728713",
+      "type": "transition",
+      "from": "s_af1795",
+      "to": "s_f77caa",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回写单个线圈响应"
+      }
+    },
+    {
+      "id": "t_b01e23",
+      "type": "transition",
+      "from": "s_af1795",
+      "to": "s_a72f8e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "从设备返回异常响应"
+      }
+    },
+    {
+      "id": "t_9c2b0d",
+      "type": "transition",
+      "from": "s_074260",
+      "to": "s_c1a7c1",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读线圈请求"
+      }
+    },
+    {
+      "id": "t_b61a5a",
+      "type": "transition",
+      "from": "s_074260",
+      "to": "s_d5548e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读保持寄存器请求"
+      }
+    },
+    {
+      "id": "t_008b8a",
+      "type": "transition",
+      "from": "s_074260",
+      "to": "s_af1795",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起写单个线圈请求"
+      }
+    },
+    {
+      "id": "t_627ff1",
+      "type": "transition",
+      "from": "s_2b20f2",
+      "to": "s_c1a7c1",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读线圈请求"
+      }
+    },
+    {
+      "id": "t_be536e",
+      "type": "transition",
+      "from": "s_2b20f2",
+      "to": "s_d5548e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读保持寄存器请求"
+      }
+    },
+    {
+      "id": "t_424aa5",
+      "type": "transition",
+      "from": "s_2b20f2",
+      "to": "s_af1795",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起写单个线圈请求"
+      }
+    },
+    {
+      "id": "t_1da6df",
+      "type": "transition",
+      "from": "s_f77caa",
+      "to": "s_c1a7c1",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读线圈请求"
+      }
+    },
+    {
+      "id": "t_cbcbb7",
+      "type": "transition",
+      "from": "s_f77caa",
+      "to": "s_d5548e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读保持寄存器请求"
+      }
+    },
+    {
+      "id": "t_fe37c7",
+      "type": "transition",
+      "from": "s_f77caa",
+      "to": "s_af1795",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起写单个线圈请求"
+      }
+    },
+    {
+      "id": "t_9d458e",
+      "type": "transition",
+      "from": "s_a72f8e",
+      "to": "s_c1a7c1",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读线圈请求"
+      }
+    },
+    {
+      "id": "t_7ae2be",
+      "type": "transition",
+      "from": "s_a72f8e",
+      "to": "s_d5548e",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起读保持寄存器请求"
+      }
+    },
+    {
+      "id": "t_400747",
+      "type": "transition",
+      "from": "s_a72f8e",
+      "to": "s_af1795",
+      "label": "→",
+      "style": {
+        "lineColor": "#5d5d5d",
+        "lineWidth": 1.2,
+        "fontSize": 7,
+        "textColor": "#333333"
+      },
+      "properties": {
+        "fullAction": "Transition",
+        "condition": "主设备继续发起写单个线圈请求"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "desc_s_6d4b85",
+      "type": "stateDescription",
+      "stateId": "s_6d4b85",
+      "title": "INIT_STATE",
+      "content": "INIT_STATE state description",
+      "position": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_c1a7c1",
+      "type": "stateDescription",
+      "stateId": "s_c1a7c1",
+      "title": "READ_COILS_REQUEST",
+      "content": "READ_COILS_REQUEST state description",
+      "position": {
+        "row": 1,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_d5548e",
+      "type": "stateDescription",
+      "stateId": "s_d5548e",
+      "title": "READ_HOLDING_REGISTERS_REQUEST",
+      "content": "READ_HOLDING_REGISTERS_REQUEST state description",
+      "position": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_af1795",
+      "type": "stateDescription",
+      "stateId": "s_af1795",
+      "title": "WRITE_SINGLE_COIL_REQUEST",
+      "content": "WRITE_SINGLE_COIL_REQUEST state description",
+      "position": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_074260",
+      "type": "stateDescription",
+      "stateId": "s_074260",
+      "title": "READ_COILS_RESPONSE",
+      "content": "READ_COILS_RESPONSE state description",
+      "position": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_2b20f2",
+      "type": "stateDescription",
+      "stateId": "s_2b20f2",
+      "title": "READ_HOLDING_REGISTERS_RESPONSE",
+      "content": "READ_HOLDING_REGISTERS_RESPONSE state description",
+      "position": {
+        "row": 5,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_f77caa",
+      "type": "stateDescription",
+      "stateId": "s_f77caa",
+      "title": "WRITE_SINGLE_COIL_RESPONSE",
+      "content": "WRITE_SINGLE_COIL_RESPONSE state description",
+      "position": {
+        "row": 6,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_s_a72f8e",
+      "type": "stateDescription",
+      "stateId": "s_a72f8e",
+      "title": "EXCEPTION_RESPONSE",
+      "content": "EXCEPTION_RESPONSE state description",
+      "position": {
+        "row": 7,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_3e0980",
+      "type": "transitionDescription",
+      "transitionId": "t_3e0980",
+      "title": "Transition",
+      "content": "From: INIT_STATE\nTo: READ_COILS_REQUEST\nCondition: 主设备发起读线圈请求",
+      "position": {
+        "row": 8,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_e0f4fa",
+      "type": "transitionDescription",
+      "transitionId": "t_e0f4fa",
+      "title": "Transition",
+      "content": "From: INIT_STATE\nTo: READ_HOLDING_REGISTERS_REQUEST\nCondition: 主设备发起读保持寄存器请求",
+      "position": {
+        "row": 9,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_edff0f",
+      "type": "transitionDescription",
+      "transitionId": "t_edff0f",
+      "title": "Transition",
+      "content": "From: INIT_STATE\nTo: WRITE_SINGLE_COIL_REQUEST\nCondition: 主设备发起写单个线圈请求",
+      "position": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_fd6246",
+      "type": "transitionDescription",
+      "transitionId": "t_fd6246",
+      "title": "Transition",
+      "content": "From: READ_COILS_REQUEST\nTo: READ_COILS_RESPONSE\nCondition: 从设备返回读线圈响应",
+      "position": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_a79b2b",
+      "type": "transitionDescription",
+      "transitionId": "t_a79b2b",
+      "title": "Transition",
+      "content": "From: READ_COILS_REQUEST\nTo: EXCEPTION_RESPONSE\nCondition: 从设备返回异常响应",
+      "position": {
+        "row": 12,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7f8132",
+      "type": "transitionDescription",
+      "transitionId": "t_7f8132",
+      "title": "Transition",
+      "content": "From: READ_HOLDING_REGISTERS_REQUEST\nTo: READ_HOLDING_REGISTERS_RESPONSE\nCondition: 从设备返回读保持寄存器响应",
+      "position": {
+        "row": 13,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_99ef62",
+      "type": "transitionDescription",
+      "transitionId": "t_99ef62",
+      "title": "Transition",
+      "content": "From: READ_HOLDING_REGISTERS_REQUEST\nTo: EXCEPTION_RESPONSE\nCondition: 从设备返回异常响应",
+      "position": {
+        "row": 14,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_728713",
+      "type": "transitionDescription",
+      "transitionId": "t_728713",
+      "title": "Transition",
+      "content": "From: WRITE_SINGLE_COIL_REQUEST\nTo: WRITE_SINGLE_COIL_RESPONSE\nCondition: 从设备返回写单个线圈响应",
+      "position": {
+        "row": 15,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_b01e23",
+      "type": "transitionDescription",
+      "transitionId": "t_b01e23",
+      "title": "Transition",
+      "content": "From: WRITE_SINGLE_COIL_REQUEST\nTo: EXCEPTION_RESPONSE\nCondition: 从设备返回异常响应",
+      "position": {
+        "row": 16,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_9c2b0d",
+      "type": "transitionDescription",
+      "transitionId": "t_9c2b0d",
+      "title": "Transition",
+      "content": "From: READ_COILS_RESPONSE\nTo: READ_COILS_REQUEST\nCondition: 主设备继续发起读线圈请求",
+      "position": {
+        "row": 17,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_b61a5a",
+      "type": "transitionDescription",
+      "transitionId": "t_b61a5a",
+      "title": "Transition",
+      "content": "From: READ_COILS_RESPONSE\nTo: READ_HOLDING_REGISTERS_REQUEST\nCondition: 主设备继续发起读保持寄存器请求",
+      "position": {
+        "row": 18,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_008b8a",
+      "type": "transitionDescription",
+      "transitionId": "t_008b8a",
+      "title": "Transition",
+      "content": "From: READ_COILS_RESPONSE\nTo: WRITE_SINGLE_COIL_REQUEST\nCondition: 主设备继续发起写单个线圈请求",
+      "position": {
+        "row": 19,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_627ff1",
+      "type": "transitionDescription",
+      "transitionId": "t_627ff1",
+      "title": "Transition",
+      "content": "From: READ_HOLDING_REGISTERS_RESPONSE\nTo: READ_COILS_REQUEST\nCondition: 主设备继续发起读线圈请求",
+      "position": {
+        "row": 20,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_be536e",
+      "type": "transitionDescription",
+      "transitionId": "t_be536e",
+      "title": "Transition",
+      "content": "From: READ_HOLDING_REGISTERS_RESPONSE\nTo: READ_HOLDING_REGISTERS_REQUEST\nCondition: 主设备继续发起读保持寄存器请求",
+      "position": {
+        "row": 21,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_424aa5",
+      "type": "transitionDescription",
+      "transitionId": "t_424aa5",
+      "title": "Transition",
+      "content": "From: READ_HOLDING_REGISTERS_RESPONSE\nTo: WRITE_SINGLE_COIL_REQUEST\nCondition: 主设备继续发起写单个线圈请求",
+      "position": {
+        "row": 22,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_1da6df",
+      "type": "transitionDescription",
+      "transitionId": "t_1da6df",
+      "title": "Transition",
+      "content": "From: WRITE_SINGLE_COIL_RESPONSE\nTo: READ_COILS_REQUEST\nCondition: 主设备继续发起读线圈请求",
+      "position": {
+        "row": 23,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_cbcbb7",
+      "type": "transitionDescription",
+      "transitionId": "t_cbcbb7",
+      "title": "Transition",
+      "content": "From: WRITE_SINGLE_COIL_RESPONSE\nTo: READ_HOLDING_REGISTERS_REQUEST\nCondition: 主设备继续发起读保持寄存器请求",
+      "position": {
+        "row": 24,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_fe37c7",
+      "type": "transitionDescription",
+      "transitionId": "t_fe37c7",
+      "title": "Transition",
+      "content": "From: WRITE_SINGLE_COIL_RESPONSE\nTo: WRITE_SINGLE_COIL_REQUEST\nCondition: 主设备继续发起写单个线圈请求",
+      "position": {
+        "row": 25,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_9d458e",
+      "type": "transitionDescription",
+      "transitionId": "t_9d458e",
+      "title": "Transition",
+      "content": "From: EXCEPTION_RESPONSE\nTo: READ_COILS_REQUEST\nCondition: 主设备继续发起读线圈请求",
+      "position": {
+        "row": 26,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_7ae2be",
+      "type": "transitionDescription",
+      "transitionId": "t_7ae2be",
+      "title": "Transition",
+      "content": "From: EXCEPTION_RESPONSE\nTo: READ_HOLDING_REGISTERS_REQUEST\nCondition: 主设备继续发起读保持寄存器请求",
+      "position": {
+        "row": 27,
+        "col": 0
+      }
+    },
+    {
+      "id": "desc_t_400747",
+      "type": "transitionDescription",
+      "transitionId": "t_400747",
+      "title": "Transition",
+      "content": "From: EXCEPTION_RESPONSE\nTo: WRITE_SINGLE_COIL_REQUEST\nCondition: 主设备继续发起写单个线圈请求",
+      "position": {
+        "row": 28,
+        "col": 0
+      }
+    }
+  ]
+}

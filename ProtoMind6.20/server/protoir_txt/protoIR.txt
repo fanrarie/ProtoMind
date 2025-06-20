@@ -1,0 +1,63 @@
+基本定义
+protoIR是一个利用XML定义的标记语言，它可以用于描述协议的语法规范。
+在结构上protoIR以IR作为顶层元素。IR内有两种类型的子元素：
+1. 用于描述报文语法结构的message元素。因为报文的类型有很多，所以可以同时存在多个不同的message节点。
+2. 用于描述协议状态变换的statemachine元素。因为描绘协议状态空间的状态机只有一个，所以只能有一个statemachine节点。
+protolR的基本结构如下：
+<IR>
+    <message></message>
+    <message></message> 
+    ...
+    <statemachine></statemachine>
+</IR>
+message元素
+用途：描述协议报文的语法结构
+message的属性有：
+• name：指明当前message元素的名称，也就是该元素对应的报文的类型。
+• role：指定报文的发送者角色，就是当前发报文报文应该是客户端还是服务器，取值为'client'或者'server'。
+message的子元素有：
+• constant：常量元素，用于表示报文文本中固定不变的文本。
+• variable：变量元素，用于表示报文文本中不固定的值。
+constant元素
+用途：表示当前报文文本中固定不变的文本
+constant的属性有：
+• type：可以设为B或是b，分别表示常量值的基本单位是字节或是比特。
+• length：表示以相对应基本单位计数时常量值的长度。
+• value：必选，写明常量值的真实数值，可以用字符串或十六进制数的形式表示字节常量值，用二进制数的形式表示比特常量值。
+例如：
+<!-- 表示一个值为404，长度3的字节常量 -->
+<constant type="B" length="3" value="404"/>
+
+<!-- 表示一个值为0x134F，长度4的比特常量 -->
+<constant type="b" length="4" value="0x134F"/>
+
+<!-- 表示一个值为0b101，长度3的比特常量 -->
+<constant type="b" length="3" value="0b101"/>
+variable元素
+用途：表示报文文本中可以改变的变量值
+variable的属性有：
+• type：可以设为 B（字节）或 b（比特），分别表示变量值的基本单位。
+• length：表示以对应基本单位计数时变量值的长度，<variable> 元素的 length 字段支持固定值（如 1）或范围值（如 1:4）。
+• value：必选，表示变量的取值，十六进制或字符表示。value 可以是具体值（如 0x02）、范围（如 0x0001-0xFFFF）或编码后的字符串。当 value 提供为长字符串（如超过 10 个字符）时，生成器应使用简短的示例值（如 "client123" 或 "test/topic"），而不是完整的字符集或范围。 
+• encoding：指定字节变量的编码格式，仅对 type="B" 有效，可取值包括 ascii 或 hex。
+• field_role：指定变量在报文中的字段角色（如 connect_flags、packet_id），用于标识变量的语义，identifier都使用id表示，比如packet_id
+• condition：指定变量包含的前提条件（如 qos>0）。
+
+例如：
+<!-- 表示mqtt协议的connect_flags字段 -->
+<variable type="B" length="1" field_role="connect_flags" value="0x02"/>
+
+<!-- 表示mqtt协议的client_id_length和client_id段 -->
+<variable type="B" length="2" field_role="client_id_length" value="0x000e"/>
+
+<!-- 表示一个值为"test/topic"，长度10的字节变量，字段角色为topic_name，使用ascii编码 -->
+<variable type="B" length="10" field_role="topic_name" encoding="ascii" value="test/topic"/>
+
+<!-- 表示一个值范围为0x0001-0xFFFF，长度2的字节变量，字段角色为packet_id，使用hex编码，条件为qos>0 -->
+<variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF" encoding="hex" condition="qos>0"/>
+statemachine元素
+用途：表示不同报文中可能的转移关系
+statemachine中的不同元素对应一个message元素，state标签的值就是对应message元素name属性的值。state元素的子元素表示当前状态所有可能的下一个状态。整个statemachine可以用于描绘协议状态空间中的状态转移关系。
+state元素的子元素的属性有：
+• condition：指明转移到下一个状态的前提条件（如 qos>0）。若未指定 condition，则随机选取一个状态转移。
+• role：指定状态（消息）的发送者角色，取值为 'client' 或 'server'。

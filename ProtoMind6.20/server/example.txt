@@ -1,0 +1,362 @@
+这是一个mqtt3.1.1生成的完整的中间文件，在实际生成时可以直接使用：
+<IR>
+    <!-- Message Definitions-->
+    <message name="CONNECT" role="client">
+        <constant type="B" length="1" value="0x10"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <constant type="B" length="6" value="0x00044D515454"/>
+        <constant type="B" length="1" value="0x04"/>
+        <variable type="B" length="1" field_role="connect_flags" value="0x02"/>
+        <variable type="B" length="2" field_role="keep_alive" value="0x0000-0x003C"/>
+        <variable type="B" length="2" field_role="client_id_length" value="0x000e"/>
+        <variable type="B" length="14" field_role="client_id" encoding="ascii" value="test-client-id"/>
+    </message>
+    <message name="CONNACK" role="server">
+        <constant type="B" length="1" value="0x20"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="1" field_role="session_present" value="0x00-0x01"/>
+        <variable type="B" length="1" field_role="return_code" value="0x00-0x05"/>
+    </message>
+    <message name="PUBLISH" role="client">
+        <constant type="B" length="1" value="0x32"/> <!-- QoS=1 -->
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="topic_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_name" encoding="ascii" value="test/topic"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF" encoding="hex" condition="qos>0"/>
+        <variable type="B" length="1" field_role="payload" value="0x00-0xFF"/>
+    </message>
+    <message name="PUBACK" role="server">
+        <constant type="B" length="1" value="0x40"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBREC" role="server">
+        <constant type="B" length="1" value="0x50"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBREL" role="client">
+        <constant type="B" length="1" value="0x62"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PUBCOMP" role="server">
+        <constant type="B" length="1" value="0x70"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="SUBSCRIBE" role="client">
+        <constant type="B" length="1" value="0x82"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="2" field_role="topic_filter_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_filter" encoding="ascii" value="test/topic"/>
+        <variable type="B" length="1" field_role="qos" value="0x00-0x02"/>
+    </message>
+    <message name="SUBACK" role="server">
+        <constant type="B" length="1" value="0x90"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="1" field_role="return_code" value="0x00-0x02"/>
+    </message>
+    <message name="UNSUBSCRIBE" role="client">
+        <constant type="B" length="1" value="0xA2"/>
+        <variable type="B" length="1:4" field_role="remaining_length" value="0x00-0xFF"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+        <variable type="B" length="2" field_role="topic_filter_length" value="0x000a"/>
+        <variable type="B" length="10" field_role="topic_filter" encoding="ascii" value="test/topic"/>
+    </message>
+    <message name="UNSUBACK" role="server">
+        <constant type="B" length="1" value="0xB0"/>
+        <constant type="B" length="1" value="0x02"/>
+        <variable type="B" length="2" field_role="packet_id" value="0x0001-0xFFFF"/>
+    </message>
+    <message name="PINGREQ" role="client">
+        <constant type="B" length="1" value="0xC0"/>
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+    <message name="PINGRESP" role="server">
+        <constant type="B" length="1" value="0xD0"/>
+        <constant type="B" length="1" value="0x00"/>
+    </message>
+    <message name="DISCONNECT" role="client">
+        <constant type="B" length="1" value="0xE0"/>
+        <constant type="B" length="1" field_role="remaining_length" value="0x00"/>
+    </message>
+
+    <!-- State Machine -->
+    <statemachine>
+        <INIT role="client">
+            <CONNECT role="client"/>
+        </INIT>
+        <CONNECT role="client">
+            <CONNACK role="server"/>
+        </CONNECT>
+        <CONNACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </CONNACK>
+        <SUBSCRIBE role="client">
+            <SUBACK role="server"/>
+        </SUBSCRIBE>
+        <SUBACK role="server">
+            <PUBLISH role="client"/>
+            <UNSUBSCRIBE role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+        </SUBACK>
+        <PUBLISH role="client">
+            <PUBACK role="server"/>
+            <PUBREC role="server"/>
+        </PUBLISH>
+        <PUBACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PUBACK>
+        <PUBREC role="server">
+            <PUBREL role="client"/>
+        </PUBREC>
+        <PUBREL role="client">
+            <PUBCOMP role="server"/>
+        </PUBREL>
+        <PUBCOMP role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PUBCOMP>
+        <PINGREQ role="client">
+            <PINGRESP role="server"/>
+        </PINGREQ>
+        <PINGRESP role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </PINGRESP>
+        <UNSUBSCRIBE role="client">
+            <UNSUBACK role="server"/>
+        </UNSUBSCRIBE>
+        <UNSUBACK role="server">
+            <SUBSCRIBE role="client"/>
+            <PUBLISH role="client"/>
+            <PINGREQ role="client"/>
+            <DISCONNECT role="client"/>
+            <UNSUBSCRIBE role="client"/>
+        </UNSUBACK>
+        <DISCONNECT role="client"/>
+    </statemachine>
+</IR>
+
+例如一个简化的mqtt协议的statemachine可以写成如下格式：
+<statemachine>
+    <INIT role="client">
+        <CONNECT role="client"/>
+    </INIT>
+    <CONNECT role="client">
+        <CONNACK role="server"/>
+    </CONNECT>
+    <CONNACK role="server">
+        <SUBSCRIBE role="client"/>
+        <PUBLISH role="client"/>
+        <PINGREQ role="client"/>
+        <DISCONNECT role="client"/>
+        <UNSUBSCRIBE role="client"/>
+    </CONNACK>
+    <SUBSCRIBE role="client">
+        <SUBACK role="server"/>
+    </SUBSCRIBE>
+    <SUBACK role="server">
+        <PUBLISH role="client"/>
+        <UNSUBSCRIBE role="client"/>
+        <PINGREQ role="client"/>
+        <DISCONNECT role="client"/>
+    </SUBACK>
+    <PUBLISH role="client">
+        <PUBACK role="server"/>
+        <PUBREC role="server"/>
+    </PUBLISH>
+    <!-- 其他状态转移... -->
+    <DISCONNECT role="client"/>
+</statemachine>
+
+例如一个DNS(RFC1035)的完整中间文件如下：
+<IR>
+    <!-- 客户端初始状态的虚拟报文 -->
+    <message name="INIT_STATE" role="client">
+        <constant type="B" length="1" value="0x00"/> <!-- 占位报文 --> 
+    </message>
+    
+    <!-- 客户端发送的DNS查询报文 -->
+    <message name="DNS_QUERY" role="client">
+        <variable type="B" length="2" value="0x00-0xFFFF" field_role="id"/>
+        <constant type="B" length="2" value="0x0100"/> <!-- 标志位：递归查询 -->
+        <constant type="B" length="2" value="0x0001"/> <!-- 问题数：固定为1 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 回答资源记录数：0 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 授权资源记录数：0 -->
+        <constant type="B" length="2" value="0x0000"/> <!-- 附加资源记录数：0 -->
+        <field field_role="query">
+            <variable type="B" length="0:255" encoding="dns-name" field_role="domain" value="localhost"/>
+            <constant type="B" length="2" value="0x0001"/> <!-- QTYPE：A记录 -->
+            <constant type="B" length="2" value="0x0001"/> <!-- QCLASS：IN -->
+        </field>
+    </message>
+    
+    <!-- 服务器返回的DNS响应报文 -->
+    <message name="DNS_RESPONSE" role="server">
+        <variable type="B" length="2" value="0x00-0xFFFF" field_role="id"/> <!-- 标识符 -->
+        <variable type="B" length="2" scope="0x8000-0x8FFF" value="0x8180" field_role="flags"/> <!-- 标志位 -->
+        <variable type="B" length="2" value="0x0001"/> <!-- 问题数：固定为1 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 回答资源记录数 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 授权资源记录数 -->
+        <variable type="B" length="2" value="0x0000-0xFFFF"/> <!-- 附加资源记录数 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="query"/> <!-- 查询问题部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="answer"/> <!-- 回答资源记录部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="authority"/> <!-- 授权资源记录部分 -->
+        <variable type="B" length="0:65535" value="0x00-0xFF" field_role="additional"/> <!-- 附加资源记录部分 -->
+    </message>
+    
+    <!-- 状态机 -->
+    <statemachine>
+        <INIT_STATE role="client">
+            <DNS_QUERY role="client" condition="客户端发起DNS查询请求"/>
+        </INIT_STATE>
+        <DNS_QUERY role="client">
+            <DNS_RESPONSE role="server" condition="服务器返回DNS响应"/>
+        </DNS_QUERY>
+        <DNS_RESPONSE role="server">
+            <DNS_QUERY role="client" condition="客户端继续发起新的DNS查询请求"/>
+        </DNS_RESPONSE>
+    </statemachine>
+</IR>
+
+例如一个modbus的完整中间文件如下：
+<IR>
+    <!-- 初始状态的虚拟报文 -->
+    <message name="INIT_STATE" role="client">
+        <constant type="B" length="1" value="0x00"/> <!-- 占位报文 -->
+    </message>
+
+    <!-- 主设备：读线圈请求 (功能码 01) -->
+    <message name="READ_COILS_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x01" field_role="function_code"/> <!-- 功能码 01 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 起始线圈地址 -->
+        <variable type="B" length="2" field_role="quantity" value="0x0001-0x07D0"/> <!-- 线圈数量 1-2000 --> 
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：读线圈响应 (功能码 01) -->
+    <message name="READ_COILS_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x01" field_role="function_code"/> <!-- 功能码 01 -->
+        <variable type="B" length="1" field_role="byte_count" value="0x01-0xFF"/> <!-- 数据字节数 -->
+        <variable type="B" length="1:250" field_role="coil_status" value="0x00-0xFF"/> <!-- 线圈状态数据 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 主设备：读保持寄存器请求 (功能码 03) -->
+    <message name="READ_HOLDING_REGISTERS_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x03" field_role="function_code"/> <!-- 功能码 03 -->
+        <variable type="B" length="2" field_role="register_address" value="0x0000-0xFFFF"/> <!-- 起始寄存器地址 -->
+        <variable type="B" length="2" field_role="quantity" value="0x0001-0x007D"/> <!-- 寄存器数量 1-125 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：读保持寄存器响应 (功能码 03) -->
+    <message name="READ_HOLDING_REGISTERS_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x03" field_role="function_code"/> <!-- 功能码 03 -->
+        <variable type="B" length="1" field_role="byte_count" value="0x02-0xFA"/> <!-- 数据字节数 (2*寄存器数) -->
+        <variable type="B" length="2:250" field_role="register_values" value="0x00-0xFF"/> <!-- 寄存器值 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 主设备：写单个线圈请求 (功能码 05) -->
+    <message name="WRITE_SINGLE_COIL_REQUEST" role="client">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x05" field_role="function_code"/> <!-- 功能码 05 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 线圈地址 -->
+        <variable type="B" length="2" field_role="coil_value" value="0x0000-0xFF00"/> <!-- 线圈值 0x0000 (OFF) 或 0xFF00 (ON) -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：写单个线圈响应 (功能码 05) -->
+    <message name="WRITE_SINGLE_COIL_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <constant type="B" length="1" value="0x05" field_role="function_code"/> <!-- 功能码 05 -->
+        <variable type="B" length="2" field_role="coil_address" value="0x0000-0xFFFF"/> <!-- 线圈地址 -->
+        <variable type="B" length="2" field_role="coil_value" value="0x0000-0xFF00"/> <!-- 线圈值 0x0000 (OFF) 或 0xFF00 (ON) -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 从设备：异常响应 -->
+    <message name="EXCEPTION_RESPONSE" role="server">
+        <variable type="B" length="1" field_role="slave_id" value="0x01-0xF7"/> <!-- 从设备地址 1-247 -->
+        <variable type="B" length="1" field_role="function_code" value="0x81-0xFF"/> <!-- 异常功能码 (高位设为1) -->
+        <variable type="B" length="1" field_role="exception_code" value="0x01-0xFF"/> <!-- 异常码 -->
+        <variable type="B" length="2" field_role="crc" value="0x0000-0xFFFF"/> <!-- CRC 校验 -->
+    </message>
+
+    <!-- 状态机 -->
+    <statemachine>
+        <!-- 初始状态 -->
+        <INIT_STATE role="client">
+            <READ_COILS_REQUEST role="client" condition="主设备发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备发起写单个线圈请求"/>
+        </INIT_STATE>
+
+        <!-- 读线圈请求 -->
+        <READ_COILS_REQUEST role="client">
+            <READ_COILS_RESPONSE role="server" condition="从设备返回读线圈响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </READ_COILS_REQUEST>
+
+        <!-- 读保持寄存器请求 -->
+        <READ_HOLDING_REGISTERS_REQUEST role="client">
+            <READ_HOLDING_REGISTERS_RESPONSE role="server" condition="从设备返回读保持寄存器响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </READ_HOLDING_REGISTERS_REQUEST>
+
+        <!-- 写单个线圈请求 -->
+        <WRITE_SINGLE_COIL_REQUEST role="client">
+            <WRITE_SINGLE_COIL_RESPONSE role="server" condition="从设备返回写单个线圈响应"/>
+            <EXCEPTION_RESPONSE role="server" condition="从设备返回异常响应"/>
+        </WRITE_SINGLE_COIL_REQUEST>
+
+        <!-- 响应状态返回初始状态 -->
+        <READ_COILS_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </READ_COILS_RESPONSE>
+
+        <READ_HOLDING_REGISTERS_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </READ_HOLDING_REGISTERS_RESPONSE>
+
+        <WRITE_SINGLE_COIL_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </WRITE_SINGLE_COIL_RESPONSE>
+
+        <EXCEPTION_RESPONSE role="server">
+            <READ_COILS_REQUEST role="client" condition="主设备继续发起读线圈请求"/>
+            <READ_HOLDING_REGISTERS_REQUEST role="client" condition="主设备继续发起读保持寄存器请求"/>
+            <WRITE_SINGLE_COIL_REQUEST role="client" condition="主设备继续发起写单个线圈请求"/>
+        </EXCEPTION_RESPONSE>
+    </statemachine>
+</IR>
